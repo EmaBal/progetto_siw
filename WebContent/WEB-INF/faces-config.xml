@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+    version="2.2">
+
+<!-- <managed-bean>
+    <managed-bean-name>orderLineControllerBean</managed-bean-name>
+    <managed-bean-class>it.uniroma3.controller.OrderLineController</managed-bean-class>
+    <managed-bean-scope>application</managed-bean-scope>
+     <managed-property>
+        <property-name>product</property-name>
+        <property-class>it.uniroma3.model.Product</property-class>
+        <value>#{prodottoSelezionato}</value>
+    </managed-property>
+</managed-bean> -->
+</faces-config>
