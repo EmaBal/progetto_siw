@@ -13,7 +13,7 @@
 	<f:view>
 		<h1>E-commerce</h1>
 		<li><h:form>
-			<h:commandLink action="#{consultaListinoController.mostraListinoProdotti}" value="List available products" />
+			<h:commandLink action="#{consultaListinoController.mostraListinoProdotti}"   value="List available products" />
 		</h:form></li>
 	</f:view>
 </body>

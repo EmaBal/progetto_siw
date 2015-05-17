@@ -1,17 +1,13 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Product;
-import it.uniroma3.model.ProductFacade;
 
-import java.util.List;
-
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ConsultaListinoController {
 	
 //	@EJB
@@ -20,41 +16,27 @@ public class ConsultaListinoController {
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private ProductController productController;
+	@ManagedProperty(value="#{param.product}")
+	private Product product;
 
 	public String mostraListinoProdotti() {
 		return productController.listProducts();
 	}
 	
-	public String selezionaProdottoDaMostrare() {
-		return productController.findProduct();
+//	public String selezionaProdottoDaMostrare() {
+//		this.product = productController.getProductFacade().getProduct(id);
+//		
+//		return "product";
+//	}
+//	public String selezionaProdottoDaMostrare(Long id) {
+//		this.product = productController.getProductFacade().getProduct(id);
+//		return "product";
+//	}
+	public String selezionaProdottoDaMostrare(Product product) {
+		this.product = product;
+		return "product";
 	}
-//	private Product product;
-//	@ManagedProperty(value="#{param.id}")
-//	private Long id;
-//	private List<Product> products;
-//	
-//	public String listProducts() {
-//		this.products = productFacade.getAllProducts();
-//		return "products"; 
-//	}
-//	
-//	public String findProduct() {
-//		this.product = productFacade.getProduct(id);
-//		return "product";
-//	}
-//	
-//	public String findProduct(Long id) {
-//		this.product = productFacade.getProduct(id);
-//		return "product";
-//	}
-//
-//	public Product getProduct() {
-//		return product;
-//	}
-//
-//	public void setProduct(Product product) {
-//		this.product = product;
-//	}
+
 //
 	public Long getId() {
 		return id;
@@ -63,16 +45,16 @@ public class ConsultaListinoController {
 	public void setId(Long id) {
 		this.id = id;
 	}
-//
-//	public List<Product> getProducts() {
-//		return products;
-//	}
-//
-//	public void setProducts(List<Product> products) {
-//		this.products = products;
-//	}
 
 	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	public ProductController getProductController() {
 		return productController;
 	}

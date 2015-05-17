@@ -53,18 +53,7 @@ public class OrderLineController {
 		order = orderFacade.createOrder();
 		return "index";
 	}
-	
-//	public String findProduct() {
-//		return "newOrderLine";
-//	}
-//
-//	public String getProductName() {
-//		return productName;
-//	}
-//
-//	public void setProductName(String productName) {
-//		this.productName = productName;
-//	}
+
 
 	public Long getId() {
 		return id;
@@ -106,27 +95,6 @@ public class OrderLineController {
 		this.orderlines = orderlines;
 	}
 
-	public OrderLineFacade getOrderLineFacade() {
-		return orderLineFacade;
-	}
 
-	public void setOrderLineFacade(OrderLineFacade orderLineFacade) {
-		this.orderLineFacade = orderLineFacade;
-	}
-
-	public OrderFacade getOrderFacade() {
-		return orderFacade;
-	}
-
-	public void setOrderFacade(OrderFacade orderFacade) {
-		this.orderFacade = orderFacade;
-	}
-
-	public ProductFacade getProductFacade() {
-		return productFacade;
-	}
-
-	public void setProductFacade(ProductFacade productFacade) {
-		this.productFacade = productFacade;
-	}
+	
 }

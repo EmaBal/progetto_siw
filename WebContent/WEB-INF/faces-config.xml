@@ -13,7 +13,7 @@
 <managed-bean>
     <managed-bean-name>consultaListinoController</managed-bean-name>
     <managed-bean-class>it.uniroma3.controller.ConsultaListinoController</managed-bean-class>
-    <managed-bean-scope>session</managed-bean-scope>
+    <managed-bean-scope>request</managed-bean-scope>
     <managed-property>
         <property-name>productController</property-name>
         <value>#{productController}</value>

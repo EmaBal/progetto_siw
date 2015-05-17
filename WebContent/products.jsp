@@ -17,8 +17,7 @@
 	</tr>
 	<c:forEach var="currentProduct" items="#{consultaListinoController.productController.products}">
 		<tr><td>
-		<h:commandLink action="#{consultaListinoController.selezionaProdottoDaMostrare}" value="#{currentProduct.id}">
-			<f:param name="id" value="#{currentProduct.id}" />
+		<h:commandLink action="#{consultaListinoController.selezionaProdottoDaMostrare(currentProduct)}" value="#{currentProduct.id}">
 		</h:commandLink>
 		</td><td>${currentProduct.price}</td></tr>
 	</c:forEach>

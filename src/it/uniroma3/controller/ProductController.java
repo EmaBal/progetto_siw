@@ -48,8 +48,9 @@ public class ProductController {
 	}
 
 	public String findProduct() {
+		
 		this.product = productFacade.getProduct(id);
-		return "product";
+		return "produproductFacadect";
 	}
 	
 	public String findProduct(Long id) {
@@ -69,7 +70,7 @@ public class ProductController {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setNaproductFacademe(String name) {
 		this.name = name;
 	}
 
@@ -83,6 +84,7 @@ public class ProductController {
 
 	public String getDescription() {
 		return description;
+		
 	}
 
 	public void setDescription(String description) {
@@ -101,10 +103,6 @@ public class ProductController {
 		return product;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -112,6 +110,24 @@ public class ProductController {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+
+	public ProductFacade getProductFacade() {
+		return productFacade;
+	}
+
+	public void setProductFacade(ProductFacade productFacade) {
+		this.productFacade = productFacade;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+	
 }
 
 
