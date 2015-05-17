@@ -12,13 +12,13 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 
 @SessionScoped
 @ManagedBean
 public class OrderLineController {
 	
-//	@ManagedProperty(value="#{param.id}")
-	private String productName;
+	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private Product product;
 	private Integer quantity;
@@ -39,33 +39,32 @@ public class OrderLineController {
 		return "productSelection";
 	}
 	
-//	public String findProduct() {
-//		this.product = productFacade.getProduct(id);
-//		return "newOrderLine";
-//	}
-//	
-//	public String findProduct(Long id) {
-//		this.product = productFacade.getProduct(id);
-//		return "newOrderLine";
-//	}
+	public String findProduct() {
+		this.product = productFacade.getProduct(id);
+		return "newOrderLine";
+	}
+	
+	public String findProduct(Long id) {
+		this.product = productFacade.getProduct(id);
+		return "newOrderLine";
+	}
 	
 	public String createOrder() {
 		order = orderFacade.createOrder();
 		return "index";
 	}
 	
-	public String findProduct() {
-		
-		return "newOrderLine";
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+//	public String findProduct() {
+//		return "newOrderLine";
+//	}
+//
+//	public String getProductName() {
+//		return productName;
+//	}
+//
+//	public void setProductName(String productName) {
+//		this.productName = productName;
+//	}
 
 	public Long getId() {
 		return id;

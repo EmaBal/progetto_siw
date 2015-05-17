@@ -1,15 +1,18 @@
 package it.uniroma3.controller;
 
-import java.util.List;
-
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
+@SessionScoped
 public class ProductController {
 	
 	@ManagedProperty(value="#{param.id}")
@@ -23,6 +26,11 @@ public class ProductController {
 	
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
+	
+	@PostConstruct
+	public void init() {
+		findProduct();
+	}
 	
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);

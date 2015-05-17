@@ -15,12 +15,12 @@
 	<tr>
 		<th>Name</th><th>Price</th>
 	</tr>
-	<c:forEach var="product" items="#{productController.products}">
+	<c:forEach var="currentProduct" items="#{consultaListinoController.productController.products}">
 		<tr><td>
-		<h:commandLink action="#{productController.findProduct}" value="#{product.name}">
-			<f:param name="id" value="#{product.id}" />
+		<h:commandLink action="#{consultaListinoController.selezionaProdottoDaMostrare}" value="#{currentProduct.id}">
+			<f:param name="id" value="#{currentProduct.id}" />
 		</h:commandLink>
-		</td><td>${product.price}</td></tr>
+		</td><td>${currentProduct.price}</td></tr>
 	</c:forEach>
 </table>
 </h:form>

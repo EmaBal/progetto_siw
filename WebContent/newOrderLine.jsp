@@ -10,18 +10,18 @@
 <body>
 <f:view>
 <h:form>
-    <div>Nome: ${prodottoSelezionato.name}</div>
-    <div>Quantita': <h:inputText value="#{orderLineControllerBean.quantity}" 
+    <div>Nome: ${productController.product.name}</div>
+    <div>Quantita': <h:inputText value="#{orderLineController.quantity}" 
                      required="true"
                      requiredMessage="Quantity is mandatory"
                      converterMessage="Quantity must be a number"
                      id="quantity"/> <h:message for="quantity" />
 	</div>
 	<div>
-		<h:commandButton value="Inserisci altro prodotto"  action="#{orderLineControllerBean.createOrderLine}"/>
+		<h:commandButton value="Inserisci altro prodotto"  action="#{orderLineController.createOrderLine}"/>
 	</div>
 	<div>
-		<h:commandButton value="Termina inserimento"  action="#{orderLineControllerBean.createOrder}"/>
+		<h:commandButton value="Termina inserimento"  action="#{orderLineController.createOrder}"/>
 	</div> 
 </h:form>
 </f:view>

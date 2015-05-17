@@ -5,12 +5,13 @@
 <title>Product</title>
 </head>
 <body>
+<div>${consultaListinoController.id}</div>
 <f:view>
-<h1>${productController.product.name}</h1>
+<h1>${consultaListinoController.productController.product.name}</h1>
 <h2>Details</h2>
-<div>Code: ${productController.product.code}</div>
-<div>Price: ${productController.product.price}</div>
-<div>Description: ${productController.product.description}</div>
+<div>Code: ${consultaListinoController.productController.product.code}</div>
+<div>Price: ${consultaListinoController.productController.product.price}</div>
+<div>Description: ${consultaListinoController.productController.product.description}</div>
 </f:view>
 </body>
 </html>

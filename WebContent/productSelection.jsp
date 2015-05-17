@@ -18,7 +18,7 @@
 	<c:forEach var="product" items="#{productController.products}">
 		<tr><td>
 		<h:commandLink action="#{orderLineController.findProduct}" value="#{product.name}">
- 			<f:param name="productName" value="#{product.name}" />
+ 			<f:param name="id" value="#{product.id}" />
 		</h:commandLink>
 		</td><td>${product.price}</td></tr>
 	</c:forEach>

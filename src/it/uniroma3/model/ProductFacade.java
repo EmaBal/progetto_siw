@@ -1,9 +1,11 @@
 package it.uniroma3.model;
 
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
+
 import java.util.List;
 
 @Stateless(name="pFacade")

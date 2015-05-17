@@ -12,19 +12,9 @@
 <body>
 	<f:view>
 		<h1>E-commerce</h1>
-		<ul>
 		<li><h:form>
-					<h:commandLink action="#{productController.selectProducts}"
-						value="Inserisci un nuovo ordine" />
-						
+			<h:commandLink action="#{consultaListinoController.mostraListinoProdotti}" value="List available products" />
 		</h:form></li>
-		<li><h:form>
-					<h:commandLink action="#{productController.listProducts}"
-						value="List all Products" />
-		</h:form></li>
-		<li><h:form><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
-					a new product</a></h:form></li>
-		</ul>
 	</f:view>
 </body>
 </html>
