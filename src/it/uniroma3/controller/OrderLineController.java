@@ -24,6 +24,7 @@ public class OrderLineController {
 	private Integer quantity;
 	private Order order;
 	private List<OrderLine> orderlines;
+	private Integer prova;
 	
 	@EJB(beanName="olFacade")
 	private OrderLineFacade orderLineFacade;
