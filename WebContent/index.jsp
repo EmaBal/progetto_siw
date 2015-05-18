@@ -12,6 +12,22 @@
 <body>
 	<f:view>
 		<h1>E-commerce</h1>
+
+		<li>Login:</li>
+	    <div>Email: <h:inputText value="#{userController.email}" 
+			required="true"
+            requiredMessage="Email is mandatory"
+            id="email"/> <h:message for="email" />
+		</div>
+		<div>Password: <h:inputText value="#{userController.password}" 
+            required="true"
+            requiredMessage="Password is mandatory"
+            id="password"/> <h:message for="password" />
+		</div>
+		<div>${userController.passwordErr}</div>
+		<div>
+			<h:commandButton value="Submit"  action="#{userController.findCredentials()}"/>
+		</div>
 		<li><h:form>
 			<h:commandLink action="#{consultaListinoController.mostraListinoProdotti}"   value="List available products" />
 		</h:form></li>
