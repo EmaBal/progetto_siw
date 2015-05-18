@@ -24,17 +24,17 @@ public class UserController {
 	private UserFacade userFacade;
 	
 	public String findCredentials() {
-		if (this.password.equals(userFacade.getUser(email).getPassword())) {
-			return "products";
+		if (userFacade.getUser(email)!=null && this.password.equals(userFacade.getUser(email).getPassword())) {
+			passwordErr="Login successful";
+			return "index";
 		} else {
 			passwordErr="Wrong email or password";
 			return "index";
 		}
 	}
 	public String createCustomer() {
-		user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
+			userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
 		return "index";
-		
 	}
 
 	public String getEmail() {

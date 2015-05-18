@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<f:view>
+<f:view><h:form>
 		<h1>E-commerce</h1>
 
 		<li>Sing up:</li>
@@ -24,25 +24,25 @@
             requiredMessage="Password is mandatory"
             id="password"/> <h:message for="password" />
 		</div>
-		<div>First name: <h:inputText value="#{userController.password}" 
+		<div>First name: <h:inputText value="#{userController.firstname}" 
             required="true"
-            requiredMessage="Firstname is mandatory"
+            requiredMessage="First name is mandatory"
             id="firstname"/> <h:message for="firstname" />
 		</div>
-		<div>Last name: <h:inputText value="#{userController.password}" 
+		<div>Last name: <h:inputText value="#{userController.lastname}" 
             required="true"
-            requiredMessage="Lastname is mandatory"
+            requiredMessage="Last name is mandatory"
             id="lastname"/> <h:message for="lastname" />
 		</div>
-		<div>Phone number: <h:inputText value="#{userController.password}" 
+		<div>Phone number: <h:inputText value="#{userController.phonenumber}" 
             required="true"
-            requiredMessage="Phonenumber is mandatory"
+            requiredMessage="Phone number is mandatory"
             id="phonenumber"/> <h:message for="phonenumber" />
 		</div>
 		
 		<div>
 			<h:commandButton value="Sign Up"  action="#{userController.createCustomer}"/>
-		</div>
+		</h:form></div>
 		
 	</f:view>
 </body>

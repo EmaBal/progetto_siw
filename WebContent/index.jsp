@@ -25,9 +25,9 @@
             id="password"/> <h:message for="password" />
 		</div>
 		<div>${userController.passwordErr}</div>
-		<div>
-			<h:commandButton value="Log in"  action="#{userController.findCredentials()}"/>
-		</div>
+		<div><h:form>
+			<h:commandButton value="Log in"  action="#{userController.findCredentials}"/>
+		</h:form></div>
 		<li><h:form>
 			<h:commandLink action="#{consultaListinoController.mostraListinoProdotti}"   value="List available products" />
 		</h:form></li>

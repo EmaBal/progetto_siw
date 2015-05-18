@@ -38,17 +38,11 @@ public class UserFacade {
         em.remove(administrator);
     }
     
-    
-
 	public User getUser(Long id) {
 		User user = em.find(Administrator.class, id);
 		return user;
 	}
 	public User getUser(String email) {
-//		 CriteriaQuery<User> cq = em.getCriteriaBuilder().createQuery(User.class);
-//	        cq.select(cq.from(User.class));
-//	        List<User> users = em.createQuery(cq).getResultList();
-//			return users;
 		User user = em.find(Administrator.class, email);
 		return user;
 	}
@@ -73,7 +67,7 @@ public class UserFacade {
 		em.persist(user);
 		return user;
 	}
-	public Customer getCustomer(Long id) {
+	public User getCustomer(Long id) {
 		Customer user = em.find(Customer.class, id);
 		return user;
 	}

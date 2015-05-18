@@ -1,14 +1,20 @@
 package it.uniroma3.model;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Users")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="USER_TYPE")
 public abstract class User {
 
 	@Id
@@ -31,10 +37,9 @@ public abstract class User {
 	private String password;
 
 	public User() {
-
 	}
 
-	public User( String firstname, String lastname, String email, String phonenumber,String password) {
+	public User(String firstname, String lastname, String email, String phonenumber,String password) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
