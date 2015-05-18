@@ -7,8 +7,8 @@
 <body>
 
 <f:view>
+<div>Name :${consultaListinoController.product.name}</div>
 <h2>Details</h2>
-<div>Name :<h1>${consultaListinoController.product.name}</h1></div>
 <div>Code: ${consultaListinoController.product.code}</div>
 <div>Price: ${consultaListinoController.product.price}</div>
 <div>Description: ${consultaListinoController.product.description}</div>
