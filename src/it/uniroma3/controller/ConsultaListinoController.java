@@ -23,15 +23,7 @@ public class ConsultaListinoController {
 		return productController.listProducts();
 	}
 	
-//	public String selezionaProdottoDaMostrare() {
-//		this.product = productController.getProductFacade().getProduct(id);
-//		
-//		return "product";
-//	}
-//	public String selezionaProdottoDaMostrare(Long id) {
-//		this.product = productController.getProductFacade().getProduct(id);
-//		return "product";
-//	}
+
 	public String selezionaProdottoDaMostrare(Product product) {
 		this.product = product;
 		return "product";
