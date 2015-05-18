@@ -50,7 +50,7 @@ public class ProductController {
 	public String findProduct() {
 		
 		this.product = productFacade.getProduct(id);
-		return "produproductFacadect";
+		return "product";
 	}
 	
 	public String findProduct(Long id) {
