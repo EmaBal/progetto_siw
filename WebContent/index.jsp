@@ -26,11 +26,12 @@
 		</div>
 		<div>${userController.passwordErr}</div>
 		<div>
-			<h:commandButton value="Submit"  action="#{userController.findCredentials()}"/>
+			<h:commandButton value="Log in"  action="#{userController.findCredentials()}"/>
 		</div>
 		<li><h:form>
 			<h:commandLink action="#{consultaListinoController.mostraListinoProdotti}"   value="List available products" />
 		</h:form></li>
+		<li><h:form><a href='<c:url value="/faces/signUp.jsp" />'>Sign up</a></h:form></li>
 	</f:view>
 </body>
 </html>

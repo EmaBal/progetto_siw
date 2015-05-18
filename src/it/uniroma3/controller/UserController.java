@@ -1,5 +1,6 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
 import javax.ejb.EJB;
@@ -12,7 +13,12 @@ public class UserController {
 	
 	private String email;
 	private String password;
+	private String firstname;
+	private String lastname;
+	private String phonenumber;
 	private String passwordErr = null;
+	
+	private User user;
 	
 	@EJB(beanName="uFacade")
 	private UserFacade userFacade;
@@ -24,6 +30,11 @@ public class UserController {
 			passwordErr="Wrong email or password";
 			return "index";
 		}
+	}
+	public String createCustomer() {
+		user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
+		return "index";
+		
 	}
 
 	public String getEmail() {
@@ -48,5 +59,35 @@ public class UserController {
 
 	public void setPasswordErr(String passwordErr) {
 		this.passwordErr = passwordErr;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
