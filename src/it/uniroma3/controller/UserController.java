@@ -1,8 +1,9 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.UserFacade;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
@@ -14,14 +15,15 @@ public class UserController {
 	private String passwordErr = null;
 	
 	@EJB(beanName="uFacade")
-	private userFacade userFacade;
+	private UserFacade userFacade;
 	
 	public String findCredentials() {
-		if (this.email.equals(userFacade.getUser(email).email) && (this.password.equals(userFacade.getUser(email).password)))
+		if (this.password.equals(userFacade.getUser(email).getPassword())) {
 			return "products";
-		else
+		} else {
 			passwordErr="Wrong email or password";
 			return "index";
+		}
 	}
 
 	public String getEmail() {
