@@ -82,4 +82,12 @@ public abstract class User {
 		this.phonenumber = phonenumber;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 }
