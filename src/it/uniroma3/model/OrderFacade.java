@@ -1,6 +1,5 @@
 package it.uniroma3.model;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -16,7 +15,6 @@ public class OrderFacade {
     
 	public Order createOrder() {
 		Order order = new Order();
-		order.setOrderLines(Collections.EMPTY_LIST);
 		em.persist(order);
 		return order;
 	}

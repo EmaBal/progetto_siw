@@ -1,6 +1,5 @@
 package it.uniroma3.model;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.Stateless;
