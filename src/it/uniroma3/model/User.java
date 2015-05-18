@@ -8,25 +8,39 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Users")
+@Table(name = "Users")
 public abstract class User {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String firstname;
-	
+
 	@Column(nullable = false)
 	private String lastname;
-	
+
 	@Column(nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String phonenumber;
+	
+	@Column(nullable = false)
+	private String password;
+
+	public User() {
+
+	}
+
+	public User( String firstname, String lastname, String email, String phonenumber,String password) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.phonenumber = phonenumber;
+		this.password = password;
+	}
 
 	public Long getId() {
 		return id;
@@ -68,6 +82,4 @@ public abstract class User {
 		this.phonenumber = phonenumber;
 	}
 
-	
-	
 }
