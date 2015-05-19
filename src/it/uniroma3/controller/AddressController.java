@@ -1,5 +1,6 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Address;
 import it.uniroma3.model.Customer;
 
 public class AddressController {
@@ -14,7 +15,7 @@ public class AddressController {
 	private Address address;
 	
 	public String createAddress(){
-		this.address = new Address(street,city,state,zipcode,country,customer);
+		this.address = new Address(customer,street,city,state,zipcode,country);
 		return "index";
 	}
 	
