@@ -1,5 +1,7 @@
 package it.uniroma3.model;
 
+import it.uniroma3.controller.ProductController;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -16,6 +18,7 @@ public class UserFacade {
 
 	@PersistenceContext(unitName = "unit-e-commerce")
 	private EntityManager em;
+	private ProductController productController;
 
 	public Administrator createAdministrator(String firstname, String lastname, String email, String phonenumber, String password) throws NoSuchAlgorithmException {
 		Administrator user = new Administrator(firstname, lastname, email, phonenumber, md5(password));
@@ -138,6 +141,14 @@ public class UserFacade {
 		}
 
 		return hexString.toString();
+	}
+
+	public ProductController getProductController() {
+		return productController;
+	}
+
+	public void setProductController(ProductController productController) {
+		this.productController = productController;
 	}
 
 }

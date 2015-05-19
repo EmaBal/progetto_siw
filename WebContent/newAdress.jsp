@@ -14,34 +14,34 @@
 		<h1>E-commerce</h1>
 
 		<li>Sing up:</li>
-	    <div>Street: <h:inputText value="#{addressController.street}" 
+	    <div>Street: <h:inputText value="#{userController.addressController.street}" 
 			required="true"
             requiredMessage="Street is mandatory"
             id="email"/> <h:message for="email" />
 		</div>
-		<div>City: <h:inputText value="#{addressController.city}" 
+		<div>City: <h:inputText value="#{userController.addressController.city}" 
             required="true"
             requiredMessage="City is mandatory"
             id="password"/> <h:message for="password" />
 		</div>
-		<div>State: <h:inputText value="#{addressController.state}" 
+		<div>State: <h:inputText value="#{userController.addressController.state}" 
             required="true"
             requiredMessage="State is mandatory"
             id="firstname"/> <h:message for="firstname" />
 		</div>
-		<div>Zip code: <h:inputText value="#{addressController.zipcode}" 
+		<div>Zip code: <h:inputText value="#{userController.addressController.zipcode}" 
             required="true"
             requiredMessage="Zip code is mandatory"
             id="lastname"/> <h:message for="lastname" />
 		</div>
-		<div>Country: <h:inputText value="#{addressController.country}" 
+		<div>Country: <h:inputText value="#{userController.addressController.country}" 
             required="true"
             requiredMessage="Country is mandatory"
             id="phonenumber"/> <h:message for="phonenumber" />
 		</div>
 		
 		<div>
-			<h:commandButton value="Add address"  action="#{addressController.createAddress}"/>
+			<h:commandButton value="Add address"  action="#{userController.addressController.createAddress}"/>
 		</h:form></div>
 		
 	</f:view>
