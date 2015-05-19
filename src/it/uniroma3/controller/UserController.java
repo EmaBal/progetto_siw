@@ -23,7 +23,7 @@ public class UserController {
 
 	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
-
+	private AddressController addressController;
 	public String findCredentials() {
 
 		try {
@@ -106,5 +106,11 @@ public class UserController {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public AddressController getAddressController() {
+		return addressController;
+	}
+	public void setAddressController(AddressController addressController) {
+		this.addressController = addressController;
 	}
 }
