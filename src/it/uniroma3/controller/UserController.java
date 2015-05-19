@@ -1,5 +1,7 @@
 package it.uniroma3.controller;
 
+import java.security.NoSuchAlgorithmException;
+
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
@@ -10,30 +12,44 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class UserController {
-	
+
 	private String email;
 	private String password;
 	private String firstname;
 	private String lastname;
 	private String phonenumber;
 	private String passwordErr = null;
-	
 	private User user;
-	
-	@EJB(beanName="uFacade")
+
+	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
-	
+
 	public String findCredentials() {
-		if (userFacade.getUser(email)!=null && this.password.equals(userFacade.getUser(email).getPassword())) {
-			passwordErr="Login successful";
-			return "index";
-		} else {
-			passwordErr="Wrong email or password";
+
+		try {
+			String logInMessage = userFacade.verifyUserCredentials(email, password);
+			if (logInMessage.length() == 0) {
+				user = userFacade.getUser(email);
+				passwordErr = "Login successful : " + user.getClass().getName();
+				return "index";
+			} else {
+				passwordErr = "Unable to login : " + logInMessage;
+				return "index";
+			}
+		} catch (NoSuchAlgorithmException e) {
+			passwordErr = "Unable to login. Md5 conversion failed" + e.getMessage();
 			return "index";
 		}
+
 	}
+
 	public String createCustomer() {
-			userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
+		try {
+			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
+			passwordErr = "Singup successful. " + user.getPassword();
+		} catch (NoSuchAlgorithmException e) {
+			passwordErr = "Unable to sing up. Md5 conversion failed" + e.getMessage();
+		}
 		return "index";
 	}
 
@@ -84,9 +100,11 @@ public class UserController {
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}

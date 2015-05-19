@@ -1,19 +1,24 @@
 package it.uniroma3.model;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 
 @Entity
-@DiscriminatorValue(value="C")
+@DiscriminatorValue(value = "C")
 public class Customer extends User {
-	
-	public Customer(String firstname,String lastname,String email,String phonenumber,String password){
+
+	public Customer(String firstname, String lastname, String email, String phonenumber, String password) {
 		super(firstname, lastname, email, phonenumber, password);
 	}
-	
-	public Customer(){
+
+	public Customer() {
 		super();
 	}
+
+	
 }
