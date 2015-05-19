@@ -107,7 +107,7 @@ public class UserFacade {
 		// EntityType<User> User_ = em.getMetamodel().entity(User.class);
 		// CriteriaQuery<User> cq = cb.createQuery(User.class);
 		// Root<User> user = cq.from(User.class);
-		// cq.where(cb.equal(user.get((SingularAttribute<? super User, String>)
+		// cq.where(cb.equal(user.get((SignularAttribute<? super User, String>)
 		// User_.getAttribute("email")), email));
 		User user = getUser(email);
 		if (user == null) {

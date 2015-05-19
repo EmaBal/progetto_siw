@@ -46,9 +46,9 @@ public class UserController {
 	public String createCustomer() {
 		try {
 			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
-			passwordErr = "Singup successful. " + user.getPassword();
+			passwordErr = "Signup successful. " + user.getPassword();
 		} catch (NoSuchAlgorithmException e) {
-			passwordErr = "Unable to sing up. Md5 conversion failed" + e.getMessage();
+			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
 		}
 		return "index";
 	}
