@@ -14,36 +14,33 @@
 	<f:view>
 		<h:form>
 			<h1>E-commerce</h1>
-
-			<li>Login:</li>
 			<div>
-				Email:
-				<h:inputText value="#{userController.email}" required="true"
-					requiredMessage="Email is mandatory" id="email" />
-				<h:message for="email" />
+				<c:choose>
+					<c:when
+						test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+						<h:commandButton value="Add address"
+							action="#{userController.openNewAddressPage}" />
+					</c:when>
+					<c:otherwise>
+						<div>
+						Login:<br>
+							Email:
+							<h:inputText value="#{userController.email}" required="true"
+								requiredMessage="Email is mandatory" id="email" />
+							<h:message for="email" />
+						</div>
+						<div>
+							Password:
+							<h:inputSecret value="#{userController.password}" required="true"
+								requiredMessage="Password is mandatory" id="password" />
+							<h:message for="password" />
+						</div>
+						<h:commandButton value="Log in"
+							action="#{userController.findCredentials}" />
+					</c:otherwise>
+				</c:choose>
+				<div>${userController.passwordErr}</div>
 			</div>
-			<div>
-				Password:
-				<h:inputSecret value="#{userController.password}" required="true"
-					requiredMessage="Password is mandatory" id="password" />
-				<h:message for="password" />
-			</div>
-			<div>${userController.passwordErr}</div>
-			<div>
-			<c:choose>
-				<c:when test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}"> 
-					<h:commandButton value="Add address"
-					action="#{userController.openNewAddressPage}" />
-      			</c:when>
-      			<c:otherwise><h:commandButton value="Log in"
-					action="#{userController.findCredentials}" />
-      			</c:otherwise>
-			</c:choose>
-			</div>
-<%-- 			<div>
-				<h:commandButton value="Log in"
-					action="#{userController.findCredentials}" />
-			</div> --%>
 			<li><h:commandLink
 					action="#{consultaListinoController.mostraListinoProdotti}"
 					value="List available products" /></li>
