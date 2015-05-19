@@ -42,7 +42,6 @@ public class UserController {
 		}
 
 	}
-
 	public String createCustomer() {
 		try {
 			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
