@@ -24,7 +24,7 @@
 			</div>
 			<div>
 				Password:
-				<h:inputText value="#{userController.password}" required="true"
+				<h:inputSecret value="#{userController.password}" required="true"
 					requiredMessage="Password is mandatory" id="password" />
 				<h:message for="password" />
 			</div>
