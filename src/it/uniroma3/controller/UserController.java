@@ -1,9 +1,10 @@
 package it.uniroma3.controller;
 
-import java.security.NoSuchAlgorithmException;
-
+import it.uniroma3.model.Customer;
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
+
+import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +21,7 @@ public class UserController {
 	private String phonenumber;
 	private String passwordErr = null;
 	private User user;
+	private String userprivilege;
 
 	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
@@ -31,6 +33,7 @@ public class UserController {
 			if (logInMessage.length() == 0) {
 				user = userFacade.getUser(email);
 				passwordErr = "Login successful : " + user.getClass().getName();
+				userprivilege = user.getClass().getName();
 				return "index";
 			} else {
 				passwordErr = "Unable to login : " + logInMessage;
@@ -50,6 +53,14 @@ public class UserController {
 			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
 		}
 		return "index";
+	}
+	
+	public String openNewAddressPage() {
+		return addressController.openNewAddressPage();
+	}
+	
+	public String addAddress() {
+		return this.addressController.createAddress((Customer) user);
 	}
 
 	public String getEmail() {
@@ -112,5 +123,11 @@ public class UserController {
 	}
 	public void setAddressController(AddressController addressController) {
 		this.addressController = addressController;
+	}
+	public String getUserprivilege() {
+		return userprivilege;
+	}
+	public void setUserprivilege(String userprivilege) {
+		this.userprivilege = userprivilege;
 	}
 }

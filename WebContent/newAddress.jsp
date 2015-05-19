@@ -17,31 +17,31 @@
 	    <div>Street: <h:inputText value="#{userController.addressController.street}" 
 			required="true"
             requiredMessage="Street is mandatory"
-            id="email"/> <h:message for="email" />
+            id="street"/> <h:message for="street" />
 		</div>
 		<div>City: <h:inputText value="#{userController.addressController.city}" 
             required="true"
             requiredMessage="City is mandatory"
-            id="password"/> <h:message for="password" />
+            id="city"/> <h:message for="city" />
 		</div>
 		<div>State: <h:inputText value="#{userController.addressController.state}" 
             required="true"
             requiredMessage="State is mandatory"
-            id="firstname"/> <h:message for="firstname" />
+            id="state"/> <h:message for="state" />
 		</div>
 		<div>Zip code: <h:inputText value="#{userController.addressController.zipcode}" 
             required="true"
             requiredMessage="Zip code is mandatory"
-            id="lastname"/> <h:message for="lastname" />
+            id="zipcode"/> <h:message for="zipcode" />
 		</div>
 		<div>Country: <h:inputText value="#{userController.addressController.country}" 
             required="true"
             requiredMessage="Country is mandatory"
-            id="phonenumber"/> <h:message for="phonenumber" />
+            id="country"/> <h:message for="country" />
 		</div>
 		
 		<div>
-			<h:commandButton value="Add address"  action="#{userController.addressController.createAddress}"/>
+			<h:commandButton value="Add address"  action="#{userController.addAddress}"/>
 		</h:form></div>
 		
 	</f:view>

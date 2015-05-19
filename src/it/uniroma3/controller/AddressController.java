@@ -1,7 +1,10 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Address;
+import it.uniroma3.model.AddressFacade;
 import it.uniroma3.model.Customer;
+
+import javax.ejb.EJB;
 
 public class AddressController {
 
@@ -11,11 +14,13 @@ public class AddressController {
 	private String state;
 	private String zipcode;
 	private String country;
-	private Customer customer;
 	private Address address;
 	
-	public String createAddress(){
-		this.address = new Address(customer,street,city,state,zipcode,country);
+	@EJB(beanName="aFacade")
+	private AddressFacade addressFacade;
+	
+	public String createAddress(Customer customer){
+		this.address = addressFacade.createAddress(customer, street, city, state, zipcode, country);
 		return "index";
 	}
 	
@@ -54,6 +59,18 @@ public class AddressController {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String openNewAddressPage() {
+		return "newAddress";
 	}
 	
 	

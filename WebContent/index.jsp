@@ -30,9 +30,20 @@
 			</div>
 			<div>${userController.passwordErr}</div>
 			<div>
+			<c:choose>
+				<c:when test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}"> 
+					<h:commandButton value="Add address"
+					action="#{userController.openNewAddressPage}" />
+      			</c:when>
+      			<c:otherwise><h:commandButton value="Log in"
+					action="#{userController.findCredentials}" />
+      			</c:otherwise>
+			</c:choose>
+			</div>
+<%-- 			<div>
 				<h:commandButton value="Log in"
 					action="#{userController.findCredentials}" />
-			</div>
+			</div> --%>
 			<li><h:commandLink
 					action="#{consultaListinoController.mostraListinoProdotti}"
 					value="List available products" /></li>
