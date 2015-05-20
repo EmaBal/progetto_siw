@@ -16,7 +16,7 @@
 	<f:view>
 		<div class="container">
 				<h:form>
-					<h1>E-commerce</h1>
+					<label for="title">E-commerce</label>
 					<div>
 						<c:choose>
 							<c:when
