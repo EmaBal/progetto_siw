@@ -10,7 +10,7 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Sign up</title>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 			<h:form>
 				<h1>E-commerce</h1>
 
-				<li>Sing up:</li>
+				<li>Sign up:</li>
 				<div>
 					Email:
 					<h:inputText value="#{userController.email}" required="true"
@@ -74,7 +74,9 @@
 				<div>
 					<h:commandButton value="Sign Up"
 						action="#{userController.createCustomer}" />
+						
 				</div>
+				
 			</h:form>
 		</div>
 	</f:view>

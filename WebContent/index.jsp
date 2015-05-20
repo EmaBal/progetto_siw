@@ -24,6 +24,11 @@
 								<h:commandButton value="Add address"
 									action="#{userController.openNewAddressPage}" />
 							</c:when>
+							<c:when
+								test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+								<h:commandButton value="Add product"
+									action="#{userController.openNewProductPage}" />
+							</c:when>
 							<c:otherwise>
 								<div>
 									Login:<br> Email:
@@ -47,7 +52,7 @@
 						<div>${userController.passwordErr}</div>
 					</div>
 					<li><h:commandLink
-							action="#{consultaListinoController.mostraListinoProdotti}"
+							action="#{userController.mostraListinoProdotti}"
 							value="List available products" /></li>
 					<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign up</a></li>
 				</h:form>

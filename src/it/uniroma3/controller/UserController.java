@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Customer;
+import it.uniroma3.model.Product;
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
@@ -8,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
@@ -25,7 +27,16 @@ public class UserController {
 
 	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
+	
+	
 	private AddressController addressController;
+	private ProductController productController;
+	
+	
+
+	public String mostraListinoProdotti() {
+		return productController.listProducts();
+	}
 	public String findCredentials() {
 
 		try {
@@ -48,15 +59,26 @@ public class UserController {
 	public String createCustomer() {
 		try {
 			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
-			passwordErr = "Signup successful. " + user.getPassword();
+			passwordErr = "Signup successful. ";
 		} catch (NoSuchAlgorithmException e) {
 			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
 		}
 		return "index";
 	}
-	
+	public String createAdministrator(){
+		try {
+			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password);
+			passwordErr = "Signup successful.";
+		} catch (NoSuchAlgorithmException e) {
+			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
+		}
+		return "index";
+	}
 	public String openNewAddressPage() {
 		return addressController.openNewAddressPage();
+	}
+	public String openNewProductPage() {
+		return productController.openNewProductPage();
 	}
 	
 	public String addAddress() {
@@ -129,5 +151,11 @@ public class UserController {
 	}
 	public void setUserprivilege(String userprivilege) {
 		this.userprivilege = userprivilege;
+	}
+	public ProductController getProductController() {
+		return productController;
+	}
+	public void setProductController(ProductController productController) {
+		this.productController = productController;
 	}
 }

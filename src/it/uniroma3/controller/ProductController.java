@@ -27,6 +27,13 @@ public class ProductController {
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
 	
+	
+	
+	public String selezionaProdottoDaMostrare(Product product) {
+		this.product = product;
+		return "product";
+	}
+	
 	@PostConstruct
 	public void init() {
 		findProduct();
@@ -125,6 +132,11 @@ public class ProductController {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public String openNewProductPage() {
+		// TODO Auto-generated method stub
+		return "newProduct";
 	}
 	
 	
