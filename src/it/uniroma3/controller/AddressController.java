@@ -2,6 +2,7 @@ package it.uniroma3.controller;
 
 import it.uniroma3.model.Address;
 import it.uniroma3.model.AddressFacade;
+import it.uniroma3.model.Customer;
 
 import javax.ejb.EJB;
 
@@ -71,6 +72,12 @@ public class AddressController {
 
 	public String openNewAddressPage() {
 		return "newAddress";
+	}
+
+	public void deleteCustomerAddress(Customer user) {
+		addressFacade.deleteAddress(user.getAddress().getId());
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

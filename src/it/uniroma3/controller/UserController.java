@@ -87,6 +87,9 @@ public class UserController {
 	
 	public String addAddress() {
 		String ret = this.addressController.createAddress();
+		if(((Customer)user).getAddress()!=null){
+			addressController.deleteCustomerAddress((Customer) user);
+		}
 		userFacade.setCustomerAddress((Customer) user,addressController.getAddress());
 		return ret;
 	}
