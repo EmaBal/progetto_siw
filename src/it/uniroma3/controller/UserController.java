@@ -1,7 +1,6 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Customer;
-import it.uniroma3.model.Product;
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
@@ -9,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
@@ -82,7 +80,9 @@ public class UserController {
 	}
 	
 	public String addAddress() {
-		return this.addressController.createAddress((Customer) user);
+		String ret = this.addressController.createAddress();
+		userFacade.setCustomerAddress((Customer) user,addressController.getAddress());
+		return ret;
 	}
 
 	public String getEmail() {

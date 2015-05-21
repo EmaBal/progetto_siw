@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -29,11 +28,9 @@ public class Address {
 	@Column(nullable = false)
 	private String country;
 	
-	@OneToOne
-	private Customer customer;
+
 	
-	public Address(Customer customer, String street, String city, String state, String zipcode, String country) {
-		this.customer=customer;
+	public Address(String street, String city, String state, String zipcode, String country) {
 		this.street = street;
 		this.city = city;
 		this.state = state;
@@ -80,11 +77,5 @@ public class Address {
 		this.country = country;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
 }

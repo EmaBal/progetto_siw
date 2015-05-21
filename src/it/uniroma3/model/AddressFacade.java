@@ -13,8 +13,8 @@ public class AddressFacade {
 	@PersistenceContext(unitName = "unit-e-commerce")
 	private EntityManager em;
 	
-	public Address createAddress(Customer customer, String street, String city, String state, String zipcode, String country) {
-		Address address = new Address(customer,street,city,state,zipcode,country);
+	public Address createAddress(String street, String city, String state, String zipcode, String country) {
+		Address address = new Address(street,city,state,zipcode,country);
 		em.persist(address);
 		return address;
 	}

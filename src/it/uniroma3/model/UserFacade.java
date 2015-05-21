@@ -1,8 +1,5 @@
 package it.uniroma3.model;
 
-import it.uniroma3.controller.AddressController;
-import it.uniroma3.controller.ProductController;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -142,6 +139,11 @@ public class UserFacade {
 		}
 
 		return hexString.toString();
+	}
+
+	public void setCustomerAddress(Customer user, Address address) {
+		user.setAddress(address);
+		updateCustomer(user);		
 	}
 
 
