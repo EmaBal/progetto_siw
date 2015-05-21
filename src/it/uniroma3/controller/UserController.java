@@ -5,6 +5,7 @@ import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,7 @@ public class UserController {
 	private String phonenumber;
 	private String passwordErr = null;
 	private User user;
+	private Date birthdate;
 	private String userprivilege;
 
 	@EJB(beanName = "uFacade")
@@ -62,7 +64,7 @@ public class UserController {
 	}
 	public String createCustomer() {
 		try {
-			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password);
+			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
 			passwordErr = "Signup successful. ";
 		} catch (NoSuchAlgorithmException e) {
 			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
@@ -71,12 +73,15 @@ public class UserController {
 	}
 	public String createAdministrator(){
 		try {
-			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password);
+			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
 			passwordErr = "Signup successful.";
 		} catch (NoSuchAlgorithmException e) {
 			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
 		}
 		return "index";
+	}
+	public Date currentDate(){
+		return new Date(System.currentTimeMillis());
 	}
 	public String openNewAddressPage() {
 		return addressController.openNewAddressPage();
@@ -166,5 +171,11 @@ public class UserController {
 	}
 	public void setProductController(ProductController productController) {
 		this.productController = productController;
+	}
+	public Date getBirthdate() {
+		return birthdate;
+	}
+	public void setBirthdate(Date birthdate) {
+		this.birthdate = birthdate;
 	}
 }

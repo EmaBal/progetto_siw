@@ -1,5 +1,7 @@
 package it.uniroma3.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
@@ -33,17 +35,25 @@ public abstract class User {
 	private String phonenumber;
 	
 	@Column(nullable = false)
+	private Date registrationDate;
+	
+	@Column(nullable = false)
+	private Date birthDate;
+	
+	@Column(nullable = false)
 	private String password;
 
 	public User() {
 	}
 
-	public User(String firstname, String lastname, String email, String phonenumber,String password) {
+	public User(String firstname, String lastname, String email, String phonenumber,String password,Date registrationDate,Date birthDate) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.phonenumber = phonenumber;
 		this.password = password;
+		this.registrationDate = registrationDate;
+		this.birthDate = birthDate;
 	}
 
 	public Long getId() {
@@ -92,6 +102,22 @@ public abstract class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 }

@@ -1,5 +1,7 @@
 package it.uniroma3.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -15,8 +17,8 @@ public class Customer extends User {
 	
 
 	
-	public Customer(String firstname, String lastname, String email, String phonenumber, String password) {
-		super(firstname, lastname, email, phonenumber, password);
+	public Customer(String firstname, String lastname, String email, String phonenumber,String password,Date registrationDate,Date birthDate) {
+		super(firstname, lastname, email, phonenumber, password,registrationDate,birthDate);
 	}
 
 	public Customer() {

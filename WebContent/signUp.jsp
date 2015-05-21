@@ -70,16 +70,27 @@
 					</h:inputText>
 					<h:message for="phonenumber" />
 				</div>
-
+				<div>
+					Birth date (dd/MM/yyyy):
+					<h:inputText value="#{userController.birthdate}" required="true"
+						
+						converterMessage="Birth date must be in the form dd/MM/yyyy"
+						requiredMessage="Birth date is mandatory" id="birthdate">
+						<f:converter converterId="validatingPatternDateTimeConverter" />
+						<f:attribute name="validateRegex" value="^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$" />
+						<f:attribute name="convertPattern" value="dd/MM/yyyy" />
+					</h:inputText>
+					<h:message for="birthdate" />
+				</div>
 				<div>
 					<h:commandButton value="Sign Up"
 						action="#{userController.createCustomer}" />
-						
+
 				</div>
-					<div>
+				<div>
 					<h:commandButton value="Sign Up as administrator"
 						action="#{userController.createAdministrator}" />
-						
+
 				</div>
 			</h:form>
 		</div>

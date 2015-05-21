@@ -2,6 +2,7 @@ package it.uniroma3.model;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -18,8 +19,8 @@ public class UserFacade {
 	private EntityManager em;
 
 
-	public Administrator createAdministrator(String firstname, String lastname, String email, String phonenumber, String password) throws NoSuchAlgorithmException {
-		Administrator user = new Administrator(firstname, lastname, email, phonenumber, md5(password));
+	public Administrator createAdministrator(String firstname, String lastname, String email, String phonenumber, String password,Date registrationDate,Date birthDate) throws NoSuchAlgorithmException {
+		Administrator user = new Administrator(firstname, lastname, email, phonenumber, md5(password),registrationDate,birthDate);
 		em.persist(user);
 		return user;
 	}
@@ -76,8 +77,8 @@ public class UserFacade {
 		em.remove(user);
 	}
 
-	public Customer createCustomer(String firstname, String lastname, String email, String phonenumber, String password) throws NoSuchAlgorithmException {
-		Customer user = new Customer(firstname, lastname, email, phonenumber, md5(password));
+	public Customer createCustomer(String firstname, String lastname, String email, String phonenumber, String password,Date registrationDate,Date birthDate) throws NoSuchAlgorithmException {
+		Customer user = new Customer(firstname, lastname, email, phonenumber, md5(password),registrationDate,birthDate);
 		em.persist(user);
 		return user;
 	}
