@@ -99,7 +99,7 @@
 															styleClass="btnbtn-default" />
 													</c:otherwise>
 												</c:choose>
-												<div>${userController.passwordErr}</div>
+												<div>${userController.logMessage}</div>
 											</div>
 											<li><h:commandLink
 													action="#{userController.mostraListinoProdotti}"
