@@ -20,7 +20,7 @@ public class UserController {
 	private String firstname;
 	private String lastname;
 	private String phonenumber;
-	private String passwordErr = null;
+	private String logMessage = null;
 	private User user;
 	private Date birthdate;
 	private String userprivilege;
@@ -44,39 +44,47 @@ public class UserController {
 			if (logInMessage.length() == 0) {
 				user = userFacade.getUser(email);
 				addressController.getAddress();
-				passwordErr = "Login successful : " + user.getClass().getName();
+				logMessage = "Login successful : " + user.getClass().getName();
 				userprivilege = user.getClass().getName();
 				return "index";
 			} else {
-				passwordErr = "Unable to login : " + logInMessage;
+				logMessage = "Unable to login : " + logInMessage;
 				return "index";
 			}
 		} catch (NoSuchAlgorithmException e) {
-			passwordErr = "Unable to login. Md5 conversion failed" + e.getMessage();
+			logMessage = "Unable to login. Md5 conversion failed" + e.getMessage();
 			return "index";
 		}
 
 	}
 	public String logOut(){
 		this.user = null;		
-		passwordErr = "Logged out";
+		logMessage = "Logged out";
 		return "index";
 	}
 	public String createCustomer() {
+		String nextpage = "index";
 		try {
 			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
-			passwordErr = "Signup successful. ";
-		} catch (NoSuchAlgorithmException e) {
-			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
+			logMessage = "Signup successful. ";
+		} catch (Exception e) {
+			if(e.getClass().getName().equals("javax.ejb.EJBTransactionRolledbackException")){
+				logMessage = "Unable to sign up. This email is alredy taken";
+				nextpage = "singUp";
+			}else{
+				logMessage = "Unable to sign up. Md5 conversion failed " + e.getClass().getName() + e.getMessage();
+				nextpage = "singUp";
+			}
+		
 		}
-		return "index";
+		return nextpage;
 	}
 	public String createAdministrator(){
 		try {
 			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
-			passwordErr = "Signup successful.";
+			logMessage = "Signup successful.";
 		} catch (NoSuchAlgorithmException e) {
-			passwordErr = "Unable to sign up. Md5 conversion failed" + e.getMessage();
+			logMessage = "Unable to sign up. Md5 conversion failed" + e.getMessage();
 		}
 		return "index";
 	}
@@ -116,11 +124,11 @@ public class UserController {
 	}
 
 	public String getPasswordErr() {
-		return passwordErr;
+		return logMessage;
 	}
 
 	public void setPasswordErr(String passwordErr) {
-		this.passwordErr = passwordErr;
+		this.logMessage = passwordErr;
 	}
 
 	public String getFirstname() {
@@ -177,5 +185,11 @@ public class UserController {
 	}
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
+	}
+	public String getLogMessage() {
+		return logMessage;
+	}
+	public void setLogMessage(String logMessage) {
+		this.logMessage = logMessage;
 	}
 }

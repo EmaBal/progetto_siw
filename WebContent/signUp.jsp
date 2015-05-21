@@ -82,6 +82,7 @@
 					</h:inputText>
 					<h:message for="birthdate" />
 				</div>
+					<div>${userController.logMessage}</div>
 				<div>
 					<h:commandButton value="Sign Up"
 						action="#{userController.createCustomer}" />
