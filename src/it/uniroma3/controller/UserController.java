@@ -70,10 +70,10 @@ public class UserController {
 		} catch (Exception e) {
 			if(e.getClass().getName().equals("javax.ejb.EJBTransactionRolledbackException")){
 				logMessage = "Unable to sign up. This email is alredy taken";
-				nextpage = "singUp";
+				nextpage = "signUp";
 			}else{
 				logMessage = "Unable to sign up. Md5 conversion failed " + e.getClass().getName() + e.getMessage();
-				nextpage = "singUp";
+				nextpage = "signUp";
 			}
 		
 		}
