@@ -134,27 +134,30 @@
 												action="#{userController.logIn}" styleClass="btnbtn-default" /></li>
 									</ul></li> --%>
 								<li class='dropdown' data-dropdown='dropdown'><a href="#"
-									class="dropdown-toggle">Login</a>
+									class="dropdown-toggle" data-toggle="dropdown" role="button">Login</a>
 									<div class='dropdown-menu' id='signin-dropdown'>
+									<h:form>
 										<form accept-charset="UTF-8" action="/sessions" method="post">
-											<div style="margin: 0; padding: 0; display: inline">
+											<div style="margin: 1; padding: 0; display: inline">
 												<input name="utf8" type="hidden" value="&#x2713;" /><input
 													name="authenticity_token" type="hidden"
 													value="4L/A2ZMYkhTD3IiNDMTuB/fhPRvyCNGEsaZocUUpw40=" />
 											</div>
 											<fieldset class='textbox'>
-												<label id='js-username'> <span>Username</span> <input
-													autocomplete="on" id="username" name="username" type="text" />
-												</label> <label id='password'> <span>Password</span> <input
-													id="userpassword" name="userpassword" type="password" />
+												<label id='email'> <span>Email:</span> <input
+													autocomplete="on" id="email" name="email" type="text"
+													styleClass="form-control" />
+												</label> <label id='password'> <span>Password:</span> <input
+													id="password" name="password" type="text" />
 												</label>
 											</fieldset>
 											<fieldset class='subchk'>
-												<input name="commit" type="submit" value="Log In" />
+												<input name="commit" type="submit" value="Login" />
 											</fieldset>
 										</form>
+										</h:form>
 									</div></li>
-								<li><a href="#">Sign up</a></li>
+								<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign up</a></li>
 							</ul>
 						</div>
 						<!-- /.navbar-collapse -->
