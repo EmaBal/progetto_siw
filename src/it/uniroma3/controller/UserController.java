@@ -35,12 +35,13 @@ public class UserController {
 	public String mostraListinoProdotti() {
 		return productController.listProducts();
 	}
-	public String findCredentials() {
+	public String logIn() {
 
 		try {
 			String logInMessage = userFacade.verifyUserCredentials(email, password);
 			if (logInMessage.length() == 0) {
 				user = userFacade.getUser(email);
+				addressController.getAddress();
 				passwordErr = "Login successful : " + user.getClass().getName();
 				userprivilege = user.getClass().getName();
 				return "index";
@@ -53,6 +54,11 @@ public class UserController {
 			return "index";
 		}
 
+	}
+	public String logOut(){
+		this.user = null;		
+		passwordErr = "Logged out";
+		return "index";
 	}
 	public String createCustomer() {
 		try {

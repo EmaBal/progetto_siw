@@ -76,7 +76,11 @@
 						action="#{userController.createCustomer}" />
 						
 				</div>
-				
+					<div>
+					<h:commandButton value="Sign Up as administrator"
+						action="#{userController.createAdministrator}" />
+						
+				</div>
 			</h:form>
 		</div>
 	</f:view>

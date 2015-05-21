@@ -15,47 +15,57 @@
 <body>
 	<f:view>
 		<div class="container">
-				<h:form>
-					<label for="title">E-commerce</label>
-					<div>
-						<c:choose>
-							<c:when
-								test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-								<h:commandButton value="Add address"
-									action="#{userController.openNewAddressPage}" />
-							</c:when>
-							<c:when
-								test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-								<h:commandButton value="Add product"
-									action="#{userController.openNewProductPage}" />
-							</c:when>
-							<c:otherwise>
-								<div>
-									Login:<br> Email:
-									<h:inputText value="#{userController.email}" required="true"
-										requiredMessage="Email is mandatory" styleClass="form-control"
-										id="email" />
-									<h:message for="email" />
-								</div>
-								<div>
-									Password:
-									<h:inputSecret value="#{userController.password}"
-										required="true" requiredMessage="Password is mandatory"
-										styleClass="form-control" id="password" />
-									<h:message for="password" />
-								</div>
-								<h:commandButton value="Log in"
-									action="#{userController.findCredentials}"
-									styleClass="btnbtn-default" />
-							</c:otherwise>
-						</c:choose>
-						<div>${userController.passwordErr}</div>
-					</div>
-					<li><h:commandLink
-							action="#{userController.mostraListinoProdotti}"
-							value="List available products" /></li>
-					<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign up</a></li>
-				</h:form>
+			<h:form>
+				<label for="title">E-commerce</label>
+				<div>
+					<c:choose>
+						<c:when
+							test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+							<c:choose>
+								<c:when
+									test="${userController.user.address!=null}">
+									<h:commandButton value="Change address"
+										action="#{userController.openNewAddressPage}" />
+								</c:when>
+								<c:otherwise>
+									<h:commandButton value="Set address"
+										action="#{userController.openNewAddressPage}" />
+								</c:otherwise>
+							</c:choose>
+
+						</c:when>
+						<c:when
+							test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+							<h:commandButton value="Add product"
+								action="#{userController.openNewProductPage}" />
+						</c:when>
+						<c:otherwise>
+							<div>
+								Login:<br> Email:
+								<h:inputText value="#{userController.email}" required="true"
+									requiredMessage="Email is mandatory" styleClass="form-control"
+									id="email" />
+								<h:message for="email" />
+							</div>
+							<div>
+								Password:
+								<h:inputSecret value="#{userController.password}"
+									required="true" requiredMessage="Password is mandatory"
+									styleClass="form-control" id="password" />
+								<h:message for="password" />
+							</div>
+							<h:commandButton value="Log in"
+								action="#{userController.logIn}"
+								styleClass="btnbtn-default" />
+						</c:otherwise>
+					</c:choose>
+					<div>${userController.passwordErr}</div>
+				</div>
+				<li><h:commandLink
+						action="#{userController.mostraListinoProdotti}"
+						value="List available products" /></li>
+				<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign up</a></li>
+			</h:form>
 		</div>
 	</f:view>
 

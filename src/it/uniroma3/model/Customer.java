@@ -13,6 +13,7 @@ public class Customer extends User {
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Address address;
 	
+
 	
 	public Customer(String firstname, String lastname, String email, String phonenumber, String password) {
 		super(firstname, lastname, email, phonenumber, password);

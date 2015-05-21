@@ -1,9 +1,7 @@
 package it.uniroma3.model;
 
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
 
 @Entity
 @DiscriminatorValue(value="A")

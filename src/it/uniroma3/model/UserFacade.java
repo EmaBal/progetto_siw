@@ -141,9 +141,9 @@ public class UserFacade {
 		return hexString.toString();
 	}
 
-	public void setCustomerAddress(Customer user, Address address) {
-		user.setAddress(address);
-		updateCustomer(user);		
+	public void setCustomerAddress(Customer customer, Address address) {
+		customer.setAddress(address);
+		updateCustomer(customer);		
 	}
 
 
