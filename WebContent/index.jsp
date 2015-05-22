@@ -47,11 +47,11 @@
 				<div class="collapse navbar-collapse"
 					id="bs-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="navbar-item-opacity"><a href="#">Products</a></li>
-						<li class="navbar-item-opacity"><a href="#">Support</a></li>
-						<li class="navbar-item-opacity"><a href="#">Contact</a></li>
-						<li class="dropdown-border" id="menuLogin"><a
-							class="button-skeleton" href="#" data-toggle="dropdown"
+						<li class="navbar-item-opaque"><a href="#" class="navbar-button-link">Products</a></li>
+						<li class="navbar-item-opaque"><a href="#" class="navbar-button-link">Support</a></li>
+						<li class="navbar-item-opaque"><a href="#" class="navbar-button-link">Contact</a></li>
+						<li class="navbar-item-login" id="menuLogin"><a
+							class="navbar-button-login" href="#" data-toggle="dropdown"
 							id="navLogin">Login</a>
 							<div class="dropdown-menu" >
 								<f:view>
