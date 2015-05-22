@@ -35,29 +35,28 @@
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						data-toggle="collapse" data-target="#bs-navbar-collapse-1">
 						<span class="sr-only">Toggle navigation</span> <span
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">OGC</a>
+					<a class="navbar-brand" href="index.jsp">OGC</a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
+					id="bs-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Products</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Contact</a></li>
-						<li class="dropdown" id="menuLogin"><a
-							class="dropdown-toggle" href="#" data-toggle="dropdown"
+						<li class="navbar-item-opacity"><a href="#">Products</a></li>
+						<li class="navbar-item-opacity"><a href="#">Support</a></li>
+						<li class="navbar-item-opacity"><a href="#">Contact</a></li>
+						<li class="dropdown-border" id="menuLogin"><a
+							class="button-skeleton" href="#" data-toggle="dropdown"
 							id="navLogin">Login</a>
 							<div class="dropdown-menu" >
 								<f:view>
 									<div class="container">
 										<h:form>
-
 											<div>
 												<c:choose>
 													<c:when
@@ -81,7 +80,7 @@
 													</c:when>
 													<c:otherwise>
 														<div>
-															Login:<br> Email:
+															Email:
 															<h:inputText value="#{userController.email}"
 																required="true" requiredMessage="Email is mandatory"
 																styleClass="login-control" id="email" />
@@ -93,7 +92,7 @@
 																required="true" requiredMessage="Password is mandatory"
 																styleClass="login-control" id="password" />
 															<h:message for="password" />
-														</div>
+														</div><br>
 														<h:commandButton value="Log in"
 															action="#{userController.logIn}"
 															styleClass="btnbtn-default" />
@@ -101,15 +100,12 @@
 												</c:choose>
 												<div>${userController.logMessage}</div>
 											</div>
-											<li><h:commandLink
+<%-- 											<li><h:commandLink
 													action="#{userController.mostraListinoProdotti}"
-													value="List available products" /></li>
-											<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
-													up</a></li>
+													value="List available products" /></li> --%>
 										</h:form>
 									</div>
 								</f:view>
-								<%-- 									</form> --%>
 							</div></li>
 						<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign up</a></li>
 					</ul>
