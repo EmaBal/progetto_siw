@@ -35,12 +35,24 @@ audio
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -53,7 +65,13 @@ controls
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -69,7 +87,16 @@ display
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -79,7 +106,16 @@ display
 
 
 
+
+
+
 none
+
+
+
+
+
+
 
 
 
@@ -98,12 +134,24 @@ height
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -176,12 +224,24 @@ svg
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -192,7 +252,13 @@ svg
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -208,7 +274,16 @@ overflow
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -218,7 +293,16 @@ overflow
 
 
 
+
+
+
 hidden
+
+
+
+
+
+
 
 
 
@@ -3745,7 +3829,7 @@ tbody.collapse.in {
 	float: left;
 	min-width: 160px;
 	padding: 5px 0;
-	margin: 2px 0 0;
+	margin: 15px 0 0;
 	font-size: 14px;
 	text-align: left;
 	list-style: none;
@@ -3916,12 +4000,24 @@ tbody.collapse.in {
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3932,7 +4028,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3943,7 +4045,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3954,7 +4062,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3965,7 +4079,13 @@ tbody.collapse.in {
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -3977,7 +4097,13 @@ tbody.collapse.in {
 
 
 
+
+
+
 	
+
+
+
 
 
 
@@ -3993,12 +4119,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4020,7 +4158,19 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
 
 
 
@@ -4034,7 +4184,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4045,7 +4201,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4056,7 +4218,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4067,7 +4235,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4083,12 +4257,24 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4103,12 +4289,24 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4126,7 +4324,19 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
 
 
 
@@ -4140,7 +4350,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4151,7 +4367,13 @@ border-bottom-right-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4168,7 +4390,16 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :not
+
+
+
 
 
 
@@ -4179,13 +4410,22 @@ border-bottom-right-radius
 
 
 
+
+
+
 (
 :first-child
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4201,12 +4441,24 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4221,12 +4473,24 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4242,7 +4506,7 @@ border-bottom-left-radius
 }
 
 .btn-group>.btn-group:first-child:not (:last-child ) >.btn:last-child,.btn-group>.btn-group:first-child:not 
-	(:last-child ) >.dropdown-toggle {
+	 (:last-child ) >.dropdown-toggle {
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
 }
@@ -4318,12 +4582,24 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4334,7 +4610,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4345,7 +4627,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4356,7 +4644,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4372,12 +4666,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4395,7 +4701,19 @@ border-radius
 
 
 
+
+
+
+
+
+
 :first-child
+
+
+
+
+
+
 
 
 
@@ -4409,7 +4727,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4420,7 +4744,13 @@ border-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4436,7 +4766,16 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -4446,8 +4785,17 @@ border-top-right-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -4466,12 +4814,24 @@ border-bottom-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4486,12 +4846,24 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4509,7 +4881,19 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :last-child
+
+
+
+
+
+
 
 
 
@@ -4523,7 +4907,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4534,7 +4924,13 @@ border-bottom-left-radius
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4550,12 +4946,24 @@ border-top-left-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4570,12 +4978,24 @@ border-top-right-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4590,7 +5010,16 @@ border-bottom-left-radius
 
 
 
+
+
+
+
+
+
 :
+
+
+
 
 
 
@@ -4600,8 +5029,17 @@ border-bottom-left-radius
 
 
 
+
+
+
 4
 px
+
+
+
+
+
+
 
 
 
@@ -4618,7 +5056,7 @@ px
 }
 
 .btn-group-vertical>.btn-group:first-child:not (:last-child ) >.btn:last-child,.btn-group-vertical>.btn-group:first-child:not 
-	(:last-child ) >.dropdown-toggle {
+	 (:last-child ) >.dropdown-toggle {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -4730,12 +5168,24 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4746,7 +5196,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4757,7 +5213,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4768,7 +5230,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4783,12 +5251,24 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
+
+
+
 :not
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4799,7 +5279,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4810,7 +5296,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4821,7 +5313,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4832,7 +5330,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4846,7 +5350,16 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
+
+
+
 :not
+
+
+
 
 
 
@@ -4857,13 +5370,22 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
 (
 :first-child
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4874,7 +5396,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4885,7 +5413,13 @@ textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -4901,12 +5435,24 @@ border-radius
 
 
 
+
+
+
+
+
+
 :
 
 
 
 
+
+
+
  
+
+
+
 
 
 
@@ -8043,6 +8589,10 @@ button.close {
 	height: auto;
 }
 
+.open>.navbar-item-login {
+	display: block;
+}
+
 .navbar-button-link {
 	position: relative;
 	display: block;
@@ -8071,8 +8621,17 @@ button.close {
 	border-style: solid;
 	border-width: 1px;
 	outline: 0;
+	margin: 10px;
+	line-height: 25px;
+	color: #ECF0F1;
+	text-decoration: none;
 }
 
+
+
+.dropdown.keep-open {
+	height: auto;
+}
 
 /* Link del menu */
 .dropdown-login-border>li>a {
