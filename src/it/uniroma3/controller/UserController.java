@@ -48,7 +48,7 @@ public class UserController {
 				userprivilege = user.getClass().getName();
 				return "index";
 			} else {
-				logMessage = "Unable to login : " + logInMessage;
+				logMessage = "Unable to login: " + logInMessage;
 				return "index";
 			}
 		} catch (NoSuchAlgorithmException e) {

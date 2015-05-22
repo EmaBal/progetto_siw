@@ -76,16 +76,13 @@
 								<a class="navbar-button-login" href="#" data-toggle="dropdown"
 									id="navLogin"> <c:choose>
 										<c:when test="${userController.user!=null}">
-											${userController.user.firstname}<br>
+											${userController.user.firstname} &nbsp;
 											${userController.user.lastname}
 										</c:when>
 										<c:otherwise>
 											Login
 										</c:otherwise>
 									</c:choose>
-
-
-
 								</a>
 								<div class="dropdown-menu">
 									<f:view>
@@ -124,6 +121,7 @@
 																	styleClass="login-control" id="email" />
 																<h:message for="email" />
 															</div>
+															<br>
 															<div>
 																Password:
 																<h:inputSecret value="#{userController.password}"
@@ -132,13 +130,12 @@
 																<h:message for="password" />
 															</div>
 															<br>
-															<h:commandButton value="Log in"
+															<h:commandButton value="Login"
 																action="#{userController.logIn}"
 																styleClass="btnbtn-default" />
 															<div>${userController.logMessage}</div>
 														</c:otherwise>
 													</c:choose>
-
 												</div>
 												<%-- 											<li><h:commandLink
 													action="#{userController.mostraListinoProdotti}"
