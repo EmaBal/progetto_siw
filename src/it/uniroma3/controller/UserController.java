@@ -91,8 +91,8 @@ public class UserController {
 	public Date currentDate(){
 		return new Date(System.currentTimeMillis());
 	}
-	public String openNewAddressPage() {
-		return addressController.openNewAddressPage();
+	public String openNewUserAddressPage() {
+		return addressController.openNewUserAddressPage();
 	}
 	public String openNewProductPage() {
 		return productController.openNewProductPage();
