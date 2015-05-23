@@ -97,11 +97,11 @@
 																	<c:choose>
 																		<c:when test="${userController.user.address!=null}">
 																			<h:commandLink value="Change address"
-																				action="#{userController.openNewAddressPage}" styleClass="list-group-item-text"/> <br><br>
+																				action="#{userController.openNewUserAddressPage}" styleClass="list-group-item-text"/> <br><br>
 																		</c:when>
 																		<c:otherwise>
 																			<h:commandLink value="Set address"
-																				action="#{userController.openNewAddressPage}" /> <br><br>
+																				action="#{userController.openNewUserAddressPage}" /> <br><br>
 																		</c:otherwise>
 																	</c:choose>
 																</c:when>
