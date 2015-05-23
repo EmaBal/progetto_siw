@@ -16,9 +16,9 @@
 	<f:view>
 		<div class="container">
 			<h:form>
-			Insert address fields:<br>
+			Insert address fields:<br><br>
 				<div>
-					Street:
+					Street:<br>
 					<h:inputText value="#{userController.addressController.street}"
 						required="true" requiredMessage="Street is mandatory"
 						validatorMessage="The field is not correctly written"
@@ -26,9 +26,9 @@
 						<f:validateRegex pattern="^(([a-zA-Z]+\s){2,}+[0-9]+)$" />
 					</h:inputText>
 					<h:message for="street" />
-				</div>
+				</div><br>
 				<div>
-					City:
+					City:<br>
 					<h:inputText value="#{userController.addressController.city}"
 						required="true" requiredMessage="City is mandatory"
 						validatorMessage="The field contains invalid characters"
@@ -36,9 +36,9 @@
 						<f:validateRegex pattern="[a-zA-Z]+" />
 					</h:inputText>
 					<h:message for="city" />
-				</div>
+				</div><br>
 				<div>
-					State:
+					State:<br>
 					<h:inputText value="#{userController.addressController.state}"
 						required="true" requiredMessage="State is mandatory"
 						validatorMessage="The field contains invalid characters"
@@ -46,9 +46,9 @@
 						<f:validateRegex pattern="[A-Z][A-Z]" />
 					</h:inputText>
 					<h:message for="state" />
-				</div>
+				</div><br>
 				<div>
-					Zip code:
+					Zip code:<br>
 					<h:inputText value="#{userController.addressController.zipcode}"
 						required="true" requiredMessage="Zip code is mandatory"
 						validatorMessage="The field is not correctly written"
@@ -56,9 +56,9 @@
 						<f:validateRegex pattern="^[0-9]{5}" />
 					</h:inputText>
 					<h:message for="zipcode" />
-				</div>
+				</div><br>
 				<div>
-					Country:
+					Country:<br>
 					<h:inputText value="#{userController.addressController.country}"
 						required="true" requiredMessage="Country is mandatory"
 						validatorMessage="The field contains invalid characters"
@@ -67,9 +67,20 @@
 					</h:inputText>
 					<h:message for="country" />
 				</div>
+				<br>
 				<div>
-					<h:commandButton value="Add address"
-						action="#{userController.addAddress}" styleClass="btnbtn-default" />
+					<c:choose>
+						<c:when test="${userController.user.address==null}">
+							<h:commandButton value="Add address"
+								action="#{userController.addAddress}"
+								styleClass="btnbtn-default" />
+						</c:when>
+						<c:otherwise>
+							<h:commandButton value="Change address"
+								action="#{userController.addAddress}"
+								styleClass="btnbtn-default" />
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</h:form>
 		</div>

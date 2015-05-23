@@ -71,6 +71,7 @@ public class AddressController {
 	}
 
 	public String openNewAddressPage() {
+		
 		return "newAddress";
 	}
 

@@ -96,22 +96,22 @@
 																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
 																	<c:choose>
 																		<c:when test="${userController.user.address!=null}">
-																			<h:commandButton value="Change address"
-																				action="#{userController.openNewAddressPage}" /><br>
+																			<h:commandLink value="Change address"
+																				action="#{userController.openNewAddressPage}" styleClass="list-group-item-text"/> <br><br>
 																		</c:when>
 																		<c:otherwise>
-																			<h:commandButton value="Set address"
-																				action="#{userController.openNewAddressPage}" /><br>
+																			<h:commandLink value="Set address"
+																				action="#{userController.openNewAddressPage}" /> <br><br>
 																		</c:otherwise>
 																	</c:choose>
 																</c:when>
 																<c:when
 																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-																	<h:commandButton value="Add product"
-																		action="#{userController.openNewProductPage}" /><br>
+																	<h:commandLink value="Add product"
+																		action="#{userController.openNewProductPage}" /> <br><br>
 																</c:when>
 															</c:choose>
-															<h:commandButton value="Log out" action="#{userController.logOut}" />
+															<h:commandLink value="Log out" action="#{userController.logOut}" styleClass="list-group-item-text" />
 														</c:when>
 														<c:otherwise>
 															<div>
