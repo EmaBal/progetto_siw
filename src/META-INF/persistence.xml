@@ -10,6 +10,7 @@
 		<class>it.uniroma3.model.Order</class>
 		<class>it.uniroma3.model.OrderLine</class>
 		<class>it.uniroma3.model.Product</class>
+		<class>it.uniroma3.model.Provider</class>
 		<class>it.uniroma3.model.Customer</class>
 		<class>it.uniroma3.model.Administrator</class>
 		<class>it.uniroma3.model.User</class>

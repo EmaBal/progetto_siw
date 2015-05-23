@@ -16,8 +16,8 @@
     <managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 <managed-bean>
-    <managed-bean-name>providerFacade</managed-bean-name>
-    <managed-bean-class>it.uniroma3.controller.ProviderFacade</managed-bean-class>
+    <managed-bean-name>providerController</managed-bean-name>
+    <managed-bean-class>it.uniroma3.controller.ProviderController</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 <managed-bean>
@@ -33,8 +33,8 @@
         <value>#{productController}</value>
     </managed-property>
      <managed-property>
-        <property-name>providerFacade</property-name>
-        <value>#{providerFacade}</value>
+        <property-name>providerController</property-name>
+        <value>#{providerController}</value>
     </managed-property>
 </managed-bean>
 
