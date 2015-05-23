@@ -30,8 +30,8 @@ import javax.persistence.Column;
 	@Column(nullable = false)
 	private String code;
 	
-	@ManyToMany
-	@JoinTable(name="PROV_PROD")
+
+	@ManyToMany(mappedBy="products")
 	private List<Provider> providers;
 	
 	public Product() {

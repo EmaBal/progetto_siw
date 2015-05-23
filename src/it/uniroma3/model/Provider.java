@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Providers")
+@Table(name="Provider")
 public class Provider {
 	
 	
@@ -31,7 +31,7 @@ public class Provider {
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Address address;
 	
-	@ManyToMany(mappedBy="providers")
+	@ManyToMany
 	private List<Product> products;
 	
 	
