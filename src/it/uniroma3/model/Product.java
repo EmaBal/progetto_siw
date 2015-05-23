@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
@@ -29,7 +30,8 @@ import javax.persistence.Column;
 	@Column(nullable = false)
 	private String code;
 	
-	@ManyToMany(mappedBy="products")
+	@ManyToMany
+	@JoinTable(name="PROV_PROD")
 	private List<Provider> providers;
 	
 	public Product() {
@@ -91,6 +93,14 @@ import javax.persistence.Column;
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public List<Provider> getProviders() {
+		return providers;
+	}
+
+	public void setProviders(List<Provider> providers) {
+		this.providers = providers;
 	}
 	
 }

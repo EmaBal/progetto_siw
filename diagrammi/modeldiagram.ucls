@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="it.uniroma3.model.Product" project="progetto_siw" 
-    file="/progetto_siw/src/it/uniroma3/model/Product.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="731" y="475"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="it.uniroma3.model.Order" project="progetto_siw" 
+  <class id="1" language="java" name="it.uniroma3.model.Order" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/Order.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="341" y="930"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -19,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="it.uniroma3.model.OrderLine" project="progetto_siw" 
+  <class id="2" language="java" name="it.uniroma3.model.OrderLine" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/OrderLine.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="729" y="929"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="it.uniroma3.model.User" project="progetto_siw" 
+  <class id="3" language="java" name="it.uniroma3.model.User" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/User.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="342" y="1493"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="it.uniroma3.model.Administrator" project="progetto_siw" 
+  <class id="4" language="java" name="it.uniroma3.model.Administrator" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/Administrator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="204" y="1911"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -46,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="it.uniroma3.model.Address" project="progetto_siw" 
+  <class id="5" language="java" name="it.uniroma3.model.Address" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/Address.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1343" y="1920"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="it.uniroma3.model.Customer" project="progetto_siw" 
+  <class id="6" language="java" name="it.uniroma3.model.Customer" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="508" y="1923"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,9 +55,18 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="it.uniroma3.model.Provider" project="progetto_siw" 
+  <class id="7" language="java" name="it.uniroma3.model.Provider" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/model/Provider.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1340" y="479"/>    
+    <position height="-1" width="-1" x="1346" y="563"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="it.uniroma3.model.Product" project="progetto_siw" 
+    file="/progetto_siw/src/it/uniroma3/model/Product.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="728" y="565"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -74,7 +74,7 @@
     </display>  
   </class>  
   <association id="9">    
-    <end type="SOURCE" refId="7" navigable="false">      
+    <end type="SOURCE" refId="6" navigable="false">      
       <attribute id="10" name="address">        
         <position height="0" width="0" x="231" y="-4"/>      
       </attribute>      
@@ -82,63 +82,59 @@
         <position height="0" width="0" x="231" y="-4"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="12">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="4"/>  
-  </generalization>  
-  <association id="13">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="14" name="orderLines">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="15" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="16">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="17" name="providers"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+  <association id="12">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="13" name="products"/>      
+      <multiplicity id="14" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="20" name="address"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
+  <association id="15">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="16" name="address"/>      
+      <multiplicity id="17" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="4"/>  
+  <generalization id="18">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="23">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="24" name="product">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="25" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <generalization id="19">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="20">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="21" name="providers"/>      
+      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="24" name="product"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="26">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="27" name="products"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="27" name="orderLines">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

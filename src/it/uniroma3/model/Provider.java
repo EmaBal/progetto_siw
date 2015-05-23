@@ -19,8 +19,8 @@ public class Provider {
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Address address;
 	
-	@ManyToMany
-	@JoinTable(name="PROV_PROD")
+	
+	@ManyToMany(mappedBy="providers")
 	private List<Product> products;
 	
 	
