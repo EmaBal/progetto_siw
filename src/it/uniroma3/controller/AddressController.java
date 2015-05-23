@@ -3,6 +3,7 @@ package it.uniroma3.controller;
 import it.uniroma3.model.Address;
 import it.uniroma3.model.AddressFacade;
 import it.uniroma3.model.Customer;
+import it.uniroma3.model.Provider;
 
 import javax.ejb.EJB;
 
@@ -73,13 +74,17 @@ public class AddressController {
 	public String openNewUserAddressPage() {
 		return "newUserAddress";
 	}
+	public String openNewProviderAddressPage() {
+		return "newProviderAddress";
+	}
 
 	public void deleteCustomerAddress(Customer user) {
-		addressFacade.deleteAddress(user.getAddress().getId());
-		// TODO Auto-generated method stub
+		addressFacade.deleteAddress(user.getAddress().getId());	
+	}
+	public void deleteProviderAddress(Provider provider) {
+		addressFacade.deleteAddress(provider.getAddress().getId());
 		
 	}
-	
 	
 	
 }

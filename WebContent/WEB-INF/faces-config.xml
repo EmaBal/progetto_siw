@@ -19,6 +19,10 @@
     <managed-bean-name>providerController</managed-bean-name>
     <managed-bean-class>it.uniroma3.controller.ProviderController</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
+     <managed-property>
+        <property-name>addressController</property-name>
+        <value>#{addressController}</value>
+    </managed-property>
 </managed-bean>
 <managed-bean>
     <managed-bean-name>userController</managed-bean-name>

@@ -44,4 +44,9 @@ public class ProviderFacade {
         Provider provider = em.find(Provider.class, id);
         deleteProvider(provider);
 	}
+
+	public void setProviderAddress(Provider provider, Address address) {
+		provider.setAddress(address);
+		updateProvider(provider);
+	}
 }

@@ -1,5 +1,6 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Customer;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.ProviderFacade;
 
@@ -20,9 +21,10 @@ public class ProviderController {
 	
 	@EJB(beanName="prFacade")
 	private ProviderFacade providerFacade;
+	
+	private AddressController addressController;
 
 	public String openNewProviderPage() {
-		// TODO Auto-generated method stub
 		return "newProvider";
 	}
 	public String createProvider(){
@@ -30,7 +32,17 @@ public class ProviderController {
 		return "provider";
 	}
 	
-	
+	public String addAddress() {
+		this.addressController.createAddress();
+		if(provider.getAddress()!=null){
+			addressController.deleteProviderAddress(provider);
+		}
+		providerFacade.setProviderAddress(provider ,addressController.getAddress());
+		return "provider";
+	}
+	public String openNewProviderAddressPage(){
+		return addressController.openNewProviderAddressPage();
+	}
 	public String getName() {
 		return name;
 	}
@@ -77,6 +89,12 @@ public class ProviderController {
 
 	public void setProvider(Provider provider) {
 		this.provider = provider;
+	}
+	public AddressController getAddressController() {
+		return addressController;
+	}
+	public void setAddressController(AddressController addressController) {
+		this.addressController = addressController;
 	}
 	
 	
