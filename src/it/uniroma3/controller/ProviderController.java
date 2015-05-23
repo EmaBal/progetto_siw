@@ -1,8 +1,10 @@
 package it.uniroma3.controller;
 
-import it.uniroma3.model.Customer;
+import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.ProviderFacade;
+
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedProperty;
@@ -17,7 +19,7 @@ public class ProviderController {
 	private  String vatin;
 	
 	private Provider provider;
-//	private List<Provider> providers;
+	private List<Provider> providers;
 	
 	@EJB(beanName="prFacade")
 	private ProviderFacade providerFacade;
@@ -31,7 +33,14 @@ public class ProviderController {
 		provider = providerFacade.createProvider(name, phonenumber, email, vatin);
 		return "provider";
 	}
-	
+	public String selezionaProviderDaMostrare(Provider provider) {
+		this.provider = provider;
+		return "provider";
+	}
+	public String listProviders() {
+		this.providers = providerFacade.getAllProviders();
+		return "providers"; 
+	}
 	public String addAddress() {
 		this.addressController.createAddress();
 		if(provider.getAddress()!=null){
@@ -95,6 +104,12 @@ public class ProviderController {
 	}
 	public void setAddressController(AddressController addressController) {
 		this.addressController = addressController;
+	}
+	public List<Provider> getProviders() {
+		return providers;
+	}
+	public void setProviders(List<Provider> providers) {
+		this.providers = providers;
 	}
 	
 	

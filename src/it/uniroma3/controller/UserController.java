@@ -34,7 +34,7 @@ public class UserController {
 	
 	
 
-	public String mostraListinoProdotti() {
+	public String showProducts() {
 		return productController.listProducts();
 	}
 	public String logIn() {

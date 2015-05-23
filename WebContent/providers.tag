@@ -17,14 +17,14 @@
 		<div class="container">
 
 			<h:form>
-				<h1>Products :</h1>
+				<h1>Providers :</h1>
 				<table>
 					<tr>
 						<th>Name</th>
-						<th>Price</th>
+						<th>VAT</th>
 					</tr>
 					<c:forEach var="currentProduct"
-						items="#{userController.productController.products}">
+						items="#{userController.providerController.providers}">
 						<tr>
 							<td><h:commandLink
 									action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
