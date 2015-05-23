@@ -2,23 +2,34 @@ package it.uniroma3.model;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Stateless(name="prFacade")
+@Entity
+@Table(name="Providers")
 public class Provider {
-
-	private Long id; 
-	private String name; 
-	private String phonenumber; 
-	private String email; 
-	private  String vatin;
 	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id; 
+	@Column(nullable = false)
+	private String name; 
+	@Column(nullable = false)
+	private String phonenumber; 
+	@Column(nullable = false)
+	private String email; 
+	@Column(nullable = false,length = 100)
+	private  String vatin;
 	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Address address;
-	
 	
 	@ManyToMany(mappedBy="providers")
 	private List<Product> products;

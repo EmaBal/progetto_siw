@@ -2,11 +2,15 @@ package it.uniroma3.model;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
+
+@Stateless(name="prFacade")
 public class ProviderFacade {
+	
 	@PersistenceContext(unitName = "unit-e-commerce")
     private EntityManager em;
     
