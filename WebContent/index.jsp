@@ -65,7 +65,7 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="navbar-item-opaque"><a href="#"
+						<li class="navbar-item-opaque"><a href="products.jsp"
 							class="navbar-item-link">Products</a></li>
 						<li class="navbar-item-opaque"><a href="#"
 							class="navbar-item-link">Support</a></li>
@@ -108,12 +108,12 @@
 																<c:when
 																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
 																	<h:commandLink value="Add product"
-																		action="#{userController.openNewProductPage}" /> <br>
+																		action="#{userController.openNewProductPage}" style="text-align: right"/> <br><br>
 																	<h:commandLink value="Add provider"
-																		action="#{userController.openNewProviderPage}" /> <br>
+																		action="#{userController.openNewProviderPage}" style="text-align: right" /> <br><br>
 																</c:when>
 															</c:choose>
-															<h:commandLink value="Log out" action="#{userController.logOut}" styleClass="list-group-item-text" />
+															<h:commandLink value="Log out" action="#{userController.logOut}" style="text-align: right" />
 														</c:when>
 														<c:otherwise>
 															<div>

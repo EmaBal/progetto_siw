@@ -59,7 +59,7 @@ public class UserController {
 	}
 	public String logOut(){
 		this.user = null;		
-		logMessage = "Logged out";
+		logMessage = "";
 		return "index";
 	}
 	public String createCustomer() {
