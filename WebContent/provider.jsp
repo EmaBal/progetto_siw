@@ -16,6 +16,7 @@
 			<div>Email: ${userController.providerController.provider.email}</div>
 			<div>VAT code: ${userController.providerController.provider.vatin}</div>
 		</div>
+		
 	</f:view>
 </body>
 </html>

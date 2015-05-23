@@ -70,9 +70,8 @@ public class AddressController {
 		this.address = address;
 	}
 
-	public String openNewAddressPage() {
-		
-		return "newAddress";
+	public String openNewUserAddressPage() {
+		return "newUserAddress";
 	}
 
 	public void deleteCustomerAddress(Customer user) {
