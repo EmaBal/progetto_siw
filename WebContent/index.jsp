@@ -48,118 +48,137 @@
 <title>E-commerce</title>
 </head>
 <body>
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.jsp">OGC</a>
-				</div>
+	<section class="section-form" id="section1">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="index.jsp">OGC</a>
+					</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="navbar-item-opaque"><a href="products.jsp"
-							class="navbar-item-link">Products</a></li>
-						<li class="navbar-item-opaque"><a href="#"
-							class="navbar-item-link">Support</a></li>
-						<li class="navbar-item-opaque"><a href="#"
-							class="navbar-button-link">Contact</a></li>
-						<li class="navbar-item-login" id="menuLogin">
-							<div class="dropdown keep-open">
-								<a class="navbar-button-login" href="#" data-toggle="dropdown"
-									id="navLogin"> <c:choose>
-										<c:when test="${userController.user!=null}">
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="navbar-item-opaque"><a href="products.jsp"
+								class="navbar-item-link">Products</a></li>
+							<li class="navbar-item-opaque"><a href="#"
+								class="navbar-item-link">Support</a></li>
+							<li class="navbar-item-opaque"><a href="#"
+								class="navbar-button-link">Contact</a></li>
+							<li class="navbar-item-login" id="menuLogin">
+								<div class="dropdown keep-open">
+									<a class="navbar-button-login" href="#" data-toggle="dropdown"
+										id="navLogin"> <c:choose>
+											<c:when test="${userController.user!=null}">
 											${userController.user.firstname} &nbsp;
 											${userController.user.lastname}
 										</c:when>
-										<c:otherwise>
+											<c:otherwise>
 											Login
 										</c:otherwise>
-									</c:choose>
-								</a>
-								<div class="dropdown-menu">
-									<f:view>
-										<div class="container">
-											<h:form>
-												<div>
-													<c:choose>
-														<c:when test="${userController.user!=null}">
-															<c:choose>
-																<c:when
-																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-																	<c:choose>
-																		<c:when test="${userController.user.address!=null}">
-																			<h:commandLink value="Change address"
-																				action="#{userController.openNewUserAddressPage}" styleClass="list-group-item-text"/> <br><br>
-																		</c:when>
-																		<c:otherwise>
-																			<h:commandLink value="Set address"
-																				action="#{userController.openNewUserAddressPage}" /> <br><br>
-																		</c:otherwise>
-																	</c:choose>
-																</c:when>
-																<c:when
-																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-																	<h:commandLink value="Add product"
-																		action="#{userController.openNewProductPage}" style="text-align: right"/> <br><br>
-																	<h:commandLink value="Add provider"
-																		action="#{userController.openNewProviderPage}" style="text-align: right" /> <br><br>
-																</c:when>
-															</c:choose>
-															<h:commandLink value="Log out" action="#{userController.logOut}" style="text-align: right" />
-														</c:when>
-														<c:otherwise>
-															<div>
-																Email:
-																<h:inputText value="#{userController.email}"
-																	required="true" requiredMessage="Email is mandatory"
-																	styleClass="login-control" id="email" />
-																<h:message for="email" />
-															</div>
-															<br>
-															<div>
-																Password:
-																<h:inputSecret value="#{userController.password}"
-																	required="true" requiredMessage="Password is mandatory"
-																	styleClass="login-control" id="password" />
-																<h:message for="password" />
-															</div>
-															<br>
-															<h:commandButton value="Login"
-																action="#{userController.logIn}"
-																styleClass="btnbtn-default" />
-															<div>${userController.logMessage}</div>
-														</c:otherwise>
-													</c:choose>
-												</div>
-												<%-- 											<li><h:commandLink
+										</c:choose>
+									</a>
+									<div class="dropdown-menu">
+										<f:view>
+											<div class="container">
+												<h:form>
+													<div>
+														<c:choose>
+															<c:when test="${userController.user!=null}">
+																<c:choose>
+																	<c:when
+																		test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+																		<c:choose>
+																			<c:when test="${userController.user.address!=null}">
+																				<h:commandLink value="Change address"
+																					action="#{userController.openNewUserAddressPage}"
+																					styleClass="list-group-item-text" />
+																				<br>
+																				<br>
+																			</c:when>
+																			<c:otherwise>
+																				<h:commandLink value="Set address"
+																					action="#{userController.openNewUserAddressPage}" />
+																				<br>
+																				<br>
+																			</c:otherwise>
+																		</c:choose>
+																	</c:when>
+																	<c:when
+																		test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+																		<h:commandLink value="Add product"
+																			action="#{userController.openNewProductPage}"
+																			style="text-align: right" />
+																		<br>
+																		<br>
+																		<h:commandLink value="Add provider"
+																			action="#{userController.openNewProviderPage}"
+																			style="text-align: right" />
+																		<br>
+																		<br>
+																	</c:when>
+																</c:choose>
+																<h:commandLink value="Log out"
+																	action="#{userController.logOut}"
+																	style="text-align: right" />
+															</c:when>
+															<c:otherwise>
+																<div>
+																	Email:
+																	<h:inputText value="#{userController.email}"
+																		required="true" requiredMessage="Email is mandatory"
+																		styleClass="login-control" id="email" />
+																	<h:message for="email" />
+																</div>
+																<br>
+																<div>
+																	Password:
+																	<h:inputSecret value="#{userController.password}"
+																		required="true"
+																		requiredMessage="Password is mandatory"
+																		styleClass="login-control" id="password" />
+																	<h:message for="password" />
+																</div>
+																<br>
+																<h:commandButton value="Login"
+																	action="#{userController.logIn}"
+																	styleClass="btnbtn-default" />
+																<div>${userController.logMessage}</div>
+															</c:otherwise>
+														</c:choose>
+													</div>
+													<%-- 											<li><h:commandLink
 													action="#{userController.mostraListinoProdotti}"
 													value="List available products" /></li> --%>
-											</h:form>
-										</div>
-									</f:view>
+												</h:form>
+											</div>
+										</f:view>
+									</div>
 								</div>
-							</div>
-						</li>
-						<c:if test="${userController.user==null}">
-							<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
-									up</a></li>
-						</c:if>
+							</li>
+							<c:if test="${userController.user==null}">
+								<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
+										up</a></li>
+							</c:if>
 
-					</ul>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
 				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
-	</div>
+				<!-- /.container-fluid -->
+			</nav>
+		</div>
+	</section>
+		<section class="section-form-second" id="section2">
+			Prova
+		</section>
 </body>
 </html>
 

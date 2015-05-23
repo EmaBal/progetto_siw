@@ -9056,3 +9056,20 @@ button.close {
 	font-weight: 500;
 	background: 0 0
 }
+
+.section-form {
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	height: 400px;
+	background-color: #1F71AD;
+}
+.section-form .first {
+	height: 150px;
+	background-color: #1F71AD;
+}
+.section-form .second {
+	height: 100px;
+	background-color: #c0c0c0;
+}
