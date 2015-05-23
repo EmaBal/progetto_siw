@@ -10,9 +10,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
+import javax.persistence.Table;
 
 	@Entity
-	@NamedQuery(name = "findAllProducts", query = "SELECT p FROM Product p")
+	@Table(name="Products")
 	public class Product {
         
 	@Id

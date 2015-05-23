@@ -7,6 +7,7 @@ import it.uniroma3.model.UserFacade;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -32,10 +33,16 @@ public class UserController {
 	private AddressController addressController;
 	private ProductController productController;
 	
-	
+	@PostConstruct
+	public void init() {
+		productController.init();
+	}
 
 	public String showProducts() {
 		return productController.listProducts();
+	}
+	public String showProviders() {
+		return providerController.listProviders();
 	}
 	public String logIn() {
 

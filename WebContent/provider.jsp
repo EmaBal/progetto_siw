@@ -45,7 +45,35 @@
 							${userController.providerController.provider.address.country}</div>
 					</c:otherwise>
 				</c:choose>
+				<h1>Products :</h1>
+				<c:choose>
+					<c:when
+						test="${userController.providerController.productController.products != null}">
+						<table>
+							<tr>
+								<th>Name</th>
+								<th>Price</th>
+							</tr>
+
+							<c:forEach var="currentProduct"
+								items="#{userController.providerController.productController.products}">
+								<tr>
+									<td><h:commandLink
+											action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
+											value="#{currentProduct.name}">
+										</h:commandLink></td>
+									<td>${currentProduct.price}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:when>
+					<c:otherwise>
+						<br>This provider has no products<br>
+					</c:otherwise>
+				</c:choose>
 			</h:form>
+
+
 		</div>
 
 	</f:view>

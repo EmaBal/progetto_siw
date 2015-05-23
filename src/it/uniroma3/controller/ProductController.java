@@ -2,21 +2,20 @@ package it.uniroma3.controller;
 
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
+import it.uniroma3.model.Provider;
 
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 @SessionScoped
 public class ProductController {
 	
-	@ManagedProperty(value="#{param.id}")
-	private Long id;
+
 	private String name;
 	private Float price;
 	private String description;
@@ -27,17 +26,17 @@ public class ProductController {
 	@EJB(beanName="pFacade")
 	private ProductFacade productFacade;
 	
-	
+	@PostConstruct
+	public void init() {
+		listProducts();
+	}
 	
 	public String selezionaProdottoDaMostrare(Product product) {
 		this.product = product;
 		return "product";
 	}
 	
-	@PostConstruct
-	public void init() {
-		findProduct();
-	}
+	
 	
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
@@ -53,25 +52,10 @@ public class ProductController {
 		this.products = productFacade.getAllProducts();
 		return "products"; 
 	}
-
-	public String findProduct() {
-		
-		this.product = productFacade.getProduct(id);
-		return "product";
-	}
-	
-	public String findProduct(Long id) {
-		this.product = productFacade.getProduct(id);
-		return "product";
+	public void listProviderProducts(Provider provider) {
+		this.products = productFacade.getAllProviderProducts(provider); 		
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -137,6 +121,8 @@ public class ProductController {
 	public String openNewProductPage() {
 		return "newProduct";
 	}
+
+	
 	
 	
 }

@@ -116,12 +116,17 @@
 																		<h:commandLink value="Add product"
 																			action="#{userController.openNewProductPage}"
 																			style="text-align: right" />
-																		<br>
+										 								<br>
 																		<br>
 																		<h:commandLink value="Add provider"
 																			action="#{userController.openNewProviderPage}"
 																			style="text-align: right" />
 																		<br>
+																		<br>
+																		<h:commandLink value="List providers"
+																			action="#{userController.showProviders}"
+																			style="text-align: right" />
+																			<br>
 																		<br>
 																	</c:when>
 																</c:choose>

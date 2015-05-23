@@ -1,57 +1,67 @@
 package it.uniroma3.controller;
 
-import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.ProviderFacade;
 
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedProperty;
 
 public class ProviderController {
 
-	@ManagedProperty(value="#{param.id}")
-	private Long id;
-	private String name; 
-	private String phonenumber; 
-	private String email; 
-	private  String vatin;
-	
+	private String name;
+	private String phonenumber;
+	private String email;
+	private String vatin;
+
 	private Provider provider;
 	private List<Provider> providers;
-	
-	@EJB(beanName="prFacade")
+
+	@EJB(beanName = "prFacade")
 	private ProviderFacade providerFacade;
-	
+
 	private AddressController addressController;
+	private ProductController productController;
 
 	public String openNewProviderPage() {
 		return "newProvider";
 	}
-	public String createProvider(){
+
+	public String createProvider() {
 		provider = providerFacade.createProvider(name, phonenumber, email, vatin);
+		productController.listProviderProducts(provider);
 		return "provider";
 	}
+
 	public String selezionaProviderDaMostrare(Provider provider) {
 		this.provider = provider;
+		productController.listProviderProducts(provider);
 		return "provider";
 	}
+
 	public String listProviders() {
 		this.providers = providerFacade.getAllProviders();
-		return "providers"; 
+		return "providers";
 	}
+
 	public String addAddress() {
 		this.addressController.createAddress();
-		if(provider.getAddress()!=null){
+		if (provider.getAddress() != null) {
 			addressController.deleteProviderAddress(provider);
 		}
-		providerFacade.setProviderAddress(provider ,addressController.getAddress());
+		providerFacade.setProviderAddress(provider, addressController.getAddress());
 		return "provider";
 	}
-	public String openNewProviderAddressPage(){
+
+	public String openNewProviderAddressPage() {
 		return addressController.openNewProviderAddressPage();
 	}
+
+	public String openNewProviderAddressPage(Provider provider) {
+		this.provider = provider;
+		return openNewProviderAddressPage();
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -84,14 +94,6 @@ public class ProviderController {
 		this.vatin = vatin;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public Provider getProvider() {
 		return provider;
 	}
@@ -99,19 +101,30 @@ public class ProviderController {
 	public void setProvider(Provider provider) {
 		this.provider = provider;
 	}
+
 	public AddressController getAddressController() {
 		return addressController;
 	}
+
 	public void setAddressController(AddressController addressController) {
 		this.addressController = addressController;
 	}
+
 	public List<Provider> getProviders() {
 		return providers;
 	}
+
 	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
 	}
-	
-	
-	
+
+
+	public ProductController getProductController() {
+		return productController;
+	}
+
+	public void setProductController(ProductController productController) {
+		this.productController = productController;
+	}
+
 }
