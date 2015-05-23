@@ -135,7 +135,6 @@ public class ProductController {
 	}
 
 	public String openNewProductPage() {
-		// TODO Auto-generated method stub
 		return "newProduct";
 	}
 	

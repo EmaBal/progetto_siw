@@ -28,7 +28,7 @@ public class UserController {
 	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
 	
-	
+	private ProviderController providerController;
 	private AddressController addressController;
 	private ProductController productController;
 	
@@ -97,7 +97,9 @@ public class UserController {
 	public String openNewProductPage() {
 		return productController.openNewProductPage();
 	}
-	
+	public String openNewProviderPage(){
+		return providerController.openNewProviderPage();
+	}
 	public String addAddress() {
 		String ret = this.addressController.createAddress();
 		if(((Customer)user).getAddress()!=null){
@@ -191,5 +193,11 @@ public class UserController {
 	}
 	public void setLogMessage(String logMessage) {
 		this.logMessage = logMessage;
+	}
+	public ProviderController getProviderController() {
+		return providerController;
+	}
+	public void setProviderController(ProviderController providerController) {
+		this.providerController = providerController;
 	}
 }

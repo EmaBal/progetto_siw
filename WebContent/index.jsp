@@ -108,7 +108,9 @@
 																<c:when
 																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
 																	<h:commandLink value="Add product"
-																		action="#{userController.openNewProductPage}" /> <br><br>
+																		action="#{userController.openNewProductPage}" /> <br>
+																	<h:commandLink value="Add provider"
+																		action="#{userController.openNewProviderPage}" /> <br>
 																</c:when>
 															</c:choose>
 															<h:commandLink value="Log out" action="#{userController.logOut}" styleClass="list-group-item-text" />

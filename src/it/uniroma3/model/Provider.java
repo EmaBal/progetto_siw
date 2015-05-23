@@ -2,17 +2,17 @@ package it.uniroma3.model;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.CascadeType;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
-
+@Stateless(name="prFacade")
 public class Provider {
 
 	private Long id; 
 	private String name; 
-	private String phoneNumber; 
+	private String phonenumber; 
 	private String email; 
 	private  String vatin;
 	
@@ -22,6 +22,17 @@ public class Provider {
 	
 	@ManyToMany(mappedBy="providers")
 	private List<Product> products;
+	
+	
+	public Provider(String name, String phoneNumber, String email, String vatin) {
+		this.name = name;
+		this.phonenumber = phoneNumber;
+		this.email = email;
+		this.vatin = vatin;
+	}
+	public Provider() {
+		
+	}
 	
 	
 	public Long getId() {
@@ -36,11 +47,11 @@ public class Provider {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
+	public String getPhonenumber() {
+		return phonenumber;
 	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
 	}
 	public String getEmail() {
 		return email;

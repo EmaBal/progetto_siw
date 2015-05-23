@@ -17,7 +17,7 @@
 			<h2>Details</h2>
 			<div>Code: ${userController.productController.product.code}</div>
 			<div>Price: ${userController.productController.product.price}</div>
-			<div>Description:${userController.productController.product.description}</div>
+			<div>Description: ${userController.productController.product.description}</div>
 		</div>
 	</f:view>
 </body>
