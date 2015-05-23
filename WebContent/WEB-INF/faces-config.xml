@@ -23,10 +23,6 @@
         <property-name>addressController</property-name>
         <value>#{addressController}</value>
     </managed-property>
-    <managed-property>
-        <property-name>productController</property-name>
-        <value>#{productController}</value>
-    </managed-property>
 </managed-bean>
 <managed-bean>
     <managed-bean-name>userController</managed-bean-name>

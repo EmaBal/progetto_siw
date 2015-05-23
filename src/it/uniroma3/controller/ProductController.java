@@ -2,7 +2,6 @@ package it.uniroma3.controller;
 
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
-import it.uniroma3.model.Provider;
 
 import java.util.List;
 
@@ -14,7 +13,6 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class ProductController {
-	
 
 	private String name;
 	private Float price;
@@ -22,40 +20,34 @@ public class ProductController {
 	private String code;
 	private Product product;
 	private List<Product> products;
-	
-	@EJB(beanName="pFacade")
+
+	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
-	
+
 	@PostConstruct
 	public void init() {
 		listProducts();
 	}
-	
+
 	public String selezionaProdottoDaMostrare(Product product) {
 		this.product = product;
 		return "product";
 	}
-	
-	
-	
+
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
-		return "product"; 
+		return "product";
 	}
-	
+
 	public String selectProducts() {
 		this.products = productFacade.getAllProducts();
 		return "productSelection";
 	}
-	
+
 	public String listProducts() {
 		this.products = productFacade.getAllProducts();
-		return "products"; 
+		return "products";
 	}
-	public void listProviderProducts(Provider provider) {
-		this.products = productFacade.getAllProviderProducts(provider); 		
-	}
-
 
 	public String getName() {
 		return name;
@@ -75,7 +67,7 @@ public class ProductController {
 
 	public String getDescription() {
 		return description;
-		
+
 	}
 
 	public void setDescription(String description) {
@@ -122,9 +114,4 @@ public class ProductController {
 		return "newProduct";
 	}
 
-	
-	
-	
 }
-
-

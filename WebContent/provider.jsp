@@ -48,7 +48,7 @@
 				<h1>Products :</h1>
 				<c:choose>
 					<c:when
-						test="${userController.providerController.productController.products != null}">
+						test="${userController.providerController.provider.products != null}">
 						<table>
 							<tr>
 								<th>Name</th>
@@ -56,7 +56,7 @@
 							</tr>
 
 							<c:forEach var="currentProduct"
-								items="#{userController.providerController.productController.products}">
+								items="#{userController.providerController.provider.products}">
 								<tr>
 									<td><h:commandLink
 											action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"

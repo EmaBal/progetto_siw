@@ -45,15 +45,5 @@ public class ProductFacade {
         deleteProduct(product);
 	}
 
-	public List<Product> getAllProviderProducts(Provider provider) {
-//		Query query = em.createQuery("SELECT DISTINCT p FROM Product p JOIN p.providers prov").setParameter("prov", provider);
-//		@SuppressWarnings("unchecked")
-//		List<Product> products = query.getResultList();
-//		if(products == null || products.equals(null)){
-//			return null;
-//		}else{
-//			return products;
-//		}
-		return provider.getProducts();
-	}
+
 }

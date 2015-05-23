@@ -21,7 +21,6 @@ public class ProviderController {
 	private ProviderFacade providerFacade;
 
 	private AddressController addressController;
-	private ProductController productController;
 
 	public String openNewProviderPage() {
 		return "newProvider";
@@ -29,13 +28,11 @@ public class ProviderController {
 
 	public String createProvider() {
 		provider = providerFacade.createProvider(name, phonenumber, email, vatin);
-		productController.listProviderProducts(provider);
 		return "provider";
 	}
 
 	public String selezionaProviderDaMostrare(Provider provider) {
 		this.provider = provider;
-		productController.listProviderProducts(provider);
 		return "provider";
 	}
 
@@ -118,13 +115,5 @@ public class ProviderController {
 		this.providers = providers;
 	}
 
-
-	public ProductController getProductController() {
-		return productController;
-	}
-
-	public void setProductController(ProductController productController) {
-		this.productController = productController;
-	}
 
 }
