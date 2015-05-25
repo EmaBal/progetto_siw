@@ -31,6 +31,10 @@ public class ProviderController {
 	public String openNewProviderPage() {
 		return "newProvider";
 	}
+	
+	public String openProductSelectionPage(){
+		return productController.selectProducts();
+	}
 
 	public String createProvider() {
 		provider = providerFacade.createProvider(name, phonenumber, email, vatin);
