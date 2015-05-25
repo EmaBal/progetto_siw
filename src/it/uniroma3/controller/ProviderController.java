@@ -6,7 +6,12 @@ import it.uniroma3.model.ProviderFacade;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+
+@ManagedBean
+@SessionScoped
 public class ProviderController {
 
 	private String name;
@@ -21,6 +26,7 @@ public class ProviderController {
 	private ProviderFacade providerFacade;
 
 	private AddressController addressController;
+	private ProductController productController;
 
 	public String openNewProviderPage() {
 		return "newProvider";
@@ -113,6 +119,14 @@ public class ProviderController {
 
 	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
+	}
+
+	public ProductController getProductController() {
+		return productController;
+	}
+
+	public void setProductController(ProductController productController) {
+		this.productController = productController;
 	}
 
 

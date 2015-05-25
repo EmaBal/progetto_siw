@@ -71,11 +71,12 @@
 						<br>This provider has no products<br>
 					</c:otherwise>
 				</c:choose>
+				<td><h:commandLink
+						action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
+						value="add an existing product">
+					</h:commandLink></td>
 			</h:form>
-
-
 		</div>
-
 	</f:view>
 </body>
 </html>
