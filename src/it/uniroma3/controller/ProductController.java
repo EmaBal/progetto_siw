@@ -3,7 +3,9 @@ package it.uniroma3.controller;
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -20,9 +22,11 @@ public class ProductController {
 	private String code;
 	private Product product;
 	private List<Product> products;
-
+	private Map<Product,String> productSelected;
+	private List<String> selectedProducts;
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
+	private String testString;
 
 	@PostConstruct
 	public void init() {
@@ -41,6 +45,11 @@ public class ProductController {
 
 	public String selectProducts() {
 		this.products = productFacade.getAllProducts();
+		this.productSelected = new HashMap<Product,String>();
+		for (int i = 0;i< products.size();i++ ){
+			productSelected.put(products.get(i), "");
+			
+		}
 		return "productSelection";
 	}
 
@@ -112,6 +121,30 @@ public class ProductController {
 
 	public String openNewProductPage() {
 		return "newProduct";
+	}
+
+	public List<String> getSelectedProducts() {
+		return selectedProducts;
+	}
+
+	public void setSelectedProducts(List<String> selectedProducts) {
+		this.selectedProducts = selectedProducts;
+	}
+
+	public Map<Product, String> getProductSelected() {
+		return productSelected;
+	}
+
+	public void setProductSelected(Map<Product, String> productSelected) {
+		this.productSelected = productSelected;
+	}
+
+	public String getTestString() {
+		return testString;
+	}
+
+	public void setTestString(String testString) {
+		this.testString = testString;
 	}
 
 }

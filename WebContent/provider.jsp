@@ -72,7 +72,7 @@
 					</c:otherwise>
 				</c:choose>
 				<td><h:commandLink
-						action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
+						action="#{userController.providerController.openProductSelectionPage}"
 						value="add an existing product">
 					</h:commandLink></td>
 			</h:form>
