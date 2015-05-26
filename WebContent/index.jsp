@@ -50,47 +50,46 @@
 
 </head>
 <body>
+	<f:view>
+		<section class="section-form" id="section1">
+			<div class="first">
+				<div class="container">
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed"
+									data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span> <span
+										class="icon-bar"></span> <span class="icon-bar"></span> <span
+										class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="index.jsp">OGC</a>
+							</div>
 
-	<section class="section-form" id="section1">
-		<div class="first">
-			<div class="container">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed"
-								data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-								<span class="sr-only">Toggle navigation</span> <span
-									class="icon-bar"></span> <span class="icon-bar"></span> <span
-									class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="index.jsp">OGC</a>
-						</div>
-
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-							<ul class="nav navbar-nav navbar-right">
-								<li class="navbar-item-opaque"><a href="products.jsp"
-									class="navbar-item-link">Products</a></li>
-								<li class="navbar-item-opaque"><a href="#"
-									class="navbar-item-link">Support</a></li>
-								<li class="navbar-item-opaque"><a href="#"
-									class="navbar-button-link">Contact</a></li>
-								<li class="navbar-item-login" id="menuLogin">
-									<div class="dropdown keep-open">
-										<a class="navbar-button-login" href="#" data-toggle="dropdown"
-											id="navLogin"> <c:choose>
-												<c:when test="${userController.user!=null}">
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+								<ul class="nav navbar-nav navbar-right">
+									<li class="navbar-item-opaque"><a href="products.jsp"
+										class="navbar-item-link">Products</a></li>
+									<li class="navbar-item-opaque"><a href="#"
+										class="navbar-item-link">Support</a></li>
+									<li class="navbar-item-opaque"><a href="#"
+										class="navbar-button-link">Contact</a></li>
+									<li class="navbar-item-login" id="menuLogin">
+										<div class="dropdown keep-open">
+											<a class="navbar-button-login" href="#"
+												data-toggle="dropdown" id="navLogin"> <c:choose>
+													<c:when test="${userController.user!=null}">
 													${userController.user.firstname} &nbsp;
 													${userController.user.lastname}
 												</c:when>
-												<c:otherwise>
+													<c:otherwise>
 													Login
 												</c:otherwise>
-											</c:choose>
-										</a>
-										<div class="dropdown-menu">
-											<f:view>
+												</c:choose>
+											</a>
+											<div class="dropdown-menu">
 												<div class="container">
 													<h:form>
 														<div>
@@ -168,68 +167,65 @@
 													value="List available products" /></li> --%>
 													</h:form>
 												</div>
-											</f:view>
+											</div>
 										</div>
-									</div>
-								</li>
-								<c:if test="${userController.user==null}">
-									<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
-											up</a></li>
-								</c:if>
+									</li>
+									<c:if test="${userController.user==null}">
+										<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
+												up</a></li>
+									</c:if>
 
-							</ul>
+								</ul>
+							</div>
+							<!-- /.navbar-collapse -->
 						</div>
-						<!-- /.navbar-collapse -->
-					</div>
-					<!-- /.container-fluid -->
-				</nav>
-				<div class="row" style="height: 200px">
-					<div class="col-sm-3" style="background-color: transparent;"></div>
-					<div class="col-sm-6" style="background-color: transparent;">
-						<div align="center" style="line-height: 200px">
-							<img src="ogc_logo.png" alt="ogc_logo"
-								style="width: 250px; height: 100px">
+						<!-- /.container-fluid -->
+					</nav>
+					<div class="row" style="height: 200px">
+						<div class="col-sm-3" style="background-color: transparent;"></div>
+						<div class="col-sm-6" style="background-color: transparent;">
+							<div align="center" style="line-height: 200px">
+								<img src="ogc_logo.png" alt="ogc_logo"
+									style="width: 250px; height: 100px">
+							</div>
 						</div>
+						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-					<div class="col-sm-3" style="background-color: transparent;"></div>
-				</div>
-				<div class="row" style="height: 50px">
-					<div class="col-sm-3" style="background-color: transparent;"></div>
-					<div class="col-sm-6" style="background-color: transparent;">
-						<div align="center">
-							<p style="color: white; font-size: medium;">
-								My code doesn't work, I have no idea why.<br>My code works,
-								I have no idea why.
+					<div class="row" style="height: 54px">
+						<div class="col-sm-3" style="background-color: transparent;"></div>
+						<div class="col-sm-6" style="background-color: transparent;">
+							<div align="center">
+								<p style="color: white; font-size: medium;">
+									My code doesn't work, I have no idea why.<br>My code
+									works, I have no idea why.
+							</div>
 						</div>
+						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-					<div class="col-sm-3" style="background-color: transparent;"></div>
-				</div>
- 				<%-- <div class="row" style="height: 54px">
-					<div class="col-sm-3" style="background-color: transparent;"></div>
-					<div class="col-sm-6" style="background-color: transparent;">
-						<div align="center">
-							<form class="form" role="search">
-								<div class="input-group">
-									<input type="text" class="form-control"
-										placeholder="search products" name="product_search_name"
-										id="search" style="width: 450px" />
-									 <div class="input-group-btn">
-										<h:commandLink styleClass="btn-primary"
-											action="#{userController.getAllProductsFromSearch}">										
-										</h:commandLink>
-									</div>
+					<div class="row" style="height: 150px">
+						<div class="col-sm-3" style="background-color: transparent;"></div>
+						<div class="col-sm-6" style="background-color: transparent;">
+							<h:form styleClass="navbar-form">
+								<div align="center">
+									<h:inputText value="#{userController.productController.name}"
+										styleClass="form-control" style="width: 70%" id="search" />
+									<h:message for="search" />
+									<h:commandButton
+										action="#{userController.getAllProductsFromSearch}"
+										styleClass="btnbtn-default">
+									</h:commandButton>
 								</div>
-							</form>
+							</h:form>
 						</div>
+						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-					<div class="col-sm-3" style="background-color: transparent;"></div>
-				</div> --%>
+				</div>
 			</div>
-		</div>
-	</section>
-	<section class="section-form" id="section2">
-		<div class="second"></div>
-	</section>
+		</section>
+		<section class="section-form" id="section2">
+			<div class="second"></div>
+		</section>
+	</f:view>
 </body>
 </html>
 
