@@ -1,9 +1,11 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.ProviderFacade;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -21,27 +23,18 @@ public class ProviderController {
 
 	private Provider provider;
 	private List<Provider> providers;
+	private Map<Provider,Boolean> selectedProviders;
 
 	@EJB(beanName = "prFacade")
 	private ProviderFacade providerFacade;
 
 	private AddressController addressController;
-	private ProductController productController;
 
 	public String openNewProviderPage() {
 		return "newProvider";
 	}
-	public String saveProviderProducts() {
-		String result = productController.saveSelectedProviderProducts(provider);
+	public void saveProviderProducts() {
 		providerFacade.updateProvider(provider);
-		return result;
-	}
-	public String discardProviderProducts(){
-		String result = productController.discardSelectedProviderProducts();
-		return result;
-	}
-	public String openProductSelectionPage(){
-		return productController.selectProducts(provider);
 	}
 
 	public String createProvider() {
@@ -49,14 +42,17 @@ public class ProviderController {
 		return "provider";
 	}
 
-	public String selezionaProviderDaMostrare(Provider provider) {
+	public String selectProvider(Provider provider) {
 		this.provider = provider;
 		return "provider";
 	}
 
 	public String listProviders() {
-		this.providers = providerFacade.getAllProviders();
+		loadAllProviders();
 		return "providers";
+	}
+	public void loadAllProviders() {
+		this.providers = providerFacade.getAllProviders();
 	}
 
 	public String addAddress() {
@@ -133,12 +129,12 @@ public class ProviderController {
 		this.providers = providers;
 	}
 
-	public ProductController getProductController() {
-		return productController;
+	
+	public Map<Provider, Boolean> getSelectedProviders() {
+		return selectedProviders;
 	}
-
-	public void setProductController(ProductController productController) {
-		this.productController = productController;
+	public void setSelectedProviders(Map<Provider, Boolean> selectedProviders) {
+		this.selectedProviders = selectedProviders;
 	}
 
 

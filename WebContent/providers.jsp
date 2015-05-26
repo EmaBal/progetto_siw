@@ -27,7 +27,7 @@
 						items="#{userController.providerController.providers}">
 						<tr>
 							<td><h:commandLink
-									action="#{userController.providerController.selezionaProviderDaMostrare(currentProvider)}"
+									action="#{userController.providerController.selectProvider(currentProvider)}"
 									value="#{currentProvider.name}">
 								</h:commandLink></td>
 							<td>${currentProvider.phonenumber}</td>

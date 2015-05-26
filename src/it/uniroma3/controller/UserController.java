@@ -44,6 +44,18 @@ public class UserController {
 	public String showProviders() {
 		return providerController.listProviders();
 	}
+	public String openProductSelectionPage(){
+		return productController.selectProducts(providerController.getProvider());
+	}
+	public String discardSelectedProviderProducts(){
+		String result = productController.discardSelectedProviderProducts();
+		return result;
+	}
+	public String saveSelectedProviderProducts() {
+		String result = productController.saveSelectedProviderProducts(providerController.getProvider());
+		providerController.saveProviderProducts();
+		return result;
+	}
 	public String logIn() {
 
 		try {
@@ -104,7 +116,9 @@ public class UserController {
 		return addressController.openNewUserAddressPage();
 	}
 	public String openNewProductPage() {
+		providerController.loadAllProviders();
 		return productController.openNewProductPage();
+		
 	}
 	public String openNewProviderPage(){
 		return providerController.openNewProviderPage();

@@ -59,7 +59,7 @@
 								items="#{userController.providerController.provider.products}">
 								<tr>
 									<td><h:commandLink
-											action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
+											action="#{userController.productController.selectProduct(currentProduct)}"
 											value="#{currentProduct.name}">
 										</h:commandLink></td>
 									<td>${currentProduct.price}</td>
@@ -72,7 +72,7 @@
 					</c:otherwise>
 				</c:choose>
 				<td><h:commandLink
-						action="#{userController.providerController.openProductSelectionPage}"
+						action="#{userController.openProductSelectionPage}"
 						value="add an existing product">
 					</h:commandLink></td>
 			</h:form>

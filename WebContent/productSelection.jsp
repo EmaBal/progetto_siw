@@ -33,14 +33,14 @@
 						<th>Price</th>
 					</tr>
 					<c:forEach var="currentProduct"
-						items="#{userController.providerController.productController.products}">
+						items="#{userController.productController.products}">
 						<tr>
 							<td><h:selectBooleanCheckbox
-									value="#{userController.providerController.productController.selectedProducts[currentProduct]}" />
+									value="#{userController.productController.selectedProducts[currentProduct]}" />
 								<h:outputLabel  value="#{currentProduct.name}" /></td>
 
 							<td><h:commandLink
-									action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
+									action="#{userController.productController.selectProduct(currentProduct)}"
 									value="#{currentProduct.description}">
 								</h:commandLink></td>
 							<td>${currentProduct.price}</td>
@@ -49,11 +49,11 @@
 
 				</table>
 					<h:commandButton
-					action="#{userController.providerController.saveProviderProducts}"
+					action="#{userController.saveSelectedProviderProducts}"
 					value="save">
 				</h:commandButton>
 				<h:commandButton
-					action="#{userController.providerController.discardProviderProducts}"
+					action="#{userController.discardSelectedProviderProducts}"
 					value="discard changes">
 				</h:commandButton>
 			</h:form>

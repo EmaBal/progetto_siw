@@ -27,17 +27,19 @@ public class ProductController {
 
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
-
+	
+	
+	
 	@PostConstruct
 	public void init() {
 		listProducts();
 	}
 
-	public String selezionaProdottoDaMostrare(Product product) {
+	public String selectProduct(Product product) {
 		this.product = product;
 		return "product";
 	}
-
+	
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
 		return "product";
@@ -57,11 +59,11 @@ public class ProductController {
 		return "provider";
 	}
 	public String discardSelectedProviderProducts(){
-		this.selectedProducts = null;
+		selectedProducts = null;
 		return "provider";
 	}
 	public String selectProducts(Provider provider) {
-		this.products = productFacade.getAllProducts();
+		loadAllProducts();
 		this.selectedProducts = new HashMap<Product,Boolean>();
 		for (int i = 0;i< products.size();i++ ){
 			if(provider.getProducts().contains(products.get(i))){
@@ -76,17 +78,19 @@ public class ProductController {
 	}
 
 	public String listProducts() {
-		this.products = productFacade.getAllProducts();
+		loadAllProducts();
 		return "products";
+	}
+
+	public void loadAllProducts() {
+		this.products = productFacade.getAllProducts();
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setNaproductFacademe(String name) {
-		this.name = name;
-	}
+
 
 	public Float getPrice() {
 		return price;
@@ -146,8 +150,6 @@ public class ProductController {
 	}
 
 
-
-
 	public Map<Product, Boolean> getSelectedProducts() {
 		return selectedProducts;
 	}
@@ -155,6 +157,8 @@ public class ProductController {
 	public void setSelectedProducts(Map<Product, Boolean> selectedProducts) {
 		this.selectedProducts = selectedProducts;
 	}
+
+	
 
 
 
