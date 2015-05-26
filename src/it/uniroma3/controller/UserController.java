@@ -122,7 +122,6 @@ public class UserController {
 	public String openNewProductPage() {
 		providerController.loadAllProviders();
 		return productController.openNewProductPage();
-		
 	}
 	public String openNewProviderPage(){
 		return providerController.openNewProviderPage();

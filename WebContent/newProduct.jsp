@@ -44,10 +44,10 @@
 						<th>email</th>
 					</tr>
 					<c:forEach var="currentProvider"
-						items="#{userController.productController.providerController.providers}">
+						items="#{userController.providerController.providers}">
 						<tr>
 							<td><h:selectBooleanCheckbox
-									value="#{userController.productController.providerController.selectedProviders[currentProvider]}" />
+									value="#{userController.providerController.selectedProviders[currentProvider]}" />
 								<h:outputLabel  value="#{currentProvider.name}" /></td>
 
 							<td><h:commandLink
