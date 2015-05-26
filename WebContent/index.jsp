@@ -204,28 +204,26 @@
 					</div>
 					<div class="col-sm-3" style="background-color: transparent;"></div>
 				</div>
- 				<div class="row" style="height: 54px">
+ 				<%-- <div class="row" style="height: 54px">
 					<div class="col-sm-3" style="background-color: transparent;"></div>
 					<div class="col-sm-6" style="background-color: transparent;">
 						<div align="center">
-							<form class="navbar-form" role="search">
+							<form class="form" role="search">
 								<div class="input-group">
-
 									<input type="text" class="form-control"
 										placeholder="search products" name="product_search_name"
 										id="search" style="width: 450px" />
-									<!-- <div class="input-group-btn"> -->
+									 <div class="input-group-btn">
 										<h:commandLink styleClass="btn-primary"
-											action="#{userController.getAllProductsFromSearch}">
-											
+											action="#{userController.getAllProductsFromSearch}">										
 										</h:commandLink>
-									<!-- </div> -->
+									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="col-sm-3" style="background-color: transparent;"></div>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 	</section>
