@@ -204,7 +204,7 @@
 					</div>
 					<div class="col-sm-3" style="background-color: transparent;"></div>
 				</div>
-				<div class="row" style="height: 54px">
+<%-- 				<div class="row" style="height: 54px">
 					<div class="col-sm-3" style="background-color: transparent;"></div>
 					<div class="col-sm-6" style="background-color: transparent;">
 						<div align="center">
@@ -214,23 +214,18 @@
 									<input type="text" class="form-control"
 										placeholder="search products" name="product_search_name"
 										id="search" style="width: 450px" />
-									<div class="input-group-btn">
-										<h:form>
-											<h:commandLink id="searchButton"
-												action="#{userController.getAllProductsFromSearch}"
-												value="product_search_name" styleClass="btn btn-primary">
- 												<button class="btn btn-primary" type="submit">
-													<i class="glyphicon glyphicon-search"></i>
-												</button>
-											</h:commandLink>
-										</h:form>
-									</div>
+									<!-- <div class="input-group-btn"> -->
+										<h:commandLink styleClass="btn-primary"
+											action="#{userController.getAllProductsFromSearch}">
+											
+										</h:commandLink>
+									<!-- </div> -->
 								</div>
 							</form>
 						</div>
 					</div>
 					<div class="col-sm-3" style="background-color: transparent;"></div>
-				</div>
+				</div> --%>
 			</div>
 		</div>
 	</section>
