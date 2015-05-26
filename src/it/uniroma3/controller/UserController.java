@@ -73,6 +73,7 @@ public class UserController {
 		String nextpage = "index";
 		try {
 			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
+			userprivilege = user.getClass().getName();
 			logMessage = "Signup successful. ";
 		} catch (Exception e) {
 			if(e.getClass().getName().equals("javax.ejb.EJBTransactionRolledbackException")){
@@ -89,6 +90,7 @@ public class UserController {
 	public String createAdministrator(){
 		try {
 			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
+			userprivilege = user.getClass().getName();
 			logMessage = "Signup successful.";
 		} catch (NoSuchAlgorithmException e) {
 			logMessage = "Unable to sign up. Md5 conversion failed" + e.getMessage();

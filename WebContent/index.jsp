@@ -8,15 +8,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,200'
+	rel='stylesheet' type='text/css'>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="js/jquery-2.1.4.js"></script>
 <script src="content/js/jquery.min.js"></script>
 <script src="content/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="typeahead.js"></script>
+<script>  
+ var subjects = ['PHP', 'MySQL', 'SQL', 'PostgreSQL', 'HTML', 'CSS', 'HTML5', 'CSS3', 'JSON'];   
+$('#search').typeahead({userController.showProducts})  
+</script>  
 <script>
 	$(window).on('resize', function() {
-		$('section-form').toggleClass('row', $(window).width() > 768);
+		$('container').toggleClass('row', $(window).width() > 768);
 	});
 </script>
 <script>
@@ -180,37 +187,57 @@
 					</div>
 					<!-- /.container-fluid -->
 				</nav>
-<%-- 				<c:choose> --%>
-<%-- 					<c:when test="$(window).width() > 768"> --%>
-					<div class="row" style="height: 250px">
-						<div class="col-sm-3" style="background-color: transparent;"></div>
-						<div class="col-sm-6" style="background-color: transparent;">
-							<div align="center" style="line-height: 200px">
-								<img src="ogc_logo.png" alt="ogc_logo"
-									style="width: 250px; height: 100px">
-							</div>
+				<div class="row" style="height: 200px">
+					<div class="col-sm-3" style="background-color: transparent;"></div>
+					<div class="col-sm-6" style="background-color: transparent;">
+						<div align="center" style="line-height: 200px">
+							<img src="ogc_logo.png" alt="ogc_logo"
+								style="width: 250px; height: 100px">
 						</div>
-						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-<%-- 				</c:when> --%>
-<%-- 					<c:otherwise>
-						<div class="row" style="height: 100px">
-							<div class="col-sm-3" style="background-color: transparent;"></div>
-							<div class="col-sm-6" style="background-color: transparent;">
-								<div align="center" style="line-height: 100px">
-									<img src="ogc_logo.png" alt="ogc_logo"
-										style="width: 125px; height: 50px">
-								</div>
-							</div>
-							<div class="col-sm-3" style="background-color: transparent;"></div>
+					<div class="col-sm-3" style="background-color: transparent;"></div>
+				</div>
+				<div class="row" style="height: 50px">
+					<div class="col-sm-3" style="background-color: transparent;"></div>
+					<div class="col-sm-6" style="background-color: transparent;">
+						<div align="center">
+							<p style="color: white; font-size: medium;">
+								My code doesn't work, I have no idea why.<br>My code works,
+								I have no idea why.
 						</div>
-					</c:otherwise> --%>
-<%-- 				</c:choose> --%>
+					</div>
+					<div class="col-sm-3" style="background-color: transparent;"></div>
+				</div>
+				<div class="row" style="height: 54px">
+					<div class="col-sm-3" style="background-color: transparent;"></div>
+					<div class="col-sm-6" style="background-color: transparent;">
+						<div align="center">
+							<form class="navbar-form" role="search">
+								<div class="input-group">
+								
+									<input type="text" class="typeahead" data-provide="typeahead"
+										placeholder="search products" name="q" id="search" style="width: 450px" />
+<%-- 									<div class="input-group-btn">
+										<h:commandLink id="logoutButton"
+											action="#{userController.showProducts}"
+											styleClass="btn btn-deafult">
+											<i class="glyphicon glyphicon-search"></i>
+										</h:commandLink>
+<!-- 										<button class="btn btn-default" type="submit">
+											<i class="glyphicon glyphicon-search"></i>
+										</button> -->
+									</div> --%>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-3" style="background-color: transparent;"></div>
+				</div>
 			</div>
-			</div>
+		</div>
 	</section>
 	<section class="section-form" id="section2">
-		<div class="second">Prova</div>
+		<div class="second"></div>
 	</section>
 </body>
 </html>
