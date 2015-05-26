@@ -6175,7 +6175,7 @@ border-radius
 	float: left;
 	height: 50px;
 	padding: 15px 15px;
-	font-size: 18px;
+	font-size: 30px;
 	line-height: 20px;
 }
 
@@ -9058,18 +9058,14 @@ button.close {
 }
 
 .section-form {
-	padding-right: 15px;
-	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
-	height: 400px;
-	background-color: #1F71AD;
 }
 .section-form .first {
-	height: 150px;
+	height: 460px;
 	background-color: #1F71AD;
 }
 .section-form .second {
-	height: 100px;
+	height: 250px;
 	background-color: #c0c0c0;
 }
