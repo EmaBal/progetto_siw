@@ -38,6 +38,10 @@ public class UserController {
 		productController.init();
 	}
 
+	public String getAllProductsFromSearch() {
+		return productController.getProductsFromSearch();
+	}
+	
 	public String showProducts() {
 		return productController.listProducts();
 	}

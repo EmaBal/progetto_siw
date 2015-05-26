@@ -34,6 +34,11 @@ public class ProductController {
 	public void init() {
 		listProducts();
 	}
+	
+	public String getProductsFromSearch() {
+		this.products = productFacade.getProductFromSearch(product.getName());
+		return "products" ;
+	}
 
 	public String selectProduct(Product product) {
 		this.product = product;
