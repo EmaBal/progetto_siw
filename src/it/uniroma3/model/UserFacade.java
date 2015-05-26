@@ -61,6 +61,8 @@ public class UserFacade {
 		}
 		
 	}
+	
+
 
 	public List<User> getUsers() {
 		CriteriaQuery<User> cq = em.getCriteriaBuilder().createQuery(User.class);

@@ -44,6 +44,13 @@ public class ProductFacade {
         Product product = em.find(Product.class, id);
         deleteProduct(product);
 	}
-
+	
+	public List<Product> getProductFromSearch(String name) {
+		Query query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :products").setParameter("products", name);
+		@SuppressWarnings("unchecked")
+		List<Product> products = query.getResultList();
+		return products;
+	}
+	
 
 }

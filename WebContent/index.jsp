@@ -17,10 +17,6 @@
 <script src="content/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 <script src="typeahead.js"></script>
-<script>  
- var subjects = ['PHP', 'MySQL', 'SQL', 'PostgreSQL', 'HTML', 'CSS', 'HTML5', 'CSS3', 'JSON'];   
-$('#search').typeahead({userController.showProducts})  
-</script>  
 <script>
 	$(window).on('resize', function() {
 		$('container').toggleClass('row', $(window).width() > 768);
@@ -214,19 +210,21 @@ $('#search').typeahead({userController.showProducts})
 						<div align="center">
 							<form class="navbar-form" role="search">
 								<div class="input-group">
-								
-									<input type="text" class="typeahead" data-provide="typeahead"
-										placeholder="search products" name="q" id="search" style="width: 450px" />
-<%-- 									<div class="input-group-btn">
-										<h:commandLink id="logoutButton"
-											action="#{userController.showProducts}"
-											styleClass="btn btn-deafult">
-											<i class="glyphicon glyphicon-search"></i>
-										</h:commandLink>
-<!-- 										<button class="btn btn-default" type="submit">
-											<i class="glyphicon glyphicon-search"></i>
-										</button> -->
-									</div> --%>
+
+									<input type="text" class="form-control"
+										placeholder="search products" name="product_search_name"
+										id="search" style="width: 450px" />
+									<div class="input-group-btn">
+										<h:form>
+											<h:commandLink id="searchButton"
+												action="#{userController.getAllProductsFromSearch}"
+												value="product_search_name" styleClass="btn btn-primary">
+ 												<button class="btn btn-primary" type="submit">
+													<i class="glyphicon glyphicon-search"></i>
+												</button>
+											</h:commandLink>
+										</h:form>
+									</div>
 								</div>
 							</form>
 						</div>
