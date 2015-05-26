@@ -18,34 +18,40 @@
 		<div class="container">
 
 			<h:form>
-				<h1>Products :</h1>
-			
-					<%-- 					<f:selectItems --%>
-					<%-- 						value="#{userController.providerController.productController.products}" --%>
-					<%-- 						var="currentProduct" itemValue="#{currentProduct.id}" --%>
-					<%-- 						itemLabel="#{currentProduct.name}" /> --%>
+				Products for provider ${userController.providerController.provider.name}:
+
+				<%-- 					<f:selectItems --%>
+				<%-- 						value="#{userController.providerController.productController.products}" --%>
+				<%-- 						var="currentProduct" itemValue="#{currentProduct.id}" --%>
+				<%-- 						itemLabel="#{currentProduct.name}" /> --%>
 
 
-					<table>
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>description</th>
+						<th>Price</th>
+					</tr>
+					<c:forEach var="currentProduct"
+						items="#{userController.providerController.productController.products}">
 						<tr>
-							<th>Name</th>
-							<th>description</th>
-							<th>Price</th>
-						</tr>
-						<c:forEach var="currentProduct"
-							items="#{userController.providerController.productController.products}">
-							<tr>
-								<td><h:selectBooleanCheckbox value="#{userController.providerController.productController.selectedProducts.get(currentProduct)}" /></td>
-								<td><h:commandLink
-										action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
-										value="#{currentProduct.description}">
-									</h:commandLink></td>
-								<td>${currentProduct.price}</td>
-							</tr>
-						</c:forEach>
+							<td><h:selectBooleanCheckbox
+									value="#{userController.providerController.productController.selectedProducts[currentProduct]}" />
+								<h:outputLabel  value="#{currentProduct.name}" /></td>
 
-					</table>
-				
+							<td><h:commandLink
+									action="#{userController.productController.selezionaProdottoDaMostrare(currentProduct)}"
+									value="#{currentProduct.description}">
+								</h:commandLink></td>
+							<td>${currentProduct.price}</td>
+						</tr>
+					</c:forEach>
+
+				</table>
+					<h:commandButton
+					action="#{userController.providerController.saveProviderProducts}"
+					value="save">
+				</h:commandButton>
 			</h:form>
 		</div>
 	</f:view>

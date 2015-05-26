@@ -2,6 +2,7 @@ package it.uniroma3.controller;
 
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
+import it.uniroma3.model.Provider;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +23,10 @@ public class ProductController {
 	private String code;
 	private Product product;
 	private List<Product> products;
-	private Map<Product,String> productSelected;
-	private List<String> selectedProducts;
+	private Map<Product,Boolean> selectedProducts;
+
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
-	private String testString;
 
 	@PostConstruct
 	public void init() {
@@ -42,12 +42,30 @@ public class ProductController {
 		this.product = productFacade.createProduct(name, code, price, description);
 		return "product";
 	}
-
-	public String selectProducts() {
-		this.products = productFacade.getAllProducts();
-		this.productSelected = new HashMap<Product,String>();
+	public String saveSelectedProviderProducts(Provider provider) {
 		for (int i = 0;i< products.size();i++ ){
-			productSelected.put(products.get(i), "");
+			if(selectedProducts.get(products.get(i)).booleanValue()){
+				if(!provider.getProducts().contains(products.get(i))){
+					provider.getProducts().add(products.get(i));
+				}
+			}else{
+				if(provider.getProducts().contains(products.get(i))){
+					provider.getProducts().remove(products.get(i));
+				}
+			}
+		} 
+		return "provider";
+	}
+	public String selectProducts(Provider provider) {
+		this.products = productFacade.getAllProducts();
+		this.selectedProducts = new HashMap<Product,Boolean>();
+		for (int i = 0;i< products.size();i++ ){
+			if(provider.getProducts().contains(products.get(i))){
+				selectedProducts.put(products.get(i), true);
+			}else{
+				selectedProducts.put(products.get(i), false);
+			}
+			
 			
 		}
 		return "productSelection";
@@ -123,28 +141,17 @@ public class ProductController {
 		return "newProduct";
 	}
 
-	public List<String> getSelectedProducts() {
+
+
+
+	public Map<Product, Boolean> getSelectedProducts() {
 		return selectedProducts;
 	}
 
-	public void setSelectedProducts(List<String> selectedProducts) {
+	public void setSelectedProducts(Map<Product, Boolean> selectedProducts) {
 		this.selectedProducts = selectedProducts;
 	}
 
-	public Map<Product, String> getProductSelected() {
-		return productSelected;
-	}
 
-	public void setProductSelected(Map<Product, String> productSelected) {
-		this.productSelected = productSelected;
-	}
-
-	public String getTestString() {
-		return testString;
-	}
-
-	public void setTestString(String testString) {
-		this.testString = testString;
-	}
 
 }

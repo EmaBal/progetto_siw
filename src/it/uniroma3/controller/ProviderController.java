@@ -31,9 +31,13 @@ public class ProviderController {
 	public String openNewProviderPage() {
 		return "newProvider";
 	}
-	
+	public String saveProviderProducts() {
+		String result = productController.saveSelectedProviderProducts(provider);
+		providerFacade.updateProvider(provider);
+		return result;
+	}
 	public String openProductSelectionPage(){
-		return productController.selectProducts();
+		return productController.selectProducts(provider);
 	}
 
 	public String createProvider() {
