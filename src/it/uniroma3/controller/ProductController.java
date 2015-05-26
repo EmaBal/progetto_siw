@@ -56,6 +56,10 @@ public class ProductController {
 		} 
 		return "provider";
 	}
+	public String discardSelectedProviderProducts(){
+		this.selectedProducts = null;
+		return "provider";
+	}
 	public String selectProducts(Provider provider) {
 		this.products = productFacade.getAllProducts();
 		this.selectedProducts = new HashMap<Product,Boolean>();

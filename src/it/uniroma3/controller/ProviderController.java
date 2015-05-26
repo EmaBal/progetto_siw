@@ -36,6 +36,10 @@ public class ProviderController {
 		providerFacade.updateProvider(provider);
 		return result;
 	}
+	public String discardProviderProducts(){
+		String result = productController.discardSelectedProviderProducts();
+		return result;
+	}
 	public String openProductSelectionPage(){
 		return productController.selectProducts(provider);
 	}

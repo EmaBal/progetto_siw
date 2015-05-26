@@ -52,6 +52,10 @@
 					action="#{userController.providerController.saveProviderProducts}"
 					value="save">
 				</h:commandButton>
+				<h:commandButton
+					action="#{userController.providerController.discardProviderProducts}"
+					value="discard changes">
+				</h:commandButton>
 			</h:form>
 		</div>
 	</f:view>
