@@ -62,7 +62,7 @@
 	
 	</div>
 	<div>
-		<h:commandButton value="Submit"  action="#{userController.productController.createProduct}"/>
+		<h:commandButton value="Submit"  action="#{userController.createProduct}"/>
 	</div>
 	<h:commandLink action="#{userController.productController.listProducts}"
 						value="List all Products" />

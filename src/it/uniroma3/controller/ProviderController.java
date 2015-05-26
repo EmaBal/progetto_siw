@@ -4,6 +4,8 @@ import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.ProviderFacade;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +48,13 @@ public class ProviderController {
 		this.provider = provider;
 		return "provider";
 	}
-
+	public void selectProviders() {
+		loadAllProviders();
+		this.selectedProviders = new HashMap<Provider, Boolean>();
+		for (int i = 0; i < providers.size(); i++) {
+			selectedProviders.put(providers.get(i), false);
+		}
+	}
 	public String listProviders() {
 		loadAllProviders();
 		return "providers";
@@ -136,6 +144,38 @@ public class ProviderController {
 	public void setSelectedProviders(Map<Provider, Boolean> selectedProviders) {
 		this.selectedProviders = selectedProviders;
 	}
+	public void saveSelectedProductProviders(Product product) {
+		List<Provider> productProviders = product.getProviders();
+		for (int i = 0; i < providers.size(); i++) {
+			if (selectedProviders.get(providers.get(i)).booleanValue()) {
+				if (productProviders == null || productProviders.equals(null) || !productProviders.contains(providers.get(i))) {
+					if (productProviders == null || productProviders.equals(null)) {
+						productProviders = new ArrayList<Provider>();
+					}
+					addProductToProvider(providers.get(i),product);
+				}
+//			} else {
+//				if (productProviders != null && !productProviders.equals(null) && productProviders.contains(providers.get(i))) {
+//					productProviders.remove(providers.get(i));
+//					providerFacade.updateProvider(providers.get(i));
+//				}
+			}
+		}
+		product.setProviders(productProviders);
+		
+	}
+	public void addProductToProvider(Provider provider,Product product){
+		List<Product> providerProducts = provider.getProducts();
+		if(providerProducts== null || providerProducts.equals(null) || providerProducts.isEmpty()){
+			providerProducts =  new ArrayList<Product>();
+			
+		}
+		providerProducts.add(product);
+		provider.setProducts(providerProducts);
+		providerFacade.updateProvider(provider);
+	}
+	
+	
 
 
 }

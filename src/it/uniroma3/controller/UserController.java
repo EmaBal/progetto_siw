@@ -1,11 +1,13 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Customer;
+import it.uniroma3.model.Provider;
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -120,12 +122,21 @@ public class UserController {
 		return addressController.openNewUserAddressPage();
 	}
 	public String openNewProductPage() {
-		providerController.loadAllProviders();
+		providerController.selectProviders();
 		return productController.openNewProductPage();
 	}
 	public String openNewProviderPage(){
 		return providerController.openNewProviderPage();
 	}
+	
+	public String createProduct() {
+		String result = productController.createProduct();
+		providerController.saveSelectedProductProviders(productController.getProduct());
+		productController.saveProductProviders();
+		return result;
+	}
+	
+	
 	public String addAddress() {
 		String ret = this.addressController.createAddress();
 		if(((Customer)user).getAddress()!=null){

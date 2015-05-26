@@ -4,6 +4,7 @@ import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
 import it.uniroma3.model.Provider;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,63 +24,78 @@ public class ProductController {
 	private String code;
 	private Product product;
 	private List<Product> products;
-	private Map<Product,Boolean> selectedProducts;
+	private Map<Product, Boolean> selectedProducts;
 
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
-	
-	
-	
+
 	@PostConstruct
 	public void init() {
 		listProducts();
 	}
-	
+
 	public String getProductsFromSearch() {
-		this.products = productFacade.getProductFromSearch(product.getName());
-		return "products" ;
+		this.products = productFacade.getProductFromSearch(getName());
+		return "products";
 	}
 
 	public String selectProduct(Product product) {
 		this.product = product;
 		return "product";
 	}
-	
+
 	public String createProduct() {
 		this.product = productFacade.createProduct(name, code, price, description);
 		return "product";
 	}
+	public void saveProductProviders() {
+		productFacade.updateProduct(product);
+	}
 	public String saveSelectedProviderProducts(Provider provider) {
-		for (int i = 0;i< products.size();i++ ){
-			if(selectedProducts.get(products.get(i)).booleanValue()){
-				if(!provider.getProducts().contains(products.get(i))){
-					provider.getProducts().add(products.get(i));
+		List<Product> providerProducts = provider.getProducts();
+		for (int i = 0; i < products.size(); i++) {
+			if (selectedProducts.get(products.get(i)).booleanValue()) {
+				if (providerProducts == null || providerProducts.equals(null) || !providerProducts.contains(products.get(i))) {
+					if (providerProducts == null || providerProducts.equals(null)) {
+						
+					}
+					providerProducts.add(products.get(i));
 				}
-			}else{
-				if(provider.getProducts().contains(products.get(i))){
-					provider.getProducts().remove(products.get(i));
+			} else {
+				if (providerProducts != null && !providerProducts.equals(null) && providerProducts.contains(products.get(i))) {
+					providerProducts.remove(products.get(i));
 				}
 			}
-		} 
+		}
+		provider.setProducts(providerProducts);
 		return "provider";
 	}
-	public String discardSelectedProviderProducts(){
+
+	public String discardSelectedProviderProducts() {
 		selectedProducts = null;
 		return "provider";
 	}
+
 	public String selectProducts(Provider provider) {
 		loadAllProducts();
-		this.selectedProducts = new HashMap<Product,Boolean>();
-		for (int i = 0;i< products.size();i++ ){
-			if(provider.getProducts().contains(products.get(i))){
+		this.selectedProducts = new HashMap<Product, Boolean>();
+		for (int i = 0; i < products.size(); i++) {
+			if (provider.getProducts() != null && !provider.getProducts().equals(null) && provider.getProducts().contains(products.get(i))) {
 				selectedProducts.put(products.get(i), true);
-			}else{
+			} else {
 				selectedProducts.put(products.get(i), false);
 			}
-			
-			
+
 		}
 		return "productSelection";
+	}
+
+	public void selectProducts() {
+		loadAllProducts();
+		this.selectedProducts = new HashMap<Product, Boolean>();
+		for (int i = 0; i < products.size(); i++) {
+			selectedProducts.put(products.get(i), false);
+		}
 	}
 
 	public String listProducts() {
@@ -94,8 +110,6 @@ public class ProductController {
 	public String getName() {
 		return name;
 	}
-
-
 
 	public Float getPrice() {
 		return price;
@@ -154,7 +168,6 @@ public class ProductController {
 		return "newProduct";
 	}
 
-
 	public Map<Product, Boolean> getSelectedProducts() {
 		return selectedProducts;
 	}
@@ -162,9 +175,5 @@ public class ProductController {
 	public void setSelectedProducts(Map<Product, Boolean> selectedProducts) {
 		this.selectedProducts = selectedProducts;
 	}
-
-	
-
-
 
 }
