@@ -204,7 +204,7 @@
 					</div>
 					<div class="col-sm-3" style="background-color: transparent;"></div>
 				</div>
-<%-- 				<div class="row" style="height: 54px">
+ 				<div class="row" style="height: 54px">
 					<div class="col-sm-3" style="background-color: transparent;"></div>
 					<div class="col-sm-6" style="background-color: transparent;">
 						<div align="center">
@@ -225,7 +225,7 @@
 						</div>
 					</div>
 					<div class="col-sm-3" style="background-color: transparent;"></div>
-				</div> --%>
+				</div>
 			</div>
 		</div>
 	</section>
