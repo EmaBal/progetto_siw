@@ -16,7 +16,6 @@
 <script src="content/js/jquery.min.js"></script>
 <script src="content/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-<script src="typeahead.js"></script>
 <script>
 	$(window).on('resize', function() {
 		$('container').toggleClass('row', $(window).width() > 768);
@@ -54,6 +53,8 @@
 		<section class="section-form" id="section1">
 			<div class="first">
 				<div class="container">
+
+					<!-- navbar start -->
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
 							<!-- Brand and toggle get grouped for better mobile display -->
@@ -72,10 +73,11 @@
 								<ul class="nav navbar-nav navbar-right">
 									<!-- <li class="navbar-item-opaque"><a href="products.jsp"
 										class="navbar-item-link">Products</a></li> -->
-									<li class="navbar-item-opaque"><h:form><h:commandLink
-										action="#{userController.showProducts}"
-										styleClass="navbar-item-link">
-									</h:commandLink></h:form></li>
+									<li class="navbar-item-opaque"><h:form>
+											<h:commandLink action="#{userController.showProducts}"
+												styleClass="navbar-item-link">
+											</h:commandLink>
+										</h:form></li>
 									<li class="navbar-item-opaque"><a href="products.jsp"
 										class="navbar-item-link">Products</a></li>
 									<li class="navbar-item-opaque"><a href="#"
@@ -168,9 +170,6 @@
 																</c:otherwise>
 															</c:choose>
 														</div>
-														<%-- 											<li><h:commandLink
-													action="#{userController.mostraListinoProdotti}"
-													value="List available products" /></li> --%>
 													</h:form>
 												</div>
 											</div>
@@ -187,6 +186,8 @@
 						</div>
 						<!-- /.container-fluid -->
 					</nav>
+					<!-- navbar end -->
+
 					<div class="row" style="height: 200px">
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
@@ -215,8 +216,9 @@
 								<div align="center">
 									<h:inputText autocomplete="false"
 										value="#{userController.productController.name}"
-										styleClass="form-control" style="width: 80%" id="search"
-										required="true" requiredMessage="">
+										styleClass="form-control"
+										style="width: 80%; vertical-align: middle; display: inline-block;"
+										id="search" required="true" requiredMessage="">
 										<h:commandLink
 											action="#{userController.getAllProductsFromSearch}"
 											styleClass="btnbtn-default">

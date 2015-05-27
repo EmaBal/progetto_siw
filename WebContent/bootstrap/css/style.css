@@ -9070,9 +9070,19 @@ button.close {
 	background-color: #96c0eb;
 }
 
+.section-form .signup {
+	height: 500px;
+	background-color: #1F71AD;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Raleway';
 }
 p, div {
     font-family: 'Raleway';
+}
+
+.warningform {
+	text-align:right;
+	color:rgb(255, 176, 4);
 }
