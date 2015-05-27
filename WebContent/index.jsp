@@ -70,6 +70,12 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
 								<ul class="nav navbar-nav navbar-right">
+									<!-- <li class="navbar-item-opaque"><a href="products.jsp"
+										class="navbar-item-link">Products</a></li> -->
+									<li class="navbar-item-opaque"><h:form><h:commandLink
+										action="#{userController.showProducts}"
+										styleClass="navbar-item-link">
+									</h:commandLink></h:form></li>
 									<li class="navbar-item-opaque"><a href="products.jsp"
 										class="navbar-item-link">Products</a></li>
 									<li class="navbar-item-opaque"><a href="#"
@@ -191,7 +197,7 @@
 						</div>
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-					<div class="row" style="height: 54px">
+					<div class="row" style="height: 60px">
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
 							<div align="center">
@@ -207,13 +213,17 @@
 						<div class="col-sm-6" style="background-color: transparent;">
 							<h:form styleClass="navbar-form">
 								<div align="center">
-									<h:inputText value="#{userController.productController.name}"
-										styleClass="form-control" style="width: 70%" id="search" />
+									<h:inputText autocomplete="false"
+										value="#{userController.productController.name}"
+										styleClass="form-control" style="width: 80%" id="search"
+										required="true" requiredMessage="">
+										<h:commandLink
+											action="#{userController.getAllProductsFromSearch}"
+											styleClass="btnbtn-default">
+											<span class="glyphicon glyphicon-search" style="left: 79%"></span>
+										</h:commandLink>
+									</h:inputText>
 									<h:message for="search" />
-									<h:commandButton
-										action="#{userController.getAllProductsFromSearch}"
-										styleClass="btnbtn-default">
-									</h:commandButton>
 								</div>
 							</h:form>
 						</div>
@@ -223,7 +233,10 @@
 			</div>
 		</section>
 		<section class="section-form" id="section2">
-			<div class="second"></div>
+			<div class="second">Second section</div>
+		</section>
+		<section class="section-form" id="section3">
+			<div class="third">Third section</div>
 		</section>
 	</f:view>
 </body>
