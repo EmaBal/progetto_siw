@@ -29,10 +29,10 @@ public class Provider {
 	private String email; 
 	@Column(nullable = false,length = 100)
 	private  String vatin;
-	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(cascade=CascadeType.ALL)
 	private Address address;
 	
-	@ManyToMany(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Product> products;
 	
 	

@@ -144,7 +144,7 @@ public class ProviderController {
 	public void setSelectedProviders(Map<Provider, Boolean> selectedProviders) {
 		this.selectedProviders = selectedProviders;
 	}
-	public void saveSelectedProductProviders(Product product) {
+	public List<Provider> saveSelectedProductProviders(Product product) {
 		List<Provider> productProviders = product.getProviders();
 		for (int i = 0; i < providers.size(); i++) {
 			if (selectedProviders.get(providers.get(i)).booleanValue()) {
@@ -161,7 +161,7 @@ public class ProviderController {
 //				}
 			}
 		}
-		product.setProviders(productProviders);
+		return productProviders;
 		
 	}
 	public void addProductToProvider(Provider provider,Product product){

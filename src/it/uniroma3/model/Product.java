@@ -34,7 +34,7 @@ import javax.persistence.Table;
 	private String code;
 	
 
-	@ManyToMany(mappedBy="products" , fetch=FetchType.EAGER,cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToMany(mappedBy="products" , fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Provider> providers;
 	
 	public Product() {

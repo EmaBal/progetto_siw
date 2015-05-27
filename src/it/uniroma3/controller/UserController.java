@@ -131,8 +131,8 @@ public class UserController {
 	
 	public String createProduct() {
 		String result = productController.createProduct();
-		providerController.saveSelectedProductProviders(productController.getProduct());
-		productController.saveProductProviders();
+		List<Provider> productProviders = providerController.saveSelectedProductProviders(productController.getProduct());
+		productController.saveProductProviders(productProviders);
 		return result;
 	}
 	

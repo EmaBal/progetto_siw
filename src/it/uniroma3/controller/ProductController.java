@@ -48,7 +48,8 @@ public class ProductController {
 		this.product = productFacade.createProduct(name, code, price, description);
 		return "product";
 	}
-	public void saveProductProviders() {
+	public void saveProductProviders(List<Provider> productProviders) {
+		product.setProviders(productProviders);
 		productFacade.updateProduct(product);
 	}
 	public String saveSelectedProviderProducts(Provider provider) {
