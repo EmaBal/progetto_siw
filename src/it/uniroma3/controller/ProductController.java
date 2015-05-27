@@ -58,7 +58,7 @@ public class ProductController {
 			if (selectedProducts.get(products.get(i)).booleanValue()) {
 				if (providerProducts == null || providerProducts.equals(null) || !providerProducts.contains(products.get(i))) {
 					if (providerProducts == null || providerProducts.equals(null)) {
-						
+						providerProducts = new ArrayList<Product>();
 					}
 					providerProducts.add(products.get(i));
 				}

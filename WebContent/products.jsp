@@ -28,7 +28,7 @@
 						items="#{userController.productController.products}">
 						<tr>
 							<td><h:commandLink
-									action="#{userController.productController.selectProduct(currentProduct)}"
+									action="#{userController.openProductDetails(currentProduct)}"
 									value="#{currentProduct.name}">
 								</h:commandLink></td>
 							<td>${currentProduct.price}</td>

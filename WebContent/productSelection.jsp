@@ -40,7 +40,7 @@
 								<h:outputLabel  value="#{currentProduct.name}" /></td>
 
 							<td><h:commandLink
-									action="#{userController.productController.selectProduct(currentProduct)}"
+									action="#{userController.openProductDetails(currentProduct)}"
 									value="#{currentProduct.description}">
 								</h:commandLink></td>
 							<td>${currentProduct.price}</td>

@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Customer;
+import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
@@ -60,6 +61,11 @@ public class UserController {
 	public String saveSelectedProviderProducts() {
 		String result = productController.saveSelectedProviderProducts(providerController.getProvider());
 		providerController.saveProviderProducts();
+		return result;
+	}
+	public String openProductDetails(Product product) {
+		String result = productController.selectProduct(product);
+		providerController.selectProduct(product);
 		return result;
 	}
 	public String logIn() {

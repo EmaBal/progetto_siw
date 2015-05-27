@@ -152,14 +152,16 @@ public class ProviderController {
 					if (productProviders == null || productProviders.equals(null)) {
 						productProviders = new ArrayList<Provider>();
 					}
+					productProviders.add(providers.get(i));
 					addProductToProvider(providers.get(i),product);
 				}
-//			} else {
-//				if (productProviders != null && !productProviders.equals(null) && productProviders.contains(providers.get(i))) {
-//					productProviders.remove(providers.get(i));
-//					providerFacade.updateProvider(providers.get(i));
-//				}
+			} else {
+				if (productProviders != null && !productProviders.equals(null) && productProviders.contains(providers.get(i))) {
+					productProviders.remove(providers.get(i));
+					removeProductToProvider(providers.get(i),product);
+				}
 			}
+			
 		}
 		return productProviders;
 		
@@ -168,13 +170,30 @@ public class ProviderController {
 		List<Product> providerProducts = provider.getProducts();
 		if(providerProducts== null || providerProducts.equals(null) || providerProducts.isEmpty()){
 			providerProducts =  new ArrayList<Product>();
-			
 		}
 		providerProducts.add(product);
 		provider.setProducts(providerProducts);
 		providerFacade.updateProvider(provider);
 	}
-	
+	public void removeProductToProvider(Provider provider,Product product){
+		List<Product> providerProducts = provider.getProducts();
+		if(providerProducts!= null && !providerProducts.equals(null) && !providerProducts.isEmpty() && providerProducts.contains(product)){
+			providerProducts.remove(product);
+			provider.setProducts(providerProducts);
+			providerFacade.updateProvider(provider);
+		}
+	}
+	public void selectProduct(Product product) {
+		loadAllProviders();
+		List<Provider> productProviders = new ArrayList<Provider>();
+		for(int i = 0 ; i < providers.size() ; i++){
+			if(providers.get(i) != null && !providers.get(i).equals(null) && providers.get(i).getProducts() != null && !providers.get(i).getProducts().equals(null) && !providers.get(i).getProducts().isEmpty() && providers.get(i).getProducts().contains(product)){
+				productProviders.add(providers.get(i));
+			}
+		}
+		product.setProviders(productProviders);
+		
+	}
 	
 
 
