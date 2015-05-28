@@ -161,7 +161,7 @@
 														<br>
 														<h:commandButton value="Login"
 															action="#{userController.logIn}"
-															styleClass="btnbtn-default" />
+															styleClass="btn btn-default" />
 														<div>${userController.logMessage}</div>
 													</c:otherwise>
 												</c:choose>
@@ -275,12 +275,13 @@
 						<div>${userController.logMessage}</div>
 						<br>
 						<div align="center">
-							<h:commandButton value="Sign Up"
+							<h:commandButton value="Sign Up" 
 								action="#{userController.createCustomer}"
-								styleClass="btnbtn-default" />
+								 style="color:black; margin: 15px;"
+								styleClass="btn btn-default" />
 							<%-- 							<h:commandButton value="Sign Up as administrator"
 								action="#{userController.createAdministrator}"
-								styleClass="btnbtn-default" /> --%>
+								styleClass="btn btn-default" /> --%>
 						</div>
 					</h:form>
 				</div>

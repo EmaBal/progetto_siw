@@ -163,7 +163,7 @@
 																	<br>
 																	<h:commandButton value="Login"
 																		action="#{userController.logIn}"
-																		styleClass="btnbtn-default" />
+																		styleClass="btn btn-default" />
 																	<div>${userController.logMessage}</div>
 																</c:otherwise>
 															</c:choose>
@@ -251,7 +251,7 @@
 
 					</div>
 					<div align="center">
-						<h:commandButton value="Create product" style="color:white;"
+						<h:commandButton styleClass="btn btn-default"  value="Create product" style="color:black; margin: 15px;"
 							action="#{userController.createProduct}" />
 					</div>
 					

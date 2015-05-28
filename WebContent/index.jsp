@@ -165,7 +165,7 @@
 																	<br>
 																	<h:commandButton value="Login"
 																		action="#{userController.logIn}"
-																		styleClass="btnbtn-default" />
+																		styleClass="btn btn-default" />
 																	<div>${userController.logMessage}</div>
 																</c:otherwise>
 															</c:choose>
@@ -220,8 +220,7 @@
 										style="width: 80%; vertical-align: middle; display: inline-block;"
 										id="search" required="true" requiredMessage="">
 										<h:commandLink
-											action="#{userController.getAllProductsFromSearch}"
-											styleClass="btnbtn-default">
+											action="#{userController.getAllProductsFromSearch}">
 											<span class="glyphicon glyphicon-search" style="left: 79%"></span>
 										</h:commandLink>
 									</h:inputText>
