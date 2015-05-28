@@ -22,6 +22,7 @@ public class ProductController {
 	private Float price;
 	private String description;
 	private String code;
+	private Integer quantity;
 	private Product product;
 	private List<Product> products;
 	private Map<Product, Boolean> selectedProducts;
@@ -45,7 +46,7 @@ public class ProductController {
 	}
 
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price, description);
+		this.product = productFacade.createProduct(name, code, price, description, quantity);
 		return "product";
 	}
 	public void saveProductProviders(List<Provider> productProviders) {
@@ -175,6 +176,14 @@ public class ProductController {
 
 	public void setSelectedProducts(Map<Product, Boolean> selectedProducts) {
 		this.selectedProducts = selectedProducts;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 }

@@ -23,6 +23,7 @@
 			<div>Price: ${userController.productController.product.price}</div>
 			<div>Description:
 				${userController.productController.product.description}</div>
+				<div>Quantity: ${userController.productController.product.quantity}</div>
 		</div>
 	</f:view>
 	<c:if

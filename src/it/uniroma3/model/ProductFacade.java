@@ -14,8 +14,8 @@ public class ProductFacade {
     @PersistenceContext(unitName = "unit-e-commerce")
     private EntityManager em;
     
-	public Product createProduct(String name, String code, Float price, String description) {
-		Product product = new Product(name, price, description, code);
+	public Product createProduct(String name, String code, Float price, String description, Integer quantity) {
+		Product product = new Product(name, price, description, code, quantity);
 		em.persist(product);
 		return product;
 	}
