@@ -1,12 +1,16 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Address;
+
 import it.uniroma3.model.AddressFacade;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.Provider;
-
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+@ManagedBean
+@SessionScoped
 public class AddressController {
 
 	private Long id;

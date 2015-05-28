@@ -51,8 +51,10 @@
 <body style="background-color:#1F71AD;color: white;">
 	<f:view>
 		
-			<div class="first">
+				<div class="first">
 				<div class="container">
+
+					<!-- navbar start -->
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
 							<!-- Brand and toggle get grouped for better mobile display -->
@@ -96,7 +98,8 @@
 												</c:choose>
 											</a>
 											<div class="dropdown-menu">
-												<div class="container" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; width: auto;">
+												<div class="container"
+													style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; width: auto;">
 													<h:form>
 														<div align="center">
 															<c:choose>
@@ -106,13 +109,17 @@
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
 																			<c:choose>
 																				<c:when test="${userController.user.address!=null}">
-																					<h:commandLink value="Change address" styleClass="bluea"
+																					<span class="glyphicon glyphicon-home" style="margin:5px;color:black;"></span>
+																					<h:commandLink value="Change address"
+																						styleClass="bluea"
 																						action="#{userController.openNewUserAddressPage}" />
 																					<br>
 																					<br>
 																				</c:when>
 																				<c:otherwise>
-																					<h:commandLink value="Set address" styleClass="bluea"
+																					<span class="glyphicon glyphicon-home" style="margin:5px;color:black;"></span>
+																					<h:commandLink value="Set address"
+																						styleClass="bluea"
 																						action="#{userController.openNewUserAddressPage}" />
 																					<br>
 																					<br>
@@ -121,22 +128,30 @@
 																		</c:when>
 																		<c:when
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-																			<h:commandLink value="Add product"  styleClass="bluea"
+																			<span class="glyphicon glyphicon-plus" style="margin:5px;color:black;"></span>
+																			<h:commandLink value="Add product" styleClass="bluea"
 																				action="#{userController.openNewProductPage}" />
 																			<br>
 																			<br>
-																			<h:commandLink value="Add provider"  styleClass="bluea"
-																				action="#{userController.openNewProviderPage}"/>
+																			<span class="glyphicon glyphicon-plus" style="margin:5px;color:black;"></span>
+																			<h:commandLink value="Add provider"
+																				styleClass="bluea"
+																				action="#{userController.openNewProviderPage}" />
 																			<br>
 																			<br>
-																			<h:commandLink value="List providers"  styleClass="bluea"
+																			<span class="glyphicon glyphicon-list" style="margin:5px;color:black;"></span>
+																			<h:commandLink value="List providers"
+																				styleClass="bluea"
 																				action="#{userController.showProviders}" />
 																			<br>
 																			<br>
 																		</c:when>
 																	</c:choose>
-																	<h:commandLink value="Log out"  styleClass="btn btn-danger"
-																		action="#{userController.logOut}" />
+																	<h:commandLink value="Log out"
+																		styleClass="btn btn-danger"
+																		action="#{userController.logOut}">
+																		<span class="glyphicon glyphicon-log-out" style="margin:5px;color:white;"></span>
+																	</h:commandLink>
 																</c:when>
 																<c:otherwise>
 																	<div>
@@ -144,7 +159,9 @@
 																		<h:inputText value="#{userController.email}"
 																			required="true" requiredMessage="Email is mandatory"
 																			styleClass="login-control" id="email" />
-																		<div style="text-align:right;color:red;"><h:message for="email" /></div>
+																		<div style="text-align: right; color: red;">
+																			<h:message for="email" />
+																		</div>
 																	</div>
 																	<br>
 																	<div>
@@ -153,13 +170,17 @@
 																			required="true"
 																			requiredMessage="Password is mandatory"
 																			styleClass="login-control" id="password" />
-																		<div style="text-align:right;color:red;"><h:message for="password" /></div>
+																		<div style="text-align: right; color: red;">
+																			<h:message for="password" />
+																		</div>
 																	</div>
 																	<br>
-																	<h:commandButton value="Login"
+																	<h:commandLink value="Login"
 																		action="#{userController.logIn}"
-																		styleClass="btn btn-primary" />
-																	<div style="color:red;">${userController.logMessage}</div>
+																		styleClass="btn btn-primary" >
+																		<span class="glyphicon glyphicon-log-in" style="margin:5px;color:white;"></span>
+																	</h:commandLink>
+																	<div style="color: red;">${userController.logMessage}</div>
 																</c:otherwise>
 															</c:choose>
 														</div>
@@ -184,6 +205,7 @@
 						<div class="col-sm-3"></div>
 			<div class="col-sm-6">
 				<h:form>
+					<h2>Product details:</h2>
 					<div>
 						Name:
 						<h:inputText value="#{userController.productController.name}"
@@ -220,7 +242,7 @@
 
 					</div>
 					<div>
-						Providers that distribute this product:
+						<h3>Providers that distribute this product:</h3>
 						<table style="width: 100%;">
 							<tr>
 								<th>Name</th>
