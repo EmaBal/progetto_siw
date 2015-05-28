@@ -178,13 +178,7 @@ height
 	display: none;
 }
 
-a {
-	background-color: transparent;
-}
 
-a:active, a:hover {
-	outline: 0;
-}
 
 abbr[title] {
 	border-bottom: 1px dotted;
@@ -1613,16 +1607,35 @@ input, button, select, textarea {
 }
 
 a {
-	color: #337ab7;
+	color: #FFF;
 	text-decoration: none;
+	background-color: transparent;
 }
 
 a:hover, a:focus {
+	color: #DDD;
+	text-decoration: underline;
+}
+
+a:active, a:hover {
+	outline: 0;
+}
+
+a:focus {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+.bluea {
+	color: #337ab7;
+	text-decoration: none;
+}
+.bluea:hover, .bluea:focus {
 	color: #23527c;
 	text-decoration: underline;
 }
 
-a:focus {
+.bluea:focus {
 	outline: thin dotted;
 	outline: 5px auto -webkit-focus-ring-color;
 	outline-offset: -2px;

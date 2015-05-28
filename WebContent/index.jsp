@@ -98,9 +98,9 @@
 												</c:choose>
 											</a>
 											<div class="dropdown-menu">
-												<div class="container">
+												<div class="container" style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; width: auto;">
 													<h:form>
-														<div>
+														<div align="center">
 															<c:choose>
 																<c:when test="${userController.user!=null}">
 																	<c:choose>
@@ -108,14 +108,13 @@
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
 																			<c:choose>
 																				<c:when test="${userController.user.address!=null}">
-																					<h:commandLink value="Change address"
-																						action="#{userController.openNewUserAddressPage}"
-																						styleClass="list-group-item-text" />
+																					<h:commandLink value="Change address" styleClass="bluea"
+																						action="#{userController.openNewUserAddressPage}" />
 																					<br>
 																					<br>
 																				</c:when>
 																				<c:otherwise>
-																					<h:commandLink value="Set address"
+																					<h:commandLink value="Set address" styleClass="bluea"
 																						action="#{userController.openNewUserAddressPage}" />
 																					<br>
 																					<br>
@@ -124,26 +123,22 @@
 																		</c:when>
 																		<c:when
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-																			<h:commandLink value="Add product"
-																				action="#{userController.openNewProductPage}"
-																				style="text-align: right" />
+																			<h:commandLink value="Add product"  styleClass="bluea"
+																				action="#{userController.openNewProductPage}" />
 																			<br>
 																			<br>
-																			<h:commandLink value="Add provider"
-																				action="#{userController.openNewProviderPage}"
-																				style="text-align: right" />
+																			<h:commandLink value="Add provider"  styleClass="bluea"
+																				action="#{userController.openNewProviderPage}"/>
 																			<br>
 																			<br>
-																			<h:commandLink value="List providers"
-																				action="#{userController.showProviders}"
-																				style="text-align: right" />
+																			<h:commandLink value="List providers"  styleClass="bluea"
+																				action="#{userController.showProviders}" />
 																			<br>
 																			<br>
 																		</c:when>
 																	</c:choose>
-																	<h:commandLink value="Log out"
-																		action="#{userController.logOut}"
-																		style="text-align: right" />
+																	<h:commandLink value="Log out"  styleClass="btn btn-danger"
+																		action="#{userController.logOut}" />
 																</c:when>
 																<c:otherwise>
 																	<div>
@@ -151,7 +146,7 @@
 																		<h:inputText value="#{userController.email}"
 																			required="true" requiredMessage="Email is mandatory"
 																			styleClass="login-control" id="email" />
-																		<h:message for="email" />
+																		<div style="text-align:right;color:red;"><h:message for="email" /></div>
 																	</div>
 																	<br>
 																	<div>
@@ -160,13 +155,13 @@
 																			required="true"
 																			requiredMessage="Password is mandatory"
 																			styleClass="login-control" id="password" />
-																		<h:message for="password" />
+																		<div style="text-align:right;color:red;"><h:message for="password" /></div>
 																	</div>
 																	<br>
 																	<h:commandButton value="Login"
 																		action="#{userController.logIn}"
-																		styleClass="btn btn-default" />
-																	<div>${userController.logMessage}</div>
+																		styleClass="btn btn-primary" />
+																	<div style="color:red;">${userController.logMessage}</div>
 																</c:otherwise>
 															</c:choose>
 														</div>
