@@ -35,12 +35,17 @@ public class UserController {
 	private ProviderController providerController;
 	private AddressController addressController;
 	private ProductController productController;
+	private OrderController orderController;
 	
 	@PostConstruct
 	public void init() {
 		productController.init();
 	}
 
+//	public String addProductToCart() {
+//		return orderController.addProductToCart();
+//	}
+	
 	public String getAllProductsFromSearch() {
 		return productController.getProductsFromSearch();
 	}
@@ -242,5 +247,13 @@ public class UserController {
 	}
 	public void setProviderController(ProviderController providerController) {
 		this.providerController = providerController;
+	}
+
+	public OrderController getOrderController() {
+		return orderController;
+	}
+
+	public void setOrderController(OrderController orderController) {
+		this.orderController = orderController;
 	}
 }

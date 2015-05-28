@@ -23,6 +23,8 @@
 					<tr>
 						<th>Name</th>
 						<th>Price</th>
+						<th>Quantity</th>
+						<th>Add to cart</th>
 					</tr>
 					<c:forEach var="currentProduct"
 						items="#{userController.productController.products}">
@@ -32,8 +34,19 @@
 									value="#{currentProduct.name}">
 								</h:commandLink></td>
 							<td>${currentProduct.price}</td>
+							<td><h:inputText
+									value="#{userController.orderController.selectedProduct[currentProduct]}"
+									converterMessage="Quantity must be a number" id="quantity"
+									styleClass="form-control" />
+								<div class="warningform">
+									<h:message for="price" />
+								</div></td>
+							<td><h:commandButton styleClass="btn btn-default"
+									value="Add to cart" ></h:commandButton>
+							</td>
 						</tr>
 					</c:forEach>
+
 				</table>
 			</h:form>
 		</div>

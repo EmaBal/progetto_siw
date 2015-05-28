@@ -22,8 +22,9 @@ public class Order {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private Date creationDate;
-//	@ManyToOne
-//	private Customer customer;
+	private Date confirmationDate;
+	private Date evadingDate;
+	
 	@OneToMany (fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="orders_id")
 	private List<OrderLine> orderLines;
@@ -34,18 +35,15 @@ public class Order {
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
-//	public Customer getCustomer() {
-//		return customer;
-//	}
-//	public void setCustomer(Customer customer) {
-//		this.customer = customer;
-//	}
+
 	public Order() {
 		
 	}
 	
-	public Order(Date creationDate, List<OrderLine> orderLines) {
+	public Order(Date creationDate, Date confirmationDate, Date evadingDate, List<OrderLine> orderLines) {
 		this.creationDate = creationDate;
+		this.confirmationDate = confirmationDate;
+		this.evadingDate = evadingDate;
 		this.orderLines = orderLines;
 	}
 	
@@ -60,6 +58,18 @@ public class Order {
 	}
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
+	}
+	public Date getConfirmationDate() {
+		return confirmationDate;
+	}
+	public void setConfirmationDate(Date confirmationDate) {
+		this.confirmationDate = confirmationDate;
+	}
+	public Date getEvadingDate() {
+		return evadingDate;
+	}
+	public void setEvadingDate(Date evadingDate) {
+		this.evadingDate = evadingDate;
 	}
 	
 }

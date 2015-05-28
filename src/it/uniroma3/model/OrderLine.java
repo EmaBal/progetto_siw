@@ -18,7 +18,7 @@ public class OrderLine {
 	private Long id;
 	
 	@Column(nullable=false)
-	private Integer quantity;
+	private Integer orderedQuantity;
 	
 	@OneToOne (cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Product product;
@@ -27,8 +27,8 @@ public class OrderLine {
 		
 	}
 	
-	public OrderLine(Integer quantity, Product product) {
-		this.quantity = quantity;
+	public OrderLine(Integer orderedQuantity, Product product) {
+		this.orderedQuantity = orderedQuantity;
 		this.product = product;
 	}
 	

@@ -28,32 +28,10 @@ public class OrderLineController {
 	@EJB(beanName="olFacade")
 	private OrderLineFacade orderLineFacade;
 	
-	@EJB(beanName="oFacade")
-	private OrderFacade orderFacade;
-	
-	@EJB(beanName="pFacade")
-	private ProductFacade productFacade;
-	
 	public String createOrderLine() {
 		this.orderlines.add(orderLineFacade.createOrderLine(quantity, product));
-		return "productSelection";
+		return "products";
 	}
-	
-	public String findProduct() {
-		this.product = productFacade.getProduct(id);
-		return "newOrderLine";
-	}
-	
-	public String findProduct(Long id) {
-		this.product = productFacade.getProduct(id);
-		return "newOrderLine";
-	}
-	
-	public String createOrder() {
-		order = orderFacade.createOrder();
-		return "index";
-	}
-
 
 	public Long getId() {
 		return id;
