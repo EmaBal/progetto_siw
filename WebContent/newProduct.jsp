@@ -206,7 +206,7 @@
 						<div class="col-sm-3"></div>
 			<div class="col-sm-6">
 				<h:form>
-					<h2>Product details:</h2>
+					<h2>Insert product details:</h2>
 					<div>
 						Name:
 						<h:inputText value="#{userController.productController.name}"

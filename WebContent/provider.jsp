@@ -207,14 +207,14 @@
 			</div>
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6 container" align="center">
-				<div>Company Name:
+				<div><b>Company Name:</b>
 					${userController.providerController.provider.name}</div>
 				<h1>Details</h1>
-				<div>Phone number:
+				<div><b>Phone number:</b>
 					${userController.providerController.provider.phonenumber}</div>
-				<div>Email:
+				<div><b>Email:</b>
 					${userController.providerController.provider.email}</div>
-				<div>VAT code:
+				<div><b>VAT code:</b>
 					${userController.providerController.provider.vatin}</div>
 				<h:form>
 					<c:choose>
@@ -230,15 +230,15 @@
 								styleClass="btn btn-default" style="margin: 15px;"
 								action="#{userController.providerController.openNewProviderAddressPage}" />
 							<br>
-							<div>Street :
+							<div><b>Street :</b>
 								${userController.providerController.provider.address.street}</div>
-							<div>City:
+							<div><b>City:</b>
 								${userController.providerController.provider.address.city}</div>
-							<div>State:
+							<div><b>State:</b>
 								${userController.providerController.provider.address.state}</div>
-							<div>Zip code:
+							<div><b>Zip code:</b>
 								${userController.providerController.provider.address.zipcode}</div>
-							<div>Country :
+							<div><b>Country :</b>
 								${userController.providerController.provider.address.country}</div>
 						</c:otherwise>
 					</c:choose>
@@ -268,7 +268,7 @@
 							<br>This provider has no products<br>
 						</c:otherwise>
 					</c:choose>
-					<td><h:commandLink styleClass="btn btn-default"
+					<td><h:commandLink styleClass="btn btn-default" style="margin: 15px;"
 							action="#{userController.openProductSelectionPage}"
 							value="add an existing product">
 						</h:commandLink></td>

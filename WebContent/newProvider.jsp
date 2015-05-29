@@ -50,7 +50,7 @@
 <body style="background-color: #1F71AD; color: white;">
 	<f:view>
 
-		<div class="first">
+	
 			<div class="container">
 
 				<!-- navbar start -->
@@ -233,9 +233,9 @@
 							Company name:
 							<h:inputText value="#{userController.providerController.name}"
 								required="true" styleClass="form-control"
-								validatorMessage="Company name name can only contains letters"
+								validatorMessage="Company name is not correct"
 								requiredMessage="Company name is mandatory" id="name">
-								<f:validateRegex pattern="(^[a-zA-Z][a-zA-Z]+$)" />
+								<f:validateRegex pattern="(^[a-zA-Z]([a-zA-Z0-9]|[- @\.#&!])*$)" />
 							</h:inputText>
 							<div class="warningform"><h:message for="name" /></div>
 						</div>
@@ -264,7 +264,7 @@
 							<div class="warningform"><h:message for="vatin" /></div>
 						</div>
 						<br/>
-						<div>
+						<div align="center">
 							<h:commandButton value="Add provider"
 								action="#{userController.providerController.createProvider}"
 								styleClass="btn btn-default" style="margin:15px;" />
