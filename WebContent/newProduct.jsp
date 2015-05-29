@@ -22,6 +22,7 @@
 		$('container').toggleClass('row', $(window).width() > 768);
 	});
 </script>
+<title>New product</title>
 <script>
 	$('.dropdown.keep-open').on({
 		"shown.bs.dropdown" : function() {
