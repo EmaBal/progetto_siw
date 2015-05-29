@@ -45,7 +45,7 @@
 		return false;
 	});
 </script>
-<title>New provider</title>
+<title>Product</title>
 </head>
 <body style="background-color: #1F71AD; color: white;">
 	<f:view>
