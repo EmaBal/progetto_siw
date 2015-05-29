@@ -25,6 +25,7 @@
 						<th>Price</th>
 						<th>Quantity</th>
 						<th>Add to cart</th>
+						<th>Q</th>
 					</tr>
 					<c:forEach var="currentProduct"
 						items="#{userController.productController.products}">
@@ -35,19 +36,25 @@
 								</h:commandLink></td>
 							<td>${currentProduct.price}</td>
 							<td><h:inputText
-									value="#{userController.orderController.selectedProduct[currentProduct]}"
+									value="#{userController.productController.cart[currentProduct]}"
 									converterMessage="Quantity must be a number" id="quantity"
-									styleClass="form-control" />
+									styleClass="form-control" converter="javax.faces.Integer"></h:inputText>
 								<div class="warningform">
-									<h:message for="price" />
+									<h:message for="quantity" />
 								</div></td>
-							<td><h:commandButton styleClass="btn btn-default"
-									value="Add to cart" ></h:commandButton>
+							<td><h:commandButton
+									action="#{userController.addProductToCart(currentProduct)}"
+									styleClass="btn btn-default" value="Add to cart"></h:commandButton>
 							</td>
+
+							<td>${userController.productController.cart[currentProduct]}</td>
 						</tr>
 					</c:forEach>
 
 				</table>
+				<h:commandButton
+					action="#{userController.createOrder}"
+					styleClass="btn btn-default" value="Create order"></h:commandButton>
 			</h:form>
 		</div>
 	</f:view>

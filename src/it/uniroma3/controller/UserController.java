@@ -1,12 +1,14 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Customer;
+import it.uniroma3.model.Order;
 import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.User;
 import it.uniroma3.model.UserFacade;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,52 +33,76 @@ public class UserController {
 
 	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
-	
+
 	private ProviderController providerController;
 	private AddressController addressController;
 	private ProductController productController;
 	private OrderController orderController;
-	
+
 	@PostConstruct
 	public void init() {
 		productController.init();
 	}
 
-//	public String addProductToCart() {
-//		return orderController.addProductToCart();
-//	}
+	public String createOrder() {
+		Order order = orderController.createOrder(currentDate());
+		List<Order> orders = user.getOrders();
+		if (orders == null || orders.equals(null) || orders.isEmpty()) {
+			orders = new ArrayList<Order>();
+		}
+		orders.add(order);
+		user.setOrders(orders);
+		userFacade.updateUser(user);
+		return "index";
+	}
 	
+	public String addProductToCart(Product product) {
+		productController.fixCartQuantity(product);
+		return orderController.addProductToCart(product, productController.getCart()
+				.get(product));
+	}
+
 	public String getAllProductsFromSearch() {
 		return productController.getProductsFromSearch();
 	}
-	
+
 	public String showProducts() {
+		// productController.listProducts();
 		return productController.listProducts();
 	}
+
 	public String showProviders() {
 		return providerController.listProviders();
 	}
-	public String openProductSelectionPage(){
-		return productController.selectProducts(providerController.getProvider());
+
+	public String openProductSelectionPage() {
+		return productController.selectProducts(providerController
+				.getProvider());
 	}
-	public String discardSelectedProviderProducts(){
+
+	public String discardSelectedProviderProducts() {
 		String result = productController.discardSelectedProviderProducts();
 		return result;
 	}
+
 	public String saveSelectedProviderProducts() {
-		String result = productController.saveSelectedProviderProducts(providerController.getProvider());
+		String result = productController
+				.saveSelectedProviderProducts(providerController.getProvider());
 		providerController.saveProviderProducts();
 		return result;
 	}
+
 	public String openProductDetails(Product product) {
 		String result = productController.selectProduct(product);
 		providerController.selectProduct(product);
 		return result;
 	}
+
 	public String logIn() {
 
 		try {
-			String logInMessage = userFacade.verifyUserCredentials(email, password);
+			String logInMessage = userFacade.verifyUserCredentials(email,
+					password);
 			if (logInMessage.length() == 0) {
 				user = userFacade.getUser(email);
 				addressController.getAddress();
@@ -88,72 +114,86 @@ public class UserController {
 				return "index";
 			}
 		} catch (NoSuchAlgorithmException e) {
-			logMessage = "Unable to login. Md5 conversion failed" + e.getMessage();
+			logMessage = "Unable to login. Md5 conversion failed"
+					+ e.getMessage();
 			return "index";
 		}
 
 	}
-	public String logOut(){
-		this.user = null;		
+
+	public String logOut() {
+		this.user = null;
 		logMessage = "";
 		return "index";
 	}
+
 	public String createCustomer() {
 		String nextpage = "index";
 		try {
-			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
+			this.user = userFacade.createCustomer(firstname, lastname, email,
+					phonenumber, password, currentDate(), birthdate);
 			userprivilege = user.getClass().getName();
 			logMessage = "Signup successful. ";
 		} catch (Exception e) {
-			if(e.getClass().getName().equals("javax.ejb.EJBTransactionRolledbackException")){
+			if (e.getClass().getName()
+					.equals("javax.ejb.EJBTransactionRolledbackException")) {
 				logMessage = "Unable to sign up. This email is alredy taken";
 				nextpage = "signUp";
-			}else{
-				logMessage = "Unable to sign up. Md5 conversion failed " + e.getClass().getName() + e.getMessage();
+			} else {
+				logMessage = "Unable to sign up. Md5 conversion failed "
+						+ e.getClass().getName() + e.getMessage();
 				nextpage = "signUp";
 			}
-		
+
 		}
 		return nextpage;
 	}
-	public String createAdministrator(){
+
+	public String createAdministrator() {
 		try {
-			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password,currentDate(),birthdate);
+			this.user = userFacade.createAdministrator(firstname, lastname,
+					email, phonenumber, password, currentDate(), birthdate);
 			userprivilege = user.getClass().getName();
 			logMessage = "Signup successful.";
 		} catch (NoSuchAlgorithmException e) {
-			logMessage = "Unable to sign up. Md5 conversion failed" + e.getMessage();
+			logMessage = "Unable to sign up. Md5 conversion failed"
+					+ e.getMessage();
 		}
 		return "index";
 	}
-	public Date currentDate(){
+
+	public Date currentDate() {
 		return new Date(System.currentTimeMillis());
 	}
+
 	public String openNewUserAddressPage() {
 		return addressController.openNewUserAddressPage();
 	}
+
 	public String openNewProductPage() {
 		providerController.selectProviders();
 		return productController.openNewProductPage();
 	}
-	public String openNewProviderPage(){
+
+	public String openNewProviderPage() {
 		return providerController.openNewProviderPage();
 	}
-	
+
 	public String createProduct() {
 		String result = productController.createProduct();
-		List<Provider> productProviders = providerController.saveSelectedProductProviders(productController.getProduct());
+		List<Provider> productProviders = providerController
+				.saveSelectedProductProviders(productController.getProduct());
 		productController.saveProductProviders(productProviders);
 		return result;
 	}
-	
-	
+
 	public String addAddress() {
 		String ret = this.addressController.createAddress();
-		if(((Customer)user).getAddress()!=null){
+		if (((Customer) user).getAddress() != null) {
 			addressController.deleteCustomerAddress((Customer) user);
 		}
-		userFacade.setCustomerAddress((Customer) user,addressController.getAddress());
+		userFacade.setCustomerAddress((Customer) user,
+				addressController.getAddress());
 		return ret;
 	}
 
@@ -212,39 +252,51 @@ public class UserController {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
 	public AddressController getAddressController() {
 		return addressController;
 	}
+
 	public void setAddressController(AddressController addressController) {
 		this.addressController = addressController;
 	}
+
 	public String getUserprivilege() {
 		return userprivilege;
 	}
+
 	public void setUserprivilege(String userprivilege) {
 		this.userprivilege = userprivilege;
 	}
+
 	public ProductController getProductController() {
 		return productController;
 	}
+
 	public void setProductController(ProductController productController) {
 		this.productController = productController;
 	}
+
 	public Date getBirthdate() {
 		return birthdate;
 	}
+
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
+
 	public String getLogMessage() {
 		return logMessage;
 	}
+
 	public void setLogMessage(String logMessage) {
 		this.logMessage = logMessage;
 	}
+
 	public ProviderController getProviderController() {
 		return providerController;
 	}
+
 	public void setProviderController(ProviderController providerController) {
 		this.providerController = providerController;
 	}

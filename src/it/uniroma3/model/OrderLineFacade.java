@@ -13,8 +13,8 @@ public class OrderLineFacade {
     @PersistenceContext(unitName = "unit-e-commerce")
     private EntityManager em;
     
-	public OrderLine createOrderLine(Integer quantity, Product product) {
-		OrderLine orderline = new OrderLine(quantity, product);
+	public OrderLine createOrderLine(Integer quantity, Float unitPrice, Product product) {
+		OrderLine orderline = new OrderLine(quantity, unitPrice, product);
 		em.persist(orderline);
 		return orderline;
 	}

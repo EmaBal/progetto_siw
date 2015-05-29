@@ -1,15 +1,20 @@
 package it.uniroma3.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -42,6 +47,10 @@ public abstract class User {
 	
 	@Column(nullable = false)
 	private String password;
+	
+	@OneToMany (fetch=FetchType.EAGER, cascade={CascadeType.ALL})
+	@JoinColumn(name="users_id")
+	private List<Order> orders;
 
 	public User() {
 	}
@@ -118,6 +127,14 @@ public abstract class User {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 }
