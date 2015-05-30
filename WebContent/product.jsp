@@ -208,21 +208,31 @@
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6" align="center">
 			<div class="form">
-				<div><b>Name:</b> ${userController.productController.product.name}</div>
+				<div>
+					<b>Name:</b> ${userController.productController.product.name}
+				</div>
 				<h2>Details</h2>
-				<div><b>Code:</b> ${userController.productController.product.code}</div>
-				<div><b>Price:</b> ${userController.productController.product.price}</div>
-				<div><b>Description:</b>
-					${userController.productController.product.description}</div>
-				<div><b>Quantity:</b>
-					${userController.productController.product.quantity}</div>
+				<div>
+					<b>Code:</b> ${userController.productController.product.code}
+				</div>
+				<div>
+					<b>Price:</b> ${userController.productController.product.price}
+				</div>
+				<div>
+					<b>Description:</b>
+					${userController.productController.product.description}
+				</div>
+				<div>
+					<b>Quantity:</b>
+					${userController.productController.product.quantity}
+				</div>
 			</div>
 			<h:form>
 				<c:if
 					test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
 					<c:choose>
 						<c:when
-							test="${userController.productController.product.providers != null}">
+							test="${not empty userController.productController.product.providers}">
 							<h3>Provider distributing this product:</h3>
 							<table>
 								<tr>
@@ -243,6 +253,7 @@
 							</table>
 						</c:when>
 						<c:otherwise>
+							<h3>Provider distributing this product:</h3>
 							there are no providers distributing this product!
 						</c:otherwise>
 					</c:choose>

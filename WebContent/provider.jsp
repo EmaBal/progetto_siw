@@ -274,7 +274,7 @@
 					<h2>Products :</h2>
 					<c:choose>
 						<c:when
-							test="${userController.providerController.provider.products != null}">
+							test="${(not empty userController.providerController.provider.products)}">
 							<table>
 								<tr>
 									<th>Name</th>
