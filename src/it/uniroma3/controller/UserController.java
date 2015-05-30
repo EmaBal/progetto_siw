@@ -57,7 +57,6 @@ public class UserController {
 	}
 	
 	public String addProductToCart(Product product) {
-		productController.fixCartQuantity(product);
 		return orderController.addProductToCart(product, productController.getCart()
 				.get(product));
 	}

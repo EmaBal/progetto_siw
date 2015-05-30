@@ -36,6 +36,10 @@ public class ProductController {
 		listProducts();
 	}
 
+	public void fixCartQuantity() {
+		
+	}
+	
 	public String getProductsFromSearch() {
 		this.products = productFacade.getProductFromSearch(getName());
 		return "products";

@@ -34,7 +34,15 @@
 									action="#{userController.openProductDetails(currentProduct)}"
 									value="#{currentProduct.name}">
 								</h:commandLink></td>
-							<td>${currentProduct.price}</td>
+							<td><c:choose>
+									<c:when
+										test="${userController.orderController.orderlines[currentProduct] != null}">
+										<c:out value="${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}"></c:out>
+										<%-- <c:if test="#{!userController.orderController.isOrderLine(currentProduct)}"> ${currentProduct.price} </c:if> --%>
+									</c:when>
+									<c:otherwise>${currentProduct.price}</c:otherwise>
+								</c:choose></td>
+
 							<td><h:inputText
 									value="#{userController.productController.cart[currentProduct]}"
 									converterMessage="Quantity must be a number" id="quantity"
@@ -52,8 +60,7 @@
 					</c:forEach>
 
 				</table>
-				<h:commandButton
-					action="#{userController.createOrder}"
+				<h:commandButton action="#{userController.createOrder}"
 					styleClass="btn btn-default" value="Create order"></h:commandButton>
 			</h:form>
 		</div>

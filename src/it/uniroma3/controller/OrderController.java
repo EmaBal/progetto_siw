@@ -7,7 +7,9 @@ import it.uniroma3.model.Product;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -15,8 +17,6 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.apache.myfaces.config.element.OrderSlot;
 
 @ManagedBean
 @SessionScoped
@@ -28,32 +28,55 @@ public class OrderController {
 	private Date creationDate;
 	private Date confirmationDate;
 	private Date evadingDate;
-	private List<OrderLine> orderlines;
+	private Map<Product,OrderLine> orderlines;
 	private Order order;
-
+	
 	private OrderLineController orderLineController;
 
 	@EJB(beanName = "oFacade")
 	private OrderFacade orderFacade;
 
+	public boolean isOrderLine(Product product) {
+		boolean result = false;
+		for (int i=0;i<orderlines.size();i++) {
+			if (((orderlines.get(i)).getProduct())!= null && ((orderlines.get(i)).getProduct()).equals(product)) {
+				result = true;
+			}
+		}
+		return result;
+	}
+	
+	public String getTotalPrice (Product product) {
+		float result = product.getPrice();
+		for (int i=0;i<orderlines.size();i++) {
+			if (((orderlines.get(i)).getProduct())!= null && ((orderlines.get(i)).getProduct()).equals(product)) {
+				result = orderlines.get(i).getQuantity()*result;
+			}
+		}
+		return String.valueOf(result);
+	}
+	
 	public String addProductToCart(Product product, Integer quantity) {
 		OrderLine orderline = orderLineController.createOrderLine(quantity,
 				product);
 		if (order != null) {
-			orderlines = order.getOrderLines();
+			List<OrderLine> orderlinelist = order.getOrderLines();
+			for (int i=0;i<orderlinelist.size();i++) {
+				orderlines.put(orderlinelist.get(i).getProduct(), orderlinelist.get(i));
+			}
 		}
 		if (orderlines == null || orderlines.equals(null)
 				|| orderlines.isEmpty()) {
-			orderlines = new ArrayList<OrderLine>();
+			orderlines = new HashMap<Product, OrderLine>();
 		}
-		orderlines.add(orderline);
+		orderlines.put(product, orderline);
 		return "products";
 	}
 
 	public Order createOrder(Date creationDate) {
 		order = orderFacade.createOrder();
 		order.setCreationDate(creationDate);
-		order.setOrderLines(orderlines);
+		order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
 		orderFacade.updateOrder(order);
 		return order;
 	}
@@ -100,20 +123,20 @@ public class OrderController {
 		this.orderLineController = orderLineController;
 	}
 
-	public List<OrderLine> getOrderlines() {
-		return orderlines;
-	}
-
-	public void setOrderlines(List<OrderLine> orderlines) {
-		this.orderlines = orderlines;
-	}
-
 	public Order getOrder() {
 		return order;
 	}
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public Map<Product, OrderLine> getOrderlines() {
+		return orderlines;
+	}
+
+	public void setOrderlines(Map<Product, OrderLine> orderlines) {
+		this.orderlines = orderlines;
 	}
 
 }

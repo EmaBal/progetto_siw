@@ -18,7 +18,7 @@ public class OrderLine {
 	private Long id;
 	
 	@Column(nullable=false)
-	private Integer orderedQuantity;
+	private Integer quantity;
 	
 	@Column(nullable=false)
 	private Float unitPrice;
@@ -30,10 +30,42 @@ public class OrderLine {
 		
 	}
 	
-	public OrderLine(Integer orderedQuantity, Float unitPrice, Product product) {
+	public OrderLine(Integer quantity, Float unitPrice, Product product) {
 		this.unitPrice = unitPrice;
-		this.orderedQuantity = orderedQuantity;
+		this.quantity = quantity;
 		this.product = product;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Float getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(Float unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	
 }
