@@ -26,6 +26,7 @@ public class ProductController {
 	private Product product;
 	private List<Product> products;
 	private Map<Product, Boolean> selectedProducts;
+	private Map<Product, Integer> cart;
 
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
@@ -46,25 +47,31 @@ public class ProductController {
 	}
 
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price, description, quantity);
+		this.product = productFacade.createProduct(name, code, price,
+				description, quantity);
 		return "product";
 	}
+
 	public void saveProductProviders(List<Provider> productProviders) {
 		product.setProviders(productProviders);
 		productFacade.updateProduct(product);
 	}
+
 	public String saveSelectedProviderProducts(Provider provider) {
 		List<Product> providerProducts = provider.getProducts();
 		for (int i = 0; i < products.size(); i++) {
 			if (selectedProducts.get(products.get(i)).booleanValue()) {
-				if (providerProducts == null || providerProducts.equals(null) || !providerProducts.contains(products.get(i))) {
-					if (providerProducts == null || providerProducts.equals(null)) {
+				if (providerProducts == null || providerProducts.equals(null)
+						|| !providerProducts.contains(products.get(i))) {
+					if (providerProducts == null
+							|| providerProducts.equals(null)) {
 						providerProducts = new ArrayList<Product>();
 					}
 					providerProducts.add(products.get(i));
 				}
 			} else {
-				if (providerProducts != null && !providerProducts.equals(null) && providerProducts.contains(products.get(i))) {
+				if (providerProducts != null && !providerProducts.equals(null)
+						&& providerProducts.contains(products.get(i))) {
 					providerProducts.remove(products.get(i));
 				}
 			}
@@ -82,7 +89,9 @@ public class ProductController {
 		loadAllProducts();
 		this.selectedProducts = new HashMap<Product, Boolean>();
 		for (int i = 0; i < products.size(); i++) {
-			if (provider.getProducts() != null && !provider.getProducts().equals(null) && provider.getProducts().contains(products.get(i))) {
+			if (provider.getProducts() != null
+					&& !provider.getProducts().equals(null)
+					&& provider.getProducts().contains(products.get(i))) {
 				selectedProducts.put(products.get(i), true);
 			} else {
 				selectedProducts.put(products.get(i), false);
@@ -102,6 +111,10 @@ public class ProductController {
 
 	public String listProducts() {
 		loadAllProducts();
+			cart = new HashMap<Product, Integer>();
+			for (int i = 0; i < products.size(); i++) {
+				cart.put(products.get(i), 0);
+			}
 		return "products";
 	}
 
@@ -184,6 +197,14 @@ public class ProductController {
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+
+	public Map<Product, Integer> getCart() {
+		return cart;
+	}
+
+	public void setCart(Map<Product, Integer> cart) {
+		this.cart = cart;
 	}
 
 }

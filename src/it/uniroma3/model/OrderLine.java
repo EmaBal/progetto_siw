@@ -6,11 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name = "findAllOrderLine", query = "SELECT ol FROM OrderLine ol")
+@Table(name="OrderLines")
 public class OrderLine {
 
 	@Id
@@ -20,6 +20,9 @@ public class OrderLine {
 	@Column(nullable=false)
 	private Integer orderedQuantity;
 	
+	@Column(nullable=false)
+	private Float unitPrice;
+	
 	@OneToOne (cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Product product;
 	
@@ -27,7 +30,8 @@ public class OrderLine {
 		
 	}
 	
-	public OrderLine(Integer orderedQuantity, Product product) {
+	public OrderLine(Integer orderedQuantity, Float unitPrice, Product product) {
+		this.unitPrice = unitPrice;
 		this.orderedQuantity = orderedQuantity;
 		this.product = product;
 	}

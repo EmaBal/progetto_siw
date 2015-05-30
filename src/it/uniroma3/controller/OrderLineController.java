@@ -1,36 +1,39 @@
 package it.uniroma3.controller;
 
 import it.uniroma3.model.Order;
-import it.uniroma3.model.OrderFacade;
 import it.uniroma3.model.OrderLine;
 import it.uniroma3.model.OrderLineFacade;
 import it.uniroma3.model.Product;
-import it.uniroma3.model.ProductFacade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @SessionScoped
 @ManagedBean
 public class OrderLineController {
-	
-	@ManagedProperty(value="#{param.id}")
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Product product;
 	private Integer quantity;
-	private Order order;
-	private List<OrderLine> orderlines;
-	
-	@EJB(beanName="olFacade")
+	private Float unitPrice;
+
+
+	@EJB(beanName = "olFacade")
 	private OrderLineFacade orderLineFacade;
-	
-	public String createOrderLine() {
-		this.orderlines.add(orderLineFacade.createOrderLine(quantity, product));
-		return "products";
+
+	public OrderLine createOrderLine(Integer quantity, Product product) {
+		return orderLineFacade.createOrderLine(quantity, product.getPrice(),
+				product);
 	}
 
 	public Long getId() {
@@ -57,22 +60,12 @@ public class OrderLineController {
 		this.quantity = quantity;
 	}
 
-	public Order getOrder() {
-		return order;
+	public Float getUnitPrice() {
+		return unitPrice;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setUnitPrice(Float unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 
-	public List<OrderLine> getOrderlines() {
-		return orderlines;
-	}
-
-	public void setOrderlines(List<OrderLine> orderlines) {
-		this.orderlines = orderlines;
-	}
-
-
-	
 }

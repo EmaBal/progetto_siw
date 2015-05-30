@@ -22,10 +22,6 @@
 			<property-name>orderLineController</property-name>
 			<value>#{orderLineController}</value>
 		</managed-property>
-		<managed-property>
-			<property-name>productController</property-name>
-			<value>#{productController}</value>
-		</managed-property>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>productController</managed-bean-name>
@@ -58,6 +54,10 @@
 		<managed-property>
 			<property-name>providerController</property-name>
 			<value>#{providerController}</value>
+		</managed-property>
+				<managed-property>
+			<property-name>orderController</property-name>
+			<value>#{orderController}</value>
 		</managed-property>
 	</managed-bean>
 

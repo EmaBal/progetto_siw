@@ -25,13 +25,14 @@ public class Order {
 	private Date confirmationDate;
 	private Date evadingDate;
 	
-	@OneToMany (fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany (fetch=FetchType.EAGER, cascade={CascadeType.ALL})
 	@JoinColumn(name="orders_id")
 	private List<OrderLine> orderLines;
 	
 	public List<OrderLine> getOrderLines() {
 		return orderLines;
 	}
+	
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
 	}
