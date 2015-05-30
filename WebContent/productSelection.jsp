@@ -1,10 +1,10 @@
-<s%@ page language="java" contentType="text/html; charset=US-ASCII"
-pageEncoding="US-ASCII"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html>
+<s %@ page language="java" contentType="text/html; charset=US-ASCII"
+	pageEncoding="US-ASCII"%> <%@ taglib prefix="f"
+		uri="http://java.sun.com/jsf/core"%> <%@ taglib
+		prefix="h" uri="http://java.sun.com/jsf/html"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<!DOCTYPE html>
+	<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" />
@@ -211,9 +211,11 @@ pageEncoding="US-ASCII"%>
 			<div class="form" align="center">
 
 				<h:form>
-				<h3>Products for provider <b>${userController.providerController.provider.name}:</b></h3>
+					<h3>
+						Products for provider <b>${userController.providerController.provider.name}:</b>
+					</h3>
 
-				<%-- 					<f:selectItems --%>
+					<%-- 					<f:selectItems --%>
 					<%-- 						value="#{userController.providerController.productController.products}" --%>
 					<%-- 						var="currentProduct" itemValue="#{currentProduct.id}" --%>
 					<%-- 						itemLabel="#{currentProduct.name}" /> --%>
@@ -231,9 +233,15 @@ pageEncoding="US-ASCII"%>
 							<c:forEach var="currentProduct"
 								items="#{userController.productController.products}">
 								<tr>
-									<td><h:selectBooleanCheckbox
-											value="#{userController.productController.selectedProducts[currentProduct]}" />
-										<h:outputLabel value="#{currentProduct.name}" /></td>
+									<td><h:inputText
+											converterMessage="Quantity must be a number"
+											converter="javax.faces.Integer" id="quantity" style="color:black;"
+											value="#{userController.productController.productsQuantity[currentProduct]}" />
+										<div class="warningform">
+											<h:message for="quantity" />
+										</div>
+									</td>
+									<td><h:outputLabel value="#{currentProduct.name}" /></td>
 
 									<td><h:commandLink
 											action="#{userController.openProductDetails(currentProduct)}"
@@ -244,11 +252,13 @@ pageEncoding="US-ASCII"%>
 							</c:forEach>
 						</tbody>
 					</table>
-					<h:commandButton styleClass="btn btn-default" style="color:black;margin:15px;"
+					<h:commandButton styleClass="btn btn-default"
+						style="color:black;margin:15px;"
 						action="#{userController.saveSelectedProviderProducts}"
 						value="save">
 					</h:commandButton>
-					<h:commandLink styleClass="btn btn-default" style="color:black;margin:15px;"
+					<h:commandLink styleClass="btn btn-default"
+						style="color:black;margin:15px;"
 						action="#{userController.discardSelectedProviderProducts}"
 						value="discard changes">
 					</h:commandLink>

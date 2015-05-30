@@ -25,8 +25,7 @@ public class ProductController {
 	private Integer quantity;
 	private Product product;
 	private List<Product> products;
-	private Map<Product, Boolean> selectedProducts;
-	private Map<Product, Integer> cart;
+	private Map<Product, Integer> productsQuantity;
 
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
@@ -37,9 +36,9 @@ public class ProductController {
 	}
 
 	public void fixCartQuantity() {
-		
+
 	}
-	
+
 	public String getProductsFromSearch() {
 		this.products = productFacade.getProductFromSearch(getName());
 		return "products";
@@ -51,8 +50,7 @@ public class ProductController {
 	}
 
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price,
-				description, quantity);
+		this.product = productFacade.createProduct(name, code, price, description, quantity);
 		return "product";
 	}
 
@@ -64,18 +62,18 @@ public class ProductController {
 	public String saveSelectedProviderProducts(Provider provider) {
 		List<Product> providerProducts = provider.getProducts();
 		for (int i = 0; i < products.size(); i++) {
-			if (selectedProducts.get(products.get(i)).booleanValue()) {
-				if (providerProducts == null || providerProducts.equals(null)
-						|| !providerProducts.contains(products.get(i))) {
-					if (providerProducts == null
-							|| providerProducts.equals(null)) {
+			if (productsQuantity.get(products.get(i)).intValue() > 0) {
+				if (providerProducts == null || providerProducts.equals(null) || !providerProducts.contains(products.get(i))) {
+					if (providerProducts == null || providerProducts.equals(null)) {
 						providerProducts = new ArrayList<Product>();
 					}
-					providerProducts.add(products.get(i));
+					for (int m = 0; m < productsQuantity.get(products.get(i)).intValue(); m++) {
+						providerProducts.add(products.get(i));
+					}
+
 				}
 			} else {
-				if (providerProducts != null && !providerProducts.equals(null)
-						&& providerProducts.contains(products.get(i))) {
+				if (providerProducts != null && !providerProducts.equals(null) && providerProducts.contains(products.get(i))) {
 					providerProducts.remove(products.get(i));
 				}
 			}
@@ -85,20 +83,25 @@ public class ProductController {
 	}
 
 	public String discardSelectedProviderProducts() {
-		selectedProducts = null;
+		productsQuantity = null;
 		return "provider";
 	}
 
 	public String selectProducts(Provider provider) {
 		loadAllProducts();
-		this.selectedProducts = new HashMap<Product, Boolean>();
+		this.productsQuantity = new HashMap<Product, Integer>();
 		for (int i = 0; i < products.size(); i++) {
-			if (provider.getProducts() != null
-					&& !provider.getProducts().equals(null)
-					&& provider.getProducts().contains(products.get(i))) {
-				selectedProducts.put(products.get(i), true);
+			if (provider.getProducts() != null && !provider.getProducts().equals(null) && provider.getProducts().contains(products.get(i))) {
+				int n = 0;
+				for (int q = 0; q < provider.getProducts().size(); q++) {
+					
+					if(provider.getProducts().get(q).getId().equals(products.get(i).getId())){
+						n++;
+					}
+				}
+				productsQuantity.put(products.get(i), n);
 			} else {
-				selectedProducts.put(products.get(i), false);
+				productsQuantity.put(products.get(i), 0);
 			}
 
 		}
@@ -107,18 +110,14 @@ public class ProductController {
 
 	public void selectProducts() {
 		loadAllProducts();
-		this.selectedProducts = new HashMap<Product, Boolean>();
+		this.productsQuantity = new HashMap<Product, Integer>();
 		for (int i = 0; i < products.size(); i++) {
-			selectedProducts.put(products.get(i), false);
+			productsQuantity.put(products.get(i), 0);
 		}
 	}
 
 	public String listProducts() {
-		loadAllProducts();
-			cart = new HashMap<Product, Integer>();
-			for (int i = 0; i < products.size(); i++) {
-				cart.put(products.get(i), 0);
-			}
+		selectProducts();
 		return "products";
 	}
 
@@ -187,14 +186,6 @@ public class ProductController {
 		return "newProduct";
 	}
 
-	public Map<Product, Boolean> getSelectedProducts() {
-		return selectedProducts;
-	}
-
-	public void setSelectedProducts(Map<Product, Boolean> selectedProducts) {
-		this.selectedProducts = selectedProducts;
-	}
-
 	public Integer getQuantity() {
 		return quantity;
 	}
@@ -203,12 +194,12 @@ public class ProductController {
 		this.quantity = quantity;
 	}
 
-	public Map<Product, Integer> getCart() {
-		return cart;
+	public Map<Product, Integer> getProductsQuantity() {
+		return productsQuantity;
 	}
 
-	public void setCart(Map<Product, Integer> cart) {
-		this.cart = cart;
+	public void setProductsQuantity(Map<Product, Integer> productsQuantity) {
+		this.productsQuantity = productsQuantity;
 	}
 
 }

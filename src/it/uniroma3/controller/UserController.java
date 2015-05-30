@@ -57,8 +57,7 @@ public class UserController {
 	}
 	
 	public String addProductToCart(Product product) {
-		return orderController.addProductToCart(product, productController.getCart()
-				.get(product));
+		return orderController.addProductToCart(product, productController.getProductsQuantity().get(product));
 	}
 
 	public String getAllProductsFromSearch() {
