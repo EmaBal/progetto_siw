@@ -1,10 +1,10 @@
-<s %@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%> <%@ taglib prefix="f"
-		uri="http://java.sun.com/jsf/core"%> <%@ taglib
-		prefix="h" uri="http://java.sun.com/jsf/html"%>
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	<!DOCTYPE html>
-	<html>
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+	pageEncoding="US-ASCII"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" />
@@ -235,12 +235,12 @@
 								<tr>
 									<td><h:inputText
 											converterMessage="Quantity must be a number"
-											converter="javax.faces.Integer" id="quantity" style="color:black;"
+											converter="javax.faces.Integer" id="quantity"
+											style="color:black;"
 											value="#{userController.productController.productsQuantity[currentProduct]}" />
 										<div class="warningform">
 											<h:message for="quantity" />
-										</div>
-									</td>
+										</div></td>
 									<td><h:outputLabel value="#{currentProduct.name}" /></td>
 
 									<td><h:commandLink

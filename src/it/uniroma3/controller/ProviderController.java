@@ -6,8 +6,10 @@ import it.uniroma3.model.ProviderFacade;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -26,7 +28,8 @@ public class ProviderController {
 	private Provider provider;
 	private List<Provider> providers;
 	private Map<Provider,Boolean> selectedProviders;
-
+	private List<Product> products;
+	
 	@EJB(beanName = "prFacade")
 	private ProviderFacade providerFacade;
 
@@ -41,11 +44,13 @@ public class ProviderController {
 
 	public String createProvider() {
 		provider = providerFacade.createProvider(name, phonenumber, email, vatin);
+		products = new ArrayList<Product>(new HashSet<Product>(provider.getProducts()));
 		return "provider";
 	}
 
 	public String selectProvider(Provider provider) {
 		this.provider = provider;
+		products = new ArrayList<Product>(new HashSet<Product>(provider.getProducts()));
 		return "provider";
 	}
 	public void selectProviders() {
@@ -69,6 +74,7 @@ public class ProviderController {
 			addressController.deleteProviderAddress(provider);
 		}
 		providerFacade.setProviderAddress(provider, addressController.getAddress());
+		products = new ArrayList<Product>(new HashSet<Product>(provider.getProducts()));
 		return "provider";
 	}
 
@@ -194,6 +200,13 @@ public class ProviderController {
 		product.setProviders(productProviders);
 		
 	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
+
 	
 
 

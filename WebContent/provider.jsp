@@ -274,7 +274,7 @@
 					<h2>Products :</h2>
 					<c:choose>
 						<c:when
-							test="${(not empty userController.providerController.provider.products)}">
+							test="${(not empty userController.providerController.products)}">
 							<table>
 								<tr>
 									<th>Name</th>
@@ -282,7 +282,7 @@
 								</tr>
 
 								<c:forEach var="currentProduct"
-									items="#{userController.providerController.provider.products}">
+									items="#{userController.providerController.products}">
 									<tr>
 										<td><h:commandLink style="margin-right: 15px;"
 												action="#{userController.openProductDetails(currentProduct)}"
