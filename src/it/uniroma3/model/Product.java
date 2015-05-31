@@ -3,15 +3,13 @@ package it.uniroma3.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
-import javax.persistence.Column;
 import javax.persistence.Table;
 
 	@Entity
@@ -50,7 +48,13 @@ import javax.persistence.Table;
         this.quantity = quantity;
 }
 
-    //          Getters & Setters        
+	
+	
+//	public boolean equals(Product product){
+//		if()
+//	}
+    //          Getters & Setters       
+	
     
    public Long getId() {
         return id;
@@ -90,11 +94,11 @@ import javax.persistence.Table;
 	
     public boolean equals(Object obj) {
         Product product = (Product)obj;
-        return this.getCode().equals(product.getCode());
+        return this.getId().equals(product.getId());
     }
 
     public int hashCode() {
-         return this.code.hashCode();
+         return this.id.hashCode();
     }
 
 	public void setId(Long id) {

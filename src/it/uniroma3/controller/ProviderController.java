@@ -40,11 +40,17 @@ public class ProviderController {
 	}
 	public void saveProviderProducts() {
 		providerFacade.updateProvider(provider);
+		if(provider.getProducts()!=null && !provider.getProducts().equals(null) && !provider.getProducts().isEmpty()){
+			products = new ArrayList<Product>(new HashSet<Product>(provider.getProducts()));
+		}else{
+			products = new ArrayList<Product>();
+		}
+		
 	}
 
 	public String createProvider() {
 		provider = providerFacade.createProvider(name, phonenumber, email, vatin);
-		products = new ArrayList<Product>(new HashSet<Product>(provider.getProducts()));
+		products = new ArrayList<Product>();
 		return "provider";
 	}
 

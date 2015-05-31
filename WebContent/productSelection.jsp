@@ -224,8 +224,9 @@
 					<table class="table">
 						<thead>
 							<tr>
+								<th>Quantity</th>
 								<th>Name</th>
-								<th>description</th>
+								<th>Description</th>
 								<th>Price</th>
 							</tr>
 						</thead>
@@ -233,7 +234,7 @@
 							<c:forEach var="currentProduct"
 								items="#{userController.productController.products}">
 								<tr>
-									<td><h:inputText
+									<td><h:inputText styleClass="col-xs-2"
 											converterMessage="Quantity must be a number"
 											converter="javax.faces.Integer" id="quantity"
 											style="color:black;"
@@ -241,7 +242,10 @@
 										<div class="warningform">
 											<h:message for="quantity" />
 										</div></td>
-									<td><h:outputLabel value="#{currentProduct.name}" /></td>
+									<td><h:commandLink
+											action="#{userController.openProductDetails(currentProduct)}"
+											value="#{currentProduct.name}">
+										</h:commandLink></td>
 
 									<td><h:commandLink
 											action="#{userController.openProductDetails(currentProduct)}"

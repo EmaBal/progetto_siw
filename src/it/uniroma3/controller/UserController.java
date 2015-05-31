@@ -84,8 +84,7 @@ public class UserController {
 	}
 
 	public String saveSelectedProviderProducts() {
-		String result = productController
-				.saveSelectedProviderProducts(providerController.getProvider());
+		String result = productController.saveSelectedProviderProducts(providerController.getProvider());
 		providerController.saveProviderProducts();
 		return result;
 	}

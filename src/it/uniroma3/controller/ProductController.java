@@ -60,23 +60,37 @@ public class ProductController {
 	}
 
 	public String saveSelectedProviderProducts(Provider provider) {
+		loadAllProducts();
 		List<Product> providerProducts = provider.getProducts();
 		for (int i = 0; i < products.size(); i++) {
-			if (productsQuantity.get(products.get(i)).intValue() > 0) {
-				if (providerProducts == null || providerProducts.equals(null) || !providerProducts.contains(products.get(i))) {
-					if (providerProducts == null || providerProducts.equals(null)) {
-						providerProducts = new ArrayList<Product>();
+			if(providerProducts==null || providerProducts.equals(null)){
+				providerProducts = new ArrayList<Product>();
+			}else{
+				if(productsQuantity.get(products.get(i)).intValue()==0){//must remove product
+					if(providerProducts.contains(products.get(i))){
+						providerProducts.remove(products.get(i));
 					}
-					for (int m = 0; m < productsQuantity.get(products.get(i)).intValue(); m++) {
-						providerProducts.add(products.get(i));
+				}else{//the product is provided by this provider
+					int n = 0;//quantity distributed actually
+					for (int q = 0; q < provider.getProducts().size(); q++) {
+						if(provider.getProducts().get(q).equals(products.get(i))){
+							n++;
+						}
 					}
-
+					if(productsQuantity.get(products.get(i)).intValue()>n){//must add products to provider
+						for(int q = 0; q< productsQuantity.get(products.get(i)).intValue()-n;q++){
+							providerProducts.add(products.get(i));
+						}
+					}else if(productsQuantity.get(products.get(i)).intValue()<n){//must remove products from provider
+						for(int q = 0; q< n-productsQuantity.get(products.get(i)).intValue();q++){
+							providerProducts.remove(products.get(i));
+						}
+					}
+					
 				}
-			} else {
-				if (providerProducts != null && !providerProducts.equals(null) && providerProducts.contains(products.get(i))) {
-					providerProducts.remove(products.get(i));
-				}
+				
 			}
+
 		}
 		provider.setProducts(providerProducts);
 		return "provider";
@@ -95,7 +109,7 @@ public class ProductController {
 				int n = 0;
 				for (int q = 0; q < provider.getProducts().size(); q++) {
 					
-					if(provider.getProducts().get(q).getId().equals(products.get(i).getId())){
+					if(provider.getProducts().get(q).equals(products.get(i))){
 						n++;
 					}
 				}

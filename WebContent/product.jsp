@@ -222,10 +222,7 @@
 					<b>Description:</b>
 					${userController.productController.product.description}
 				</div>
-				<div>
-					<b>Quantity:</b>
-					${userController.productController.product.quantity}
-				</div>
+				
 			</div>
 			<h:form>
 				<c:if
