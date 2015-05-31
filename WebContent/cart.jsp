@@ -22,7 +22,7 @@
 		$('container').toggleClass('row', $(window).width() > 768);
 	});
 </script>
-<title>New product</title>
+<title>Cart</title>
 <script>
 	$('.dropdown.keep-open').on({
 		"shown.bs.dropdown" : function() {
@@ -211,82 +211,33 @@
 			</div>
 			<div class="col-sm-3"></div>
 			<div class="col-sm-6">
-				<h:form>
-					<h2>Insert product details:</h2>
-					<div>
-						Name:
-						<h:inputText value="#{userController.productController.name}"
-							required="true" requiredMessage="Name is mandatory" id="name"
-							styleClass="form-control" />
-						<div class="warningform">
-							<h:message for="name" />
-						</div>
-					</div>
-					<div>
-						Code:
-						<h:inputText value="#{userController.productController.code}"
-							required="true" requiredMessage="Code is mandatory" id="code"
-							styleClass="form-control" />
-						<div class="warningform">
-							<h:message for="code" />
-						</div>
-					</div>
-					<div>
-						Price:
-						<div class="input-group">
-
-
-
-							<h:inputText value="#{userController.productController.price}"
-								required="true" requiredMessage="Price is mandatory"
-								converterMessage="Price must be a number" id="price"
-								styleClass="form-control" />
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-euro"></span>
-							</div>
-							<div class="warningform">
-								<h:message for="price" />
-							</div>
-
-						</div>
-					</div>
-					<div>
-						Description:
-						<h:inputTextarea
-							value="#{userController.productController.description}"
-							required="false" cols="20" rows="5" styleClass="form-control" />
-
-					</div>
-					<div>
-						<h3>Providers that distribute this product:</h3>
-						<table style="width: 100%;">
-							<tr>
-								<th>Name</th>
-								<th>VAT</th>
-								<th>email</th>
-							</tr>
-							<c:forEach var="currentProvider"
-								items="#{userController.providerController.providers}">
+				<c:choose>
+						<c:when test="${(not empty userController.orderController.order) & (not empty userController.orderController.order.orderLines)}">
+							<h3>Your cart :</h3> (created the ${ userController.orderController.order.creationdate})
+							<table>
 								<tr>
-									<td><h:selectBooleanCheckbox
-											value="#{userController.providerController.selectedProviders[currentProvider]}" />
-										<h:outputLabel value="#{currentProvider.name}" /></td>
-
-									<td>${currentProvider.vatin}</td>
-									<td>${currentProvider.email}</td>
+									<th>Name</th>
+									<th>Price</th>
+									<th>Quantity</th>
 								</tr>
-							</c:forEach>
 
-						</table>
-
-					</div>
-					<div align="center">
-						<h:commandButton styleClass="btn btn-default"
-							value="Create product" style="color:black; margin: 15px;"
-							action="#{userController.createProduct}" />
-					</div>
-
-				</h:form>
+								<c:forEach var="currentOrderLine"
+									items="#{userController.orderController.order.orderLines}">
+									<tr>
+										<td><h:commandLink style="margin-right: 15px;"
+												action="#{userController.openProductDetails(currentOrderLine.product)}"
+												value="#{currentOrderLine.product.name}">
+											</h:commandLink></td>
+										<td>${currentOrderLine.product.price}</td>
+										<td>${currentOrderLine.quantity}</td>
+									</tr>
+								</c:forEach>
+							</table>
+						</c:when>
+						<c:otherwise>
+							<br>Your cart is empty! please use product link to navigate through products<br>
+						</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="col-sm-3"></div>
 		</div>

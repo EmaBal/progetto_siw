@@ -46,12 +46,12 @@ public class UserController {
 
 	public String createOrder() {
 		Order order = orderController.createOrder(currentDate());
-		List<Order> orders = user.getOrders();
+		List<Order> orders = ((Customer)user).getOrders();
 		if (orders == null || orders.equals(null) || orders.isEmpty()) {
 			orders = new ArrayList<Order>();
 		}
 		orders.add(order);
-		user.setOrders(orders);
+		((Customer)user).setOrders(orders);
 		userFacade.updateUser(user);
 		return "index";
 	}
@@ -65,10 +65,11 @@ public class UserController {
 	}
 
 	public String showProducts() {
-		// productController.listProducts();
 		return productController.listProducts();
 	}
-
+	public String openCartPage() {
+		return orderController.openCartPage((Customer) user);
+	}
 	public String showProviders() {
 		return providerController.listProviders();
 	}

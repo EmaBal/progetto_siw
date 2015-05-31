@@ -48,9 +48,7 @@ public abstract class User {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany (fetch=FetchType.EAGER, cascade={CascadeType.ALL})
-	@JoinColumn(name="users_id")
-	private List<Order> orders;
+
 
 	public User() {
 	}
@@ -129,12 +127,6 @@ public abstract class User {
 		this.birthDate = birthDate;
 	}
 
-	public List<Order> getOrders() {
-		return orders;
-	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 
 }

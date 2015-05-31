@@ -1,5 +1,6 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Customer;
 import it.uniroma3.model.Order;
 import it.uniroma3.model.OrderFacade;
 import it.uniroma3.model.OrderLine;
@@ -36,6 +37,11 @@ public class OrderController {
 	@EJB(beanName = "oFacade")
 	private OrderFacade orderFacade;
 
+	
+	public String openCartPage(Customer user) {
+		this.order = orderFacade.getUnconrfimedOrder(user);
+		return "cart";
+	}
 	public boolean isOrderLine(Product product) {
 		boolean result = false;
 		for (int i=0;i<orderlines.size();i++) {
@@ -138,5 +144,6 @@ public class OrderController {
 	public void setOrderlines(Map<Product, OrderLine> orderlines) {
 		this.orderlines = orderlines;
 	}
+	
 
 }

@@ -125,6 +125,13 @@
 																					<br>
 																				</c:otherwise>
 																			</c:choose>
+																			<span class="glyphicon glyphicon-shopping-cart" style="margin:5px;color:black;"></span>
+																					<h:commandLink value="My cart"
+																						styleClass="bluea"
+																						action="#{userController.openCartPage}" />
+																					<br>
+																					<br>
+															
 																		</c:when>
 																		<c:when
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">

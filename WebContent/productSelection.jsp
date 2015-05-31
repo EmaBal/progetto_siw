@@ -234,7 +234,7 @@
 							<c:forEach var="currentProduct"
 								items="#{userController.productController.products}">
 								<tr>
-									<td><h:inputText styleClass="col-xs-2"
+									<td><h:inputText styleClass="col-xs-4"
 											converterMessage="Quantity must be a number"
 											converter="javax.faces.Integer" id="quantity"
 											style="color:black;"
