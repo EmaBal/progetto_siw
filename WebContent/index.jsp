@@ -89,8 +89,9 @@
 											<a class="navbar-button-login" href="#"
 												data-toggle="dropdown" id="navLogin"> <c:choose>
 													<c:when test="${userController.user!=null}">
+														<span class="glyphicon glyphicon-user"></span>&nbsp;
 													${userController.user.firstname} &nbsp;
-													${userController.user.lastname}
+													${userController.user.lastname} 
 												</c:when>
 													<c:otherwise>
 													Login
@@ -109,7 +110,8 @@
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
 																			<c:choose>
 																				<c:when test="${userController.user.address!=null}">
-																					<span class="glyphicon glyphicon-home" style="margin:5px;color:black;"></span>
+																					<span class="glyphicon glyphicon-home"
+																						style="margin: 5px; color: black;"></span>
 																					<h:commandLink value="Change address"
 																						styleClass="bluea"
 																						action="#{userController.openNewUserAddressPage}" />
@@ -117,7 +119,8 @@
 																					<br>
 																				</c:when>
 																				<c:otherwise>
-																					<span class="glyphicon glyphicon-home" style="margin:5px;color:black;"></span>
+																					<span class="glyphicon glyphicon-home"
+																						style="margin: 5px; color: black;"></span>
 																					<h:commandLink value="Set address"
 																						styleClass="bluea"
 																						action="#{userController.openNewUserAddressPage}" />
@@ -125,28 +128,31 @@
 																					<br>
 																				</c:otherwise>
 																			</c:choose>
-																			<span class="glyphicon glyphicon-shopping-cart" style="margin:5px;color:black;"></span>
-																					<h:commandLink value="My cart"
-																						styleClass="bluea"
-																						action="#{userController.openCartPage}" />
-																					<br>
-																					<br>
-															
+																			<span class="glyphicon glyphicon-shopping-cart"
+																				style="margin: 5px; color: black;"></span>
+																			<h:commandLink value="My cart" styleClass="bluea"
+																				action="#{userController.openCartPage}" />
+																			<br>
+																			<br>
+
 																		</c:when>
 																		<c:when
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-																			<span class="glyphicon glyphicon-plus" style="margin:5px;color:black;"></span>
+																			<span class="glyphicon glyphicon-plus"
+																				style="margin: 5px; color: black;"></span>
 																			<h:commandLink value="Add product" styleClass="bluea"
 																				action="#{userController.openNewProductPage}" />
 																			<br>
 																			<br>
-																			<span class="glyphicon glyphicon-plus" style="margin:5px;color:black;"></span>
+																			<span class="glyphicon glyphicon-plus"
+																				style="margin: 5px; color: black;"></span>
 																			<h:commandLink value="Add provider"
 																				styleClass="bluea"
 																				action="#{userController.openNewProviderPage}" />
 																			<br>
 																			<br>
-																			<span class="glyphicon glyphicon-list" style="margin:5px;color:black;"></span>
+																			<span class="glyphicon glyphicon-list"
+																				style="margin: 5px; color: black;"></span>
 																			<h:commandLink value="List providers"
 																				styleClass="bluea"
 																				action="#{userController.showProviders}" />
@@ -157,7 +163,8 @@
 																	<h:commandLink value="Log out"
 																		styleClass="btn btn-danger"
 																		action="#{userController.logOut}">
-																		<span class="glyphicon glyphicon-log-out" style="margin:5px;color:white;"></span>
+																		<span class="glyphicon glyphicon-log-out"
+																			style="margin: 5px; color: white;"></span>
 																	</h:commandLink>
 																</c:when>
 																<c:otherwise>
@@ -184,8 +191,9 @@
 																	<br>
 																	<h:commandLink value="Login"
 																		action="#{userController.logIn}"
-																		styleClass="btn btn-primary" >
-																		<span class="glyphicon glyphicon-log-in" style="margin:5px;color:white;"></span>
+																		styleClass="btn btn-primary">
+																		<span class="glyphicon glyphicon-log-in"
+																			style="margin: 5px; color: white;"></span>
 																	</h:commandLink>
 																	<div style="color: red;">${userController.logMessage}</div>
 																</c:otherwise>
@@ -242,7 +250,8 @@
 										id="search" required="true" requiredMessage="">
 										<h:commandLink
 											action="#{userController.getAllProductsFromSearch}">
-											<span class="glyphicon glyphicon-search" style="left: 79%; color:#888"></span>
+											<span class="glyphicon glyphicon-search"
+												style="left: 79%; color: #888"></span>
 										</h:commandLink>
 									</h:inputText>
 									<h:message for="search" />

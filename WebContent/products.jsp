@@ -218,33 +218,58 @@
 									</div>
 									<div id="accordion${currentProduct.id}"
 										class="panel-collapse collapse">
-										<div class="panel-body" style="color: black">Lorem ipsum dolor sit amet,
-											consectetur adipisicing elit, sed do eiusmod tempor
-											incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-											veniam, quis nostrud exercitation ullamco laboris nisi ut
-											aliquip ex ea commodo consequat
-<%-- 											Description: ${currentProduct.description} --%>
-<%-- 															Quantity: <h:inputText --%>
-<%-- 																	value="#{userController.productController.productsQuantity[currentProduct]}" --%>
-<%-- 																	converterMessage="Quantity must be a number" styleClass="col-xs-2" --%>
-<%-- 																	id="quantity"  --%>
-<%-- 																	converter="javax.faces.Integer"></h:inputText> --%>
-<!-- 																<div class="warningform"> -->
-<%-- 																	<h:message for="quantity" /> --%>
-<!-- 																</div> -->
-<%-- 															<h:commandLink --%>
-<%-- 																	action="#{userController.openProductDetails(currentProduct)}" --%>
-<%-- 																	value="Info"> --%>
-<%-- 																</h:commandLink> --%>
-<%-- 															<h:commandLink --%>
-<%-- 																	action="#{userController.addProductToCart(currentProduct)}" --%>
-<%-- 																	styleClass="btn btn-default" value="Add to cart"></h:commandLink> --%>
-															
+										<div class="panel-body" style="color: black">
+											<div class="row">
+												<div class="col-sm-4" style="background-color: transparent;">
+													<div align="left">
+														<b>Description:</b> ${currentProduct.description}
+													</div>
+													<div align="left">
+														<b>Price:</b>
+														<c:choose>
+															<c:when
+																test="${userController.orderController.orderlines[currentProduct] != null}">
+																<c:out
+																	value="${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}"></c:out>
+															</c:when>
+															<c:otherwise>${currentProduct.price}</c:otherwise>
+														</c:choose>
+													</div>
+													<div align="left">
+														<b>Quantity:</b>
+														<h:inputText
+															value="#{userController.productController.productsQuantity[currentProduct]}"
+															converterMessage="Quantity must be a number"
+															styleClass="form-control"
+															style="width: 30%; display: inline-block" id="quantity"
+															converter="javax.faces.Integer"></h:inputText>
+														<div class="warningform">
+															<h:message for="quantity" />
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4" style="background-color: transparent;"></div>
+												<div class="col-sm-4" style="background-color: transparent;"
+													align="right">
+													<div class="btn-group-lg">
+														<h:commandLink
+															action="#{userController.openProductDetails(currentProduct)}"
+															styleClass="btn btn-default" value="Info">
+														</h:commandLink>
+														&nbsp;
+														<h:commandLink
+															action="#{userController.addProductToCart(currentProduct)}"
+															styleClass="btn btn-default" value="Add to cart"></h:commandLink>
+													</div>
+												</div>
 											</div>
+										</div>
 									</div>
 								</div>
 							</c:forEach>
 						</div>
+						<h:commandButton action="#{userController.createOrder}"
+							styleClass="btn btn-default" value="Create order"></h:commandButton>
 
 						<%--						<table class="table table-condensed"
 							style="border-collapse: collapse;">
