@@ -222,7 +222,25 @@
 											consectetur adipisicing elit, sed do eiusmod tempor
 											incididunt ut labore et dolore magna aliqua. Ut enim ad minim
 											veniam, quis nostrud exercitation ullamco laboris nisi ut
-											aliquip ex ea commodo consequat</div>
+											aliquip ex ea commodo consequat
+<%-- 											Description: ${currentProduct.description} --%>
+<%-- 															Quantity: <h:inputText --%>
+<%-- 																	value="#{userController.productController.productsQuantity[currentProduct]}" --%>
+<%-- 																	converterMessage="Quantity must be a number" styleClass="col-xs-2" --%>
+<%-- 																	id="quantity"  --%>
+<%-- 																	converter="javax.faces.Integer"></h:inputText> --%>
+<!-- 																<div class="warningform"> -->
+<%-- 																	<h:message for="quantity" /> --%>
+<!-- 																</div> -->
+<%-- 															<h:commandLink --%>
+<%-- 																	action="#{userController.openProductDetails(currentProduct)}" --%>
+<%-- 																	value="Info"> --%>
+<%-- 																</h:commandLink> --%>
+<%-- 															<h:commandLink --%>
+<%-- 																	action="#{userController.addProductToCart(currentProduct)}" --%>
+<%-- 																	styleClass="btn btn-default" value="Add to cart"></h:commandLink> --%>
+															
+											</div>
 									</div>
 								</div>
 							</c:forEach>
