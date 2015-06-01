@@ -15,7 +15,7 @@ public class ProductFacade {
     private EntityManager em;
     
 	public Product createProduct(String name, String code, Float price, String description) {
-		Product product = new Product(name, price, description, code);
+		Product product = new Product(name.toLowerCase(), price, description, code);
 		em.persist(product);
 		return product;
 	}
@@ -46,7 +46,7 @@ public class ProductFacade {
 	}
 	
 	public List<Product> getProductFromSearch(String name) {
-		Query query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :products").setParameter("products", name);
+		Query query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :products").setParameter("products", name.toLowerCase());
 		@SuppressWarnings("unchecked")
 		List<Product> products = query.getResultList();
 		return products;

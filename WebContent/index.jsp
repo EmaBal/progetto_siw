@@ -45,6 +45,23 @@
 	});
 </script>
 
+<!-- <script type="text/javascript">
+function replaceEnter(e){
+      if (e.keyCode == 13){
+        var allElements = document.getElementsByTagName('*');
+        for (var i = 0; i < allElements.length; i++){
+          if (allElements[i].id.indexOf("search_button") !=-1){
+            allElements[i].click();
+          }
+        }
+        return false;
+      }else{
+        return true;
+      }
+    }
+    window.onkeypress = replaceEnter;
+</script> -->
+
 <title>E-commerce</title>
 
 </head>
@@ -196,7 +213,7 @@
 																	<br>
 																	<h:commandLink value="Login"
 																		action="#{userController.logIn}"
-																		styleClass="btn btn-primary">
+																		styleClass="btn btn-primary" type="submit">
 																		<span class="glyphicon glyphicon-log-in"
 																			style="margin: 5px; color: white;"></span>
 																	</h:commandLink>
@@ -253,8 +270,8 @@
 										styleClass="form-control"
 										style="width: 80%; vertical-align: middle; display: inline-block;"
 										id="search" required="true" requiredMessage="">
-										<h:commandLink
-											action="#{userController.getAllProductsFromSearch}">
+										<h:commandLink 
+											action="#{userController.getAllProductsFromSearch}" id="search_button">
 											<span class="glyphicon glyphicon-search"
 												style="left: 79%; color: #888"></span>
 										</h:commandLink>
