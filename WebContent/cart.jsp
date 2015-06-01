@@ -221,6 +221,7 @@
 								<th>Name</th>
 								<th>Price</th>
 								<th>Quantity</th>
+								<th>Total</th>
 							</tr>
 							</thead>
 							<tbody class="table-striped">
@@ -234,6 +235,7 @@
 											</h:commandLink></td>
 										<td>${currentOrderLine.product.price}</td>
 										<td>${currentOrderLine.quantity}</td>
+										<td>${currentOrderLine.quantity * currentOrderLine.product.price}</td>
 									</tr>
 								</c:forEach>
 							</h:form>
