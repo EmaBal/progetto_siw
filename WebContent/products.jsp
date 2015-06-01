@@ -205,118 +205,123 @@
 					<div class="col-sm-2" style="background-color: transparent;"></div>
 					<div class="col-sm-8" style="background-color: transparent;"
 						align="center">
-						<div class="panel-group" id="accordion">
-							<c:forEach var="currentProduct"
-								items="#{userController.productController.products}"
-								varStatus="loop">
-								<div class="panel panel-primary ">
-									<div class="panel-heading">
-										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion"
-												href="#accordion${currentProduct.id}">${currentProduct.name}</a>
-										</h4>
-									</div>
-									<div id="accordion${currentProduct.id}"
-										class="panel-collapse collapse">
-										<div class="panel-body" style="color: black">
-											<div class="row">
-												<div class="col-sm-4" style="background-color: transparent;">
-													<div align="left">
-														<b>Description:</b> ${currentProduct.description}
-													</div>
-													<div align="left">
-														<b>Price:</b>
-														<c:choose>
-															<c:when
-																test="${userController.orderController.orderlines[currentProduct] != null}">
-																<c:out
-																	value="${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}"></c:out>
-															</c:when>
-															<c:otherwise>${currentProduct.price}</c:otherwise>
-														</c:choose>
-													</div>
-													<div align="left">
-														<b>Quantity:</b>
-														<h:inputText
-															value="#{userController.productController.productsQuantity[currentProduct]}"
-															converterMessage="Quantity must be a number"
-															styleClass="form-control"
-															style="width: 30%; display: inline-block" id="quantity"
-															converter="javax.faces.Integer"></h:inputText>
-														<div class="warningform">
-															<h:message for="quantity" />
+						<c:choose>
+							<c:when
+								test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+								<div class="panel-group" id="accordion">
+									<c:forEach var="currentProduct"
+										items="#{userController.productController.products}"
+										varStatus="loop">
+										<div class="panel panel-primary ">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+													<a data-toggle="collapse" data-parent="#accordion"
+														href="#accordion${currentProduct.id}">${currentProduct.name}</a>
+												</h4>
+											</div>
+											<div id="accordion${currentProduct.id}"
+												class="panel-collapse collapse">
+												<div class="panel-body" style="color: black">
+													<div class="row">
+														<div class="col-sm-7"
+															style="background-color: transparent;">
+															<div align="left">
+																<b>Description:</b> ${currentProduct.description}
+															</div>
+															<div align="left">
+																<b>Price:</b>
+																<c:choose>
+																	<c:when
+																		test="${userController.orderController.orderlines[currentProduct] != null}">
+																		<c:out
+																			value="${userController.orderController.orderlines[currentProduct].quantity} x &#8364; ${currentProduct.price} = &#8364; ${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}"></c:out>
+																	</c:when>
+																	<c:otherwise>&#8364; ${currentProduct.price}</c:otherwise>
+																</c:choose>
+															</div>
+															<div align="left">
+																<b>Quantity:</b>
+																<h:inputText
+																	value="#{userController.productController.productsQuantity[currentProduct]}"
+																	converterMessage="Quantity must be a number"
+																	styleClass="form-control"
+																	style="width: 30%; display: inline-block" id="quantity"
+																	converter="javax.faces.Integer"></h:inputText>
+																<div class="warningform">
+																	<h:message for="quantity" />
+																</div>
+															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-sm-4" style="background-color: transparent;"></div>
-												<div class="col-sm-4" style="background-color: transparent;"
-													align="right">
-													<div class="btn-group-lg">
-														<h:commandLink
-															action="#{userController.openProductDetails(currentProduct)}"
-															styleClass="btn btn-default" value="Info">
-														</h:commandLink>
-														&nbsp;
-														<h:commandLink
-															action="#{userController.addProductToCart(currentProduct)}"
-															styleClass="btn btn-default" value="Add to cart"></h:commandLink>
+														<div class="col-sm-5"
+															style="background-color: transparent;" align="right">
+															<div class="btn-group-lg">
+																<h:commandLink
+																	action="#{userController.openProductDetails(currentProduct)}"
+																	styleClass="btn btn-default" value="Info">
+																</h:commandLink>
+																&nbsp;
+																<h:commandLink
+																	action="#{userController.addProductToCart(currentProduct)}"
+																	styleClass="btn btn-default" value="Add to cart "> &nbsp; <span
+																		class="glyphicon glyphicon-shopping-cart"
+																		style="color: rgb(31, 113, 173)"></span>
+																</h:commandLink>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									</c:forEach>
 								</div>
-							</c:forEach>
-						</div>
-						<h:commandButton action="#{userController.createOrder}"
-							styleClass="btn btn-default" value="Create order"></h:commandButton>
-
-						<%--						<table class="table table-condensed"
-							style="border-collapse: collapse;">
-							<tbody>
-								<c:forEach var="currentProduct"
-									items="#{userController.productController.products}">
-									<tr data-toggle="collapse" data-target="#demo1"
-										class="accordion-toggle">
-										<td><h:commandLink styleClass="btn btn-default"
-												value="#{currentProduct.name}" /></td>
-									</tr>
-									<tr>
-										<td colspan="6" class="hiddenRow"><div
-												class="accordian-body collapse" id="demo1">
-												<table class="table">
-													<tbody>
-														<tr>
-															<td style="width: 100%">Price:
-																${currentProduct.price}</td>
-														</tr>
-														<tr>
-															<td>Description: ${currentProduct.description}</td>
-															<td>Quantity: <h:inputText
-																	value="#{userController.productController.cart[currentProduct]}"
-																	converterMessage="Quantity must be a number"
-																	id="quantity" styleClass="form-control"
-																	converter="javax.faces.Integer"></h:inputText>
-																<div class="warningform">
-																	<h:message for="quantity" />
-																</div></td>
-															<td><h:commandLink
+								<h:commandButton action="#{userController.createOrder}"
+									styleClass="btn btn-default" value="Create order" style="width:60%"></h:commandButton>
+							</c:when>
+							
+							<c:when
+								test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+								<div class="panel-group" id="accordion">
+									<c:forEach var="currentProduct"
+										items="#{userController.productController.products}"
+										varStatus="loop">
+										<div class="panel panel-primary ">
+											<div class="panel-heading">
+												<h4 class="panel-title">
+													<a data-toggle="collapse" data-parent="#accordion"
+														href="#accordion${currentProduct.id}">${currentProduct.name}</a>
+												</h4>
+											</div>
+											<div id="accordion${currentProduct.id}"
+												class="panel-collapse collapse">
+												<div class="panel-body" style="color: black">
+													<div class="row">
+														<div class="col-sm-7"
+															style="background-color: transparent;">
+															<div align="left">
+																<b>Description:</b> ${currentProduct.description}
+															</div>
+															<div align="left">
+																<b>Price:</b>
+																&#8364; ${currentProduct.price}
+															</div>
+														</div>
+														<div class="col-sm-5"
+															style="background-color: transparent;" align="right">
+															<div class="btn-group-lg">
+																<h:commandLink
 																	action="#{userController.openProductDetails(currentProduct)}"
-																	value="Info">
-																</h:commandLink></td>
-															<td><h:commandLink
-																	action="#{userController.addProductToCart(currentProduct)}"
-																	styleClass="btn btn-default" value="Add to cart"></h:commandLink>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-
-						</table> --%>
+																	styleClass="btn btn-default" value="Info">
+																</h:commandLink>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							</c:when>
+						</c:choose>
 						<%-- <c:choose>
 						<c:when
 							test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
