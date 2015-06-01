@@ -77,7 +77,7 @@ import javax.persistence.Table;
     public Float getPrice() {
         return price;
     }
-
+    
     public void setPrice(Float price) {
         this.price = price;
     }

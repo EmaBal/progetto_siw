@@ -214,18 +214,19 @@
 				<c:choose>
 					<c:when
 						test="${(userController.orderController.order != null) and (not empty userController.orderController.order.orderLines)}">
-						<h3>Your cart :</h3> (created the ${userController.orderController.order.creationDate})
+						<h3>Your cart:</h3> (created on ${userController.orderController.order.creationDate})
+							<h:form>
 							<table class="table">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-								</tr>
-							</thead>
-							<tbody class="table-striped">
-								<h:form>
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Price</th>
+										<th>Quantity</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody class="table-striped">
+
 									<c:forEach var="currentOrderLine"
 										items="#{userController.orderController.order.orderLines}">
 										<tr>
@@ -233,18 +234,19 @@
 													action="#{userController.openProductDetails(currentOrderLine.product)}"
 													value="#{currentOrderLine.product.name}">
 												</h:commandLink></td>
-											<td>${currentOrderLine.product.price}</td>
+											<td>&euro; ${currentOrderLine.product.price}</td>
 											<td>${currentOrderLine.quantity}</td>
-											<td>${currentOrderLine.quantity * currentOrderLine.product.price}</td>
+											<td>&euro; ${currentOrderLine.quantity * currentOrderLine.product.price}</td>
 										</tr>
 									</c:forEach>
-									<span class="glyphicon glyphicon-ok"
-										style="margin: 5px; color: black;"></span>
-									<h:commandLink styleClass="btn btn-default" value="Confirm order" action="#{userController.confirmOrder}"/>
-										
-								</h:form>
-							</tbody>
-						</table>
+								</tbody>
+							</table>
+							<h:commandLink styleClass="btn btn-default" value="Confirm order"
+								action="#{userController.confirmOrder}">
+								<span class="glyphicon glyphicon-ok"
+									style="margin: 5px; color: black;"></span>
+							</h:commandLink>
+						</h:form>
 					</c:when>
 					<c:otherwise>
 						<br>Your cart is empty! please use product link to navigate through products<br>

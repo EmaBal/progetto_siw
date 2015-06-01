@@ -46,6 +46,13 @@
 		return false;
 	});
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {      
+      $('#needs-rounding').html(function(index, oldhtml) {return Math.round(parseFloat(oldhtml)); });
+    });
+</script>
+
 <title>Products</title>
 </head>
 <body style="background-color: #1F71AD; color: white;">
@@ -237,7 +244,7 @@
 																			value="${userController.orderController.orderlines[currentProduct].quantity}" /> x &#8364;
 																			<c:out value="${currentProduct.price}" /> = &#8364;
 																			<c:out
-																			value="${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}" />
+																			value="${((userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price)}" />
 																	</c:when>
 																	<c:otherwise>&#8364; ${currentProduct.price}</c:otherwise>
 																</c:choose>
@@ -260,12 +267,16 @@
 															<div class="btn-group-lg">
 																<h:commandLink
 																	action="#{userController.openProductDetails(currentProduct)}"
-																	styleClass="btn btn-default" value="Info">
+																	styleClass="btn btn-default" value="Info"
+																	style="color: #1F71AD; font-weight: bold;">&nbsp;
+																	<span style="vertical-align: text-top; color: #1F71AD"
+																		class="glyphicon glyphicon-info-sign"></span>
 																</h:commandLink>
 																&nbsp;
 																<h:commandLink
 																	action="#{userController.addProductToCart(currentProduct)}"
-																	styleClass="btn btn-default" value="Add to cart "> &nbsp; <span
+																	styleClass="btn btn-default" value="Add to cart"
+																	style="color: #1F71AD; font-weight: bold;"> &nbsp; <span
 																		class="glyphicon glyphicon-shopping-cart"
 																		style="color: rgb(31, 113, 173)"></span>
 																</h:commandLink>
@@ -313,7 +324,10 @@
 															<div class="btn-group-lg">
 																<h:commandLink
 																	action="#{userController.openProductDetails(currentProduct)}"
-																	styleClass="btn btn-default" value="Info">
+																	styleClass="btn btn-default" value="Info"
+																	style="color: #1F71AD; font-weight: bold;">&nbsp;
+																	<span style="vertical-align: text-top; color: #1F71AD"
+																		class="glyphicon glyphicon-info-sign"></span>
 																</h:commandLink>
 															</div>
 														</div>

@@ -75,15 +75,15 @@
 										class="navbar-item-link">Products</a></li> -->
 									<li class="navbar-item-opaque"><h:form>
 											<h:commandLink action="#{userController.showProducts}"
-												styleClass="navbar-item-link">
+												styleClass="navbar-item-link" value="Products"
+												style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
 											</h:commandLink>
 										</h:form></li>
-									<li class="navbar-item-opaque"><a href="products.jsp"
-										class="navbar-item-link">Products</a></li>
+
 									<li class="navbar-item-opaque"><a href="#"
 										class="navbar-item-link">Support</a></li>
 									<li class="navbar-item-opaque"><a href="#"
-										class="navbar-button-link">Contact</a></li>
+										class="navbar-item-link">Contact</a></li>
 									<li class="navbar-item-login" id="menuLogin">
 										<div class="dropdown keep-open">
 											<a class="navbar-button-login" href="#"
