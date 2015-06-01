@@ -234,7 +234,10 @@
 																	<c:when
 																		test="${userController.orderController.orderlines[currentProduct] != null}">
 																		<c:out
-																			value="${userController.orderController.orderlines[currentProduct].quantity} x &#8364; ${currentProduct.price} = &#8364; ${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}"></c:out>
+																			value="${userController.orderController.orderlines[currentProduct].quantity}" /> x &#8364;
+																			<c:out value="${currentProduct.price}" /> = &#8364;
+																			<c:out
+																			value="${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}" />
 																	</c:when>
 																	<c:otherwise>&#8364; ${currentProduct.price}</c:otherwise>
 																</c:choose>
@@ -275,9 +278,10 @@
 									</c:forEach>
 								</div>
 								<h:commandButton action="#{userController.createOrder}"
-									styleClass="btn btn-default" value="Create order" style="width:60%"></h:commandButton>
+									styleClass="btn btn-default" value="Create order"
+									style="width:60%"></h:commandButton>
 							</c:when>
-							
+
 							<c:when
 								test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
 								<div class="panel-group" id="accordion">
@@ -301,8 +305,7 @@
 																<b>Description:</b> ${currentProduct.description}
 															</div>
 															<div align="left">
-																<b>Price:</b>
-																&#8364; ${currentProduct.price}
+																<b>Price:</b> &#8364; ${currentProduct.price}
 															</div>
 														</div>
 														<div class="col-sm-5"

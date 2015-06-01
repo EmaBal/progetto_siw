@@ -69,4 +69,8 @@ public class OrderLineController {
 		this.unitPrice = unitPrice;
 	}
 
+	public void deleteOrderLine(OrderLine orderLine) {
+		orderLineFacade.deleteOrderLine(orderLine.getId());
+	}
+
 }

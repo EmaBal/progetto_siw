@@ -4,6 +4,7 @@ import it.uniroma3.model.Customer;
 import it.uniroma3.model.Order;
 import it.uniroma3.model.OrderFacade;
 import it.uniroma3.model.OrderLine;
+import it.uniroma3.model.OrderLineFacade;
 import it.uniroma3.model.Product;
 
 import java.util.ArrayList;
@@ -50,7 +51,8 @@ public class OrderController {
 	public boolean isOrderLine(Product product) {
 		boolean result = false;
 		for (int i = 0; i < orderlines.size(); i++) {
-			if (((orderlines.get(i)).getProduct()) != null && ((orderlines.get(i)).getProduct()).equals(product)) {
+			if (((orderlines.get(i)).getProduct()) != null
+					&& ((orderlines.get(i)).getProduct()).equals(product)) {
 				result = true;
 			}
 		}
@@ -60,7 +62,8 @@ public class OrderController {
 	public String getTotalPrice(Product product) {
 		float result = product.getPrice();
 		for (int i = 0; i < orderlines.size(); i++) {
-			if (((orderlines.get(i)).getProduct()) != null && ((orderlines.get(i)).getProduct()).equals(product)) {
+			if (((orderlines.get(i)).getProduct()) != null
+					&& ((orderlines.get(i)).getProduct()).equals(product)) {
 				result = orderlines.get(i).getQuantity() * result;
 			}
 		}
@@ -68,20 +71,27 @@ public class OrderController {
 	}
 
 	public String addProductToCart(Product product, Integer quantity) {
-		OrderLine orderline = orderLineController.createOrderLine(quantity, product);
-		if (orderlines == null || orderlines.equals(null) || orderlines.isEmpty()) {
+		OrderLine orderline = null;
+		if (quantity != 0 && !quantity.equals(0)) {
+			orderline = orderLineController.createOrderLine(quantity, product);
+		}
+		if (orderlines == null || orderlines.equals(null)
+				|| orderlines.isEmpty()) {
 			orderlines = new HashMap<Product, OrderLine>();
 		}
 		if (order != null) {
 			List<OrderLine> orderlinelist = order.getOrderLines();
 			for (int i = 0; i < orderlinelist.size(); i++) {
-
-				orderlines.put(orderlinelist.get(i).getProduct(), orderlinelist.get(i));
-
+				orderlines.put(orderlinelist.get(i).getProduct(),
+						orderlinelist.get(i));
 			}
 		}
-
-		orderlines.put(product, orderline);
+		if (orderlines.keySet().contains(product)) {
+			orderLineController.deleteOrderLine(orderlines.get(product));
+		}
+		if (quantity != 0 && !quantity.equals(0)) {
+			orderlines.put(product, orderline);
+		}
 		return "products";
 	}
 

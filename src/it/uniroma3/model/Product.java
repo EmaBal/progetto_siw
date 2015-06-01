@@ -30,9 +30,6 @@ import javax.persistence.Table;
 
 	@Column(nullable = false)
 	private String code;
-	
-	@Column(nullable = false)
-	private Integer quantity;
 
 	@ManyToMany(mappedBy="products" , fetch=FetchType.EAGER,cascade=CascadeType.ALL)
 	private List<Provider> providers;
@@ -40,22 +37,15 @@ import javax.persistence.Table;
 	public Product() {
     }
 
-	public Product(String name, Float price, String description, String code, Integer quantity) {
+	public Product(String name, Float price, String description, String code) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.code = code;
-        this.quantity = quantity;
 }
 
+    // Getters & Setters
 	
-	
-//	public boolean equals(Product product){
-//		if()
-//	}
-    //          Getters & Setters       
-	
-    
    public Long getId() {
         return id;
     }
@@ -97,10 +87,6 @@ import javax.persistence.Table;
         return this.getId().equals(product.getId());
     }
 
-    public int hashCode() {
-         return this.id.hashCode();
-    }
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -111,14 +97,6 @@ import javax.persistence.Table;
 
 	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
-	}
-
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
 	}
 	
 }

@@ -23,7 +23,7 @@ public class OrderLine {
 	@Column(nullable=false)
 	private Float unitPrice;
 	
-	@OneToOne (cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne (cascade={CascadeType.PERSIST})
 	private Product product;
 	
 	public OrderLine() {
