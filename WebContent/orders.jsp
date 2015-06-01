@@ -213,41 +213,34 @@
 			<div class="col-sm-6" align="center">
 				<c:choose>
 					<c:when
-						test="${(userController.orderController.order != null) and (not empty userController.orderController.order.orderLines)}">
-						<h3>Your cart :</h3> (created the ${userController.orderController.order.creationDate})
+						test="${(userController.orderController.orders != null) and (not empty userController.orderController.orders)}">
+						<h3>Your orders :</h3> 
 							<table class="table">
 							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Price</th>
-									<th>Quantity</th>
-									<th>Total</th>
-								</tr>
+							<tr>
+								<th>id</th>
+								<th>Creation date</th>
+								<th>Confirmation date</th>
+								<th>Evasion date</th>
+							</tr>
 							</thead>
 							<tbody class="table-striped">
-								<h:form>
-									<c:forEach var="currentOrderLine"
-										items="#{userController.orderController.order.orderLines}">
-										<tr>
-											<td><h:commandLink style="margin-right: 15px;"
-													action="#{userController.openProductDetails(currentOrderLine.product)}"
-													value="#{currentOrderLine.product.name}">
-												</h:commandLink></td>
-											<td>${currentOrderLine.product.price}</td>
-											<td>${currentOrderLine.quantity}</td>
-											<td>${currentOrderLine.quantity * currentOrderLine.product.price}</td>
-										</tr>
-									</c:forEach>
-									<span class="glyphicon glyphicon-ok"
-										style="margin: 5px; color: black;"></span>
-									<h:commandLink styleClass="btn btn-default" value="Confirm order" action="#{userController.confirmOrder}"/>
-										
-								</h:form>
+							<h:form>
+								<c:forEach var="currentOrder"
+									items="#{userController.orderController.orders}">
+									<tr>
+										<td>${currentOrder.id}</td>
+										<td>${currentOrder.creationDate}</td>
+										<td>${currentOrder.confirmationDate}</td>
+										<td>${currentOrder.evadingDate}</td>
+									</tr>
+								</c:forEach>
+							</h:form>
 							</tbody>
 						</table>
 					</c:when>
 					<c:otherwise>
-						<br>Your cart is empty! please use product link to navigate through products<br>
+						<br>You don't have any order yet! please use product button to navigate through <br>
 					</c:otherwise>
 				</c:choose>
 			</div>

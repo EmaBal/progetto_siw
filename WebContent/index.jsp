@@ -134,7 +134,12 @@
 																				action="#{userController.openCartPage}" />
 																			<br>
 																			<br>
-
+																			<span class="glyphicon glyphicon-list"
+																				style="margin: 5px; color: black;"></span>
+																			<h:commandLink value="My Orders" styleClass="bluea"
+																				action="#{userController.showOrders}" />
+																			<br>
+																			<br>
 																		</c:when>
 																		<c:when
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">

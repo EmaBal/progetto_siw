@@ -63,7 +63,12 @@ public class UserController {
 		
 		((Customer)user).setOrders(orders);
 		userFacade.updateUser(user);
-		return "index";
+		return openCartPage();
+	}
+	public String confirmOrder(){
+		orderController.confirmOrder(currentDate());
+		userFacade.updateCustomer((Customer) user);
+		return showOrders();
 	}
 	
 	public String addProductToCart(Product product) {
@@ -79,6 +84,9 @@ public class UserController {
 	}
 	public String openCartPage() {
 		return orderController.openCartPage((Customer) user);
+	}
+	public String showOrders(){
+		return orderController.listOrders((Customer)user);
 	}
 	public String showProviders() {
 		return providerController.listProviders();

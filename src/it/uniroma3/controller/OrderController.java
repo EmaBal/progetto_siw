@@ -33,9 +33,12 @@ public class OrderController {
 	private Date evadingDate;
 	private Map<Product, OrderLine> orderlines;
 	private Order order;
-
+	private List<Order> orders;
 	private OrderLineController orderLineController;
 
+	
+	
+	
 	@EJB(beanName = "oFacade")
 	private OrderFacade orderFacade;
 
@@ -59,6 +62,19 @@ public class OrderController {
 		return result;
 	}
 
+	
+	public void confirmOrder(Date date) {
+		if (order != null && !order.equals(null)) {
+			order.setConfirmationDate(date);
+			orderFacade.updateOrder(order);
+		}
+		order = null;		
+	}
+	public String listOrders(Customer user) {
+		this.orders = user.getOrders();
+		return "orders";
+	}
+	
 	public String getTotalPrice(Product product) {
 		float result = product.getPrice();
 		for (int i = 0; i < orderlines.size(); i++) {
