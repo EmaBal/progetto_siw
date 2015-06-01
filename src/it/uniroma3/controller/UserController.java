@@ -45,12 +45,22 @@ public class UserController {
 	}
 
 	public String createOrder() {
+		boolean isNewOrder = orderController.isNewOrder();
 		Order order = orderController.createOrder(currentDate());
 		List<Order> orders = ((Customer)user).getOrders();
 		if (orders == null || orders.equals(null) || orders.isEmpty()) {
 			orders = new ArrayList<Order>();
 		}
-		orders.add(order);
+		if(!isNewOrder){
+			for(int i = 0;i<orders.size();i++){
+				if(orders.get(i).getId().equals(order.getId())){
+					orders.set(i, order);
+				}
+			}
+		}else{
+			orders.add(order);
+		}
+		
 		((Customer)user).setOrders(orders);
 		userFacade.updateUser(user);
 		return "index";
@@ -106,6 +116,9 @@ public class UserController {
 				addressController.getAddress();
 				logMessage = "Login successful : " + user.getClass().getName();
 				userprivilege = user.getClass().getName();
+				if(user.getClass().getName() == Customer.class.getName()){
+					orderController.getUnconrfimedOrder((Customer)user);//get last session order
+				}
 				return "index";
 			} else {
 				logMessage = "Unable to login: " + logInMessage;

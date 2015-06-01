@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -29,58 +30,69 @@ public class OrderController {
 	private Date creationDate;
 	private Date confirmationDate;
 	private Date evadingDate;
-	private Map<Product,OrderLine> orderlines;
+	private Map<Product, OrderLine> orderlines;
 	private Order order;
-	
+
 	private OrderLineController orderLineController;
 
 	@EJB(beanName = "oFacade")
 	private OrderFacade orderFacade;
 
-	
 	public String openCartPage(Customer user) {
-		this.order = orderFacade.getUnconrfimedOrder(user);
+		getUnconrfimedOrder(user);
 		return "cart";
 	}
+
+	public void getUnconrfimedOrder(Customer user) {
+		this.order = orderFacade.getUnconrfimedOrder(user);
+	}
+
 	public boolean isOrderLine(Product product) {
 		boolean result = false;
-		for (int i=0;i<orderlines.size();i++) {
-			if (((orderlines.get(i)).getProduct())!= null && ((orderlines.get(i)).getProduct()).equals(product)) {
+		for (int i = 0; i < orderlines.size(); i++) {
+			if (((orderlines.get(i)).getProduct()) != null && ((orderlines.get(i)).getProduct()).equals(product)) {
 				result = true;
 			}
 		}
 		return result;
 	}
-	
-	public String getTotalPrice (Product product) {
+
+	public String getTotalPrice(Product product) {
 		float result = product.getPrice();
-		for (int i=0;i<orderlines.size();i++) {
-			if (((orderlines.get(i)).getProduct())!= null && ((orderlines.get(i)).getProduct()).equals(product)) {
-				result = orderlines.get(i).getQuantity()*result;
+		for (int i = 0; i < orderlines.size(); i++) {
+			if (((orderlines.get(i)).getProduct()) != null && ((orderlines.get(i)).getProduct()).equals(product)) {
+				result = orderlines.get(i).getQuantity() * result;
 			}
 		}
 		return String.valueOf(result);
 	}
-	
+
 	public String addProductToCart(Product product, Integer quantity) {
-		OrderLine orderline = orderLineController.createOrderLine(quantity,
-				product);
-		if (order != null) {
-			List<OrderLine> orderlinelist = order.getOrderLines();
-			for (int i=0;i<orderlinelist.size();i++) {
-				orderlines.put(orderlinelist.get(i).getProduct(), orderlinelist.get(i));
-			}
-		}
-		if (orderlines == null || orderlines.equals(null)
-				|| orderlines.isEmpty()) {
+		OrderLine orderline = orderLineController.createOrderLine(quantity, product);
+		if (orderlines == null || orderlines.equals(null) || orderlines.isEmpty()) {
 			orderlines = new HashMap<Product, OrderLine>();
 		}
+		if (order != null) {
+			List<OrderLine> orderlinelist = order.getOrderLines();
+			for (int i = 0; i < orderlinelist.size(); i++) {
+
+				orderlines.put(orderlinelist.get(i).getProduct(), orderlinelist.get(i));
+
+			}
+		}
+
 		orderlines.put(product, orderline);
 		return "products";
 	}
 
+	public boolean isNewOrder() {
+		return order == null || order.equals(null);
+	}
+
 	public Order createOrder(Date creationDate) {
-		order = orderFacade.createOrder();
+		if (order == null || order.equals(null)) {
+			order = orderFacade.createOrder();
+		}
 		order.setCreationDate(creationDate);
 		order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
 		orderFacade.updateOrder(order);
@@ -144,6 +156,5 @@ public class OrderController {
 	public void setOrderlines(Map<Product, OrderLine> orderlines) {
 		this.orderlines = orderlines;
 	}
-	
 
 }

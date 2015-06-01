@@ -210,17 +210,21 @@
 
 			</div>
 			<div class="col-sm-3"></div>
-			<div class="col-sm-6">
+			<div class="col-sm-6" align="center">
 				<c:choose>
-						<c:when test="${(not empty userController.orderController.order) & (not empty userController.orderController.order.orderLines)}">
-							<h3>Your cart :</h3> (created the ${ userController.orderController.order.creationdate})
-							<table>
-								<tr>
-									<th>Name</th>
-									<th>Price</th>
-									<th>Quantity</th>
-								</tr>
-
+					<c:when
+						test="${(userController.orderController.order != null) and (not empty userController.orderController.order.orderLines)}">
+						<h3>Your cart :</h3> (created the ${userController.orderController.order.creationDate})
+							<table class="table">
+							<thead>
+							<tr>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+							</tr>
+							</thead>
+							<tbody class="table-striped">
+							<h:form>
 								<c:forEach var="currentOrderLine"
 									items="#{userController.orderController.order.orderLines}">
 									<tr>
@@ -232,11 +236,13 @@
 										<td>${currentOrderLine.quantity}</td>
 									</tr>
 								</c:forEach>
-							</table>
-						</c:when>
-						<c:otherwise>
-							<br>Your cart is empty! please use product link to navigate through products<br>
-						</c:otherwise>
+							</h:form>
+							</tbody>
+						</table>
+					</c:when>
+					<c:otherwise>
+						<br>Your cart is empty! please use product link to navigate through products<br>
+					</c:otherwise>
 				</c:choose>
 			</div>
 			<div class="col-sm-3"></div>
