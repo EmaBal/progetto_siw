@@ -1,10 +1,13 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Order;
+import it.uniroma3.model.OrderLine;
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
 import it.uniroma3.model.Provider;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,15 +33,14 @@ public class ProductController {
 	@EJB(beanName = "pFacade")
 	private ProductFacade productFacade;
 
-	@PostConstruct
-	public void init() {
-		listProducts();
-	}
+
 
 	public void fixCartQuantity() {
 
 	}
-
+	public void confirmOrder() {
+		this.productsQuantity = null;//reset for future use
+	}
 	public String getProductsFromSearch() {
 		this.products = productFacade.getProductFromSearch(getName());
 		return "products";
@@ -103,6 +105,7 @@ public class ProductController {
 
 	public String selectProducts(Provider provider) {
 		loadAllProducts();
+		
 		this.productsQuantity = new HashMap<Product, Integer>();
 		for (int i = 0; i < products.size(); i++) {
 			if (provider.getProducts() != null && !provider.getProducts().equals(null) && provider.getProducts().contains(products.get(i))) {
@@ -122,16 +125,30 @@ public class ProductController {
 		return "productSelection";
 	}
 
-	public void selectProducts() {
+	public void selectProducts(Order order) {
 		loadAllProducts();
-		this.productsQuantity = new HashMap<Product, Integer>();
-		for (int i = 0; i < products.size(); i++) {
-			productsQuantity.put(products.get(i), 0);
+		if (order == null) {
+			this.productsQuantity = new HashMap<Product, Integer>();
+			for (int i = 0; i < products.size(); i++) {
+				productsQuantity.put(products.get(i), 0);
+			}
+		}else{
+			List<OrderLine> orderlines = order.getOrderLines();
+			if(orderlines == null || orderlines.equals(null) || orderlines.isEmpty()){
+				this.productsQuantity = new HashMap<Product, Integer>();
+				for (int i = 0; i < products.size(); i++) {
+					productsQuantity.put(products.get(i), 0);
+				}
+			}else{
+				for(int i = 0; i < orderlines.size() ; i++){
+					productsQuantity.put(orderlines.get(i).getProduct(),orderlines.get(i).getQuantity());
+				}
+			}
 		}
 	}
 
-	public String listProducts() {
-		selectProducts();
+	public String listProducts(Order order) {
+		selectProducts(order);
 		return "products";
 	}
 

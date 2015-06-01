@@ -25,20 +25,25 @@ import javax.persistence.Id;
 @SessionScoped
 public class OrderController {
 
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Date creationDate;
 	private Date confirmationDate;
 	private Date evadingDate;
-	private Map<Product, OrderLine> orderlines;
-	private Order order;
+	private Map<Product, OrderLine> orderlines = null;
+	private Order order = null;
 	private List<Order> orders;
 	private OrderLineController orderLineController;
 
-	
-	
-	
 	@EJB(beanName = "oFacade")
 	private OrderFacade orderFacade;
 
@@ -54,32 +59,31 @@ public class OrderController {
 	public boolean isOrderLine(Product product) {
 		boolean result = false;
 		for (int i = 0; i < orderlines.size(); i++) {
-			if (((orderlines.get(i)).getProduct()) != null
-					&& ((orderlines.get(i)).getProduct()).equals(product)) {
+			if (((orderlines.get(i)).getProduct()) != null && ((orderlines.get(i)).getProduct()).equals(product)) {
 				result = true;
 			}
 		}
 		return result;
 	}
 
-	
 	public void confirmOrder(Date date) {
 		if (order != null && !order.equals(null)) {
 			order.setConfirmationDate(date);
 			orderFacade.updateOrder(order);
 		}
-		order = null;		
+		order = null;
+		orderlines = null;
 	}
+
 	public String listOrders(Customer user) {
 		this.orders = user.getOrders();
 		return "orders";
 	}
-	
+
 	public String getTotalPrice(Product product) {
 		float result = product.getPrice();
 		for (int i = 0; i < orderlines.size(); i++) {
-			if (((orderlines.get(i)).getProduct()) != null
-					&& ((orderlines.get(i)).getProduct()).equals(product)) {
+			if (((orderlines.get(i)).getProduct()) != null && ((orderlines.get(i)).getProduct()).equals(product)) {
 				result = orderlines.get(i).getQuantity() * result;
 			}
 		}
@@ -87,25 +91,18 @@ public class OrderController {
 	}
 
 	public String addProductToCart(Product product, Integer quantity) {
-		OrderLine orderline = null;
-		if (quantity != 0 && !quantity.equals(0)) {
-			orderline = orderLineController.createOrderLine(quantity, product);
-		}
-		if (orderlines == null || orderlines.equals(null)
-				|| orderlines.isEmpty()) {
+		
+		if (orderlines == null || orderlines.equals(null) || orderlines.isEmpty()) {
 			orderlines = new HashMap<Product, OrderLine>();
 		}
 		if (order != null) {
 			List<OrderLine> orderlinelist = order.getOrderLines();
 			for (int i = 0; i < orderlinelist.size(); i++) {
-				orderlines.put(orderlinelist.get(i).getProduct(),
-						orderlinelist.get(i));
+				orderlines.put(orderlinelist.get(i).getProduct(), orderlinelist.get(i));
 			}
 		}
-		if (orderlines.keySet().contains(product)) {
-			orderLineController.deleteOrderLine(orderlines.get(product));
-		}
 		if (quantity != 0 && !quantity.equals(0)) {
+			OrderLine orderline = orderLineController.createOrderLine(quantity, product);
 			orderlines.put(product, orderline);
 		}
 		return "products";
@@ -118,8 +115,9 @@ public class OrderController {
 	public Order createOrder(Date creationDate) {
 		if (order == null || order.equals(null)) {
 			order = orderFacade.createOrder();
+			order.setCreationDate(creationDate);
 		}
-		order.setCreationDate(creationDate);
+	
 		order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
 		orderFacade.updateOrder(order);
 		return order;

@@ -39,10 +39,7 @@ public class UserController {
 	private ProductController productController;
 	private OrderController orderController;
 
-	@PostConstruct
-	public void init() {
-		productController.init();
-	}
+
 
 	public String createOrder() {
 		boolean isNewOrder = orderController.isNewOrder();
@@ -67,6 +64,7 @@ public class UserController {
 	}
 	public String confirmOrder(){
 		orderController.confirmOrder(currentDate());
+		productController.confirmOrder();
 		userFacade.updateCustomer((Customer) user);
 		return showOrders();
 	}
@@ -80,7 +78,7 @@ public class UserController {
 	}
 
 	public String showProducts() {
-		return productController.listProducts();
+		return productController.listProducts(orderController.getOrder());
 	}
 	public String openCartPage() {
 		return orderController.openCartPage((Customer) user);
