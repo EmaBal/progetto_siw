@@ -1,11 +1,12 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Administrator;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.Order;
 import it.uniroma3.model.OrderFacade;
 import it.uniroma3.model.OrderLine;
-import it.uniroma3.model.OrderLineFacade;
 import it.uniroma3.model.Product;
+import it.uniroma3.model.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -55,7 +55,9 @@ public class OrderController {
 	public void getUnconrfimedOrder(Customer user) {
 		this.order = orderFacade.getUnconrfimedOrder(user);
 	}
-
+	public String evadeOrder(Order order){
+		return "index";
+	}
 	public boolean isOrderLine(Product product) {
 		boolean result = false;
 		for (int i = 0; i < orderlines.size(); i++) {
@@ -75,8 +77,13 @@ public class OrderController {
 		orderlines = null;
 	}
 
-	public String listOrders(Customer user) {
-		this.orders = user.getOrders();
+	public String listOrders(User user) {
+		if(user.getClass().getName().equals(Customer.class.getName())){
+			this.orders = ((Customer) user).getOrders();
+		}else if(user.getClass().getName().equals(Administrator.class.getName())){
+			this.orders = orderFacade.getAllConfirmedOrders();
+		}
+		
 		return "orders";
 	}
 
@@ -91,7 +98,7 @@ public class OrderController {
 	}
 
 	public String addProductToCart(Product product, Integer quantity) {
-		
+
 		if (orderlines == null || orderlines.equals(null) || orderlines.isEmpty()) {
 			orderlines = new HashMap<Product, OrderLine>();
 		}
@@ -111,16 +118,23 @@ public class OrderController {
 	public boolean isNewOrder() {
 		return order == null || order.equals(null);
 	}
+	public void selectOrder(Order order){
+		this.order = order;
+		
+	}
 
 	public Order createOrder(Date creationDate) {
-		if (order == null || order.equals(null)) {
-			order = orderFacade.createOrder();
-			order.setCreationDate(creationDate);
+		if (!orderlines.isEmpty()) {
+			if (order == null || order.equals(null)) {
+				order = orderFacade.createOrder();
+				order.setCreationDate(creationDate);
+			}
+			order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
+			orderFacade.updateOrder(order);
+			return order;
+		} else {//in case user attempt to create an empty order
+			return null;
 		}
-	
-		order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
-		orderFacade.updateOrder(order);
-		return order;
 	}
 
 	// getters & setters

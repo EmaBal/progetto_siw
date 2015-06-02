@@ -22,7 +22,7 @@
 		$('container').toggleClass('row', $(window).width() > 768);
 	});
 </script>
-<title>Cart</title>
+<title>Order</title>
 <script>
 	$('.dropdown.keep-open').on({
 		"shown.bs.dropdown" : function() {
@@ -213,90 +213,40 @@
 			<div class="col-sm-6" align="center">
 				<c:choose>
 					<c:when
-						test="${(userController.orderController.orders != null) and (not empty userController.orderController.orders)}">
-						<c:choose>
-							<c:when
-								test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-								<h3>Your orders :</h3>
-							</c:when>
-							<c:otherwise>
-								<h3>Confirmed orders :</h3>
-							</c:otherwise>
-						</c:choose>
+						test="${(userController.orderController.order != null) and (not empty userController.orderController.order.orderLines)}">
+						<h3>Your order:</h3> (created the ${userController.orderController.order.creationDate}
+						<c:if test="${(userController.orderController.order.confirmationDate != null)}" > ,confirmed the ${userController.orderController.order.confirmationDate}</c:if>
+						<c:if test="${(userController.orderController.order.evadingDate != null)}" > ,evaded the ${userController.orderController.order.evadingDate}</c:if>)
+							<h:form>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Price</th>
+										<th>Quantity</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody class="table-striped">
 
-						<table class="table">
-							<thead>
-								<tr>
-									<c:choose>
-										<c:when
-											test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-											<th>id</th>
-											<th>Creation date</th>
-											<th>Confirmation date</th>
-											<th>Evasion date</th>
-										</c:when>
-										<c:otherwise>
-											<th>User</th>
-											<th>Creation date</th>
-											<th>Confirmation date</th>
-											<th>Evasion</th>
-										</c:otherwise>
-									</c:choose>
-
-									<c:if
-										test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-										<th>info</th>
-									</c:if>
-								</tr>
-							</thead>
-							<tbody class="table-striped">
-								<h:form>
-									<c:forEach var="currentOrder"
-										items="#{userController.orderController.orders}">
+									<c:forEach var="currentOrderLine"
+										items="#{userController.orderController.order.orderLines}">
 										<tr>
-											<c:choose>
-												<c:when
-													test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-													<td>${currentOrder.id}</td>
-												</c:when>
-												<c:otherwise>
-													<td>${currentOrder.id}</td>
-												</c:otherwise>
-											</c:choose>
-											<td>${currentOrder.creationDate}</td>
-											<td>${currentOrder.confirmationDate}</td>
-											<c:choose>
-												<c:when
-													test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-													<td>${currentOrder.evadingDate}</td>
-												</c:when>
-												<c:otherwise>
-													<td><h:commandLink styleClass="btn btn-default"
-															action="#{userController.orderController.evadeOrder(currentOrder)}"
-															value="evade">
-															<span style="vertical-align: text-top; color: #1F71AD"
-																class="glyphicon glyphicon-briefcase"></span>
-														</h:commandLink></td>
-												</c:otherwise>
-											</c:choose>
-
-											<c:if
-												test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-												<td><h:commandLink styleClass="btn btn-default"
-														action="#{userController.openOrderDetails(currentOrder)}"
-														value="info">
-														<span style="vertical-align: text-top; color: #1F71AD"
-															class="glyphicon glyphicon-info-sign"></span>
-													</h:commandLink></td>
-											</c:if>
+											<td><h:commandLink style="margin-right: 15px;"
+													action="#{userController.openProductDetails(currentOrderLine.product)}"
+													value="#{currentOrderLine.product.name}">
+												</h:commandLink></td>
+											<td>&euro; ${currentOrderLine.product.price}</td>
+											<td>${currentOrderLine.quantity}</td>
+											<td>&euro; ${currentOrderLine.quantity * currentOrderLine.product.price}</td>
 										</tr>
 									</c:forEach>
-								</h:form>
-							</tbody>
-						</table>
+								</tbody>
+							</table>
+						</h:form>
 					</c:when>
 					<c:otherwise>
-						<br>You don't have any order yet! please use product button to navigate through <br>
+						<br>This order is empty! something odd appened, please contact an administrator<br>
 					</c:otherwise>
 				</c:choose>
 			</div>

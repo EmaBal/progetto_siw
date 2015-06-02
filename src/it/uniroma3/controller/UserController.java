@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -39,36 +38,40 @@ public class UserController {
 	private ProductController productController;
 	private OrderController orderController;
 
-
-
 	public String createOrder() {
 		boolean isNewOrder = orderController.isNewOrder();
 		Order order = orderController.createOrder(currentDate());
-		List<Order> orders = ((Customer)user).getOrders();
-		if (orders == null || orders.equals(null) || orders.isEmpty()) {
-			orders = new ArrayList<Order>();
-		}
-		if(!isNewOrder){
-			for(int i = 0;i<orders.size();i++){
-				if(orders.get(i).getId().equals(order.getId())){
-					orders.set(i, order);
-				}
+		if (order != null) {
+			List<Order> orders = ((Customer) user).getOrders();
+			if (orders == null || orders.equals(null) || orders.isEmpty()) {
+				orders = new ArrayList<Order>();
 			}
+			if (!isNewOrder) {
+				for (int i = 0; i < orders.size(); i++) {
+					if (orders.get(i).getId().equals(order.getId())) {
+						orders.set(i, order);
+					}
+				}
+			} else {
+				orders.add(order);
+			}
+
+			((Customer) user).setOrders(orders);
+			userFacade.updateUser(user);
+			return openCartPage();
 		}else{
-			orders.add(order);
+			return "index";//in case user attempt to create an empty order
 		}
 		
-		((Customer)user).setOrders(orders);
-		userFacade.updateUser(user);
-		return openCartPage();
 	}
-	public String confirmOrder(){
+
+	public String confirmOrder() {
 		orderController.confirmOrder(currentDate());
 		productController.confirmOrder();
 		userFacade.updateCustomer((Customer) user);
 		return showOrders();
 	}
-	
+
 	public String addProductToCart(Product product) {
 		return orderController.addProductToCart(product, productController.getProductsQuantity().get(product));
 	}
@@ -80,21 +83,26 @@ public class UserController {
 	public String showProducts() {
 		return productController.listProducts(orderController.getOrder());
 	}
+
 	public String openCartPage() {
 		return orderController.openCartPage((Customer) user);
 	}
-	public String showOrders(){
-		return orderController.listOrders((Customer)user);
+
+	public String showOrders() {
+		return orderController.listOrders(user);
 	}
+
 	public String showProviders() {
 		return providerController.listProviders();
 	}
 
 	public String openProductSelectionPage() {
-		return productController.selectProducts(providerController
-				.getProvider());
+		return productController.selectProducts(providerController.getProvider());
 	}
-
+	public String openOrderDetails(Order order){
+		orderController.selectOrder(order);
+		return "order";
+	}
 	public String discardSelectedProviderProducts() {
 		String result = productController.discardSelectedProviderProducts();
 		return result;
@@ -115,15 +123,17 @@ public class UserController {
 	public String logIn() {
 
 		try {
-			String logInMessage = userFacade.verifyUserCredentials(email,
-					password);
+			String logInMessage = userFacade.verifyUserCredentials(email, password);
 			if (logInMessage.length() == 0) {
 				user = userFacade.getUser(email);
 				addressController.getAddress();
 				logMessage = "Login successful : " + user.getClass().getName();
 				userprivilege = user.getClass().getName();
-				if(user.getClass().getName() == Customer.class.getName()){
-					orderController.getUnconrfimedOrder((Customer)user);//get last session order
+				if (user.getClass().getName() == Customer.class.getName()) {
+					orderController.getUnconrfimedOrder((Customer) user);// get
+																			// last
+																			// session
+																			// order
 				}
 				return "index";
 			} else {
@@ -131,8 +141,7 @@ public class UserController {
 				return "index";
 			}
 		} catch (NoSuchAlgorithmException e) {
-			logMessage = "Unable to login. Md5 conversion failed"
-					+ e.getMessage();
+			logMessage = "Unable to login. Md5 conversion failed" + e.getMessage();
 			return "index";
 		}
 
@@ -147,18 +156,15 @@ public class UserController {
 	public String createCustomer() {
 		String nextpage = "index";
 		try {
-			this.user = userFacade.createCustomer(firstname, lastname, email,
-					phonenumber, password, currentDate(), birthdate);
+			this.user = userFacade.createCustomer(firstname, lastname, email, phonenumber, password, currentDate(), birthdate);
 			userprivilege = user.getClass().getName();
 			logMessage = "Signup successful. ";
 		} catch (Exception e) {
-			if (e.getClass().getName()
-					.equals("javax.ejb.EJBTransactionRolledbackException")) {
+			if (e.getClass().getName().equals("javax.ejb.EJBTransactionRolledbackException")) {
 				logMessage = "Unable to sign up. This email is alredy taken";
 				nextpage = "signUp";
 			} else {
-				logMessage = "Unable to sign up. Md5 conversion failed "
-						+ e.getClass().getName() + e.getMessage();
+				logMessage = "Unable to sign up. Md5 conversion failed " + e.getClass().getName() + e.getMessage();
 				nextpage = "signUp";
 			}
 
@@ -168,13 +174,11 @@ public class UserController {
 
 	public String createAdministrator() {
 		try {
-			this.user = userFacade.createAdministrator(firstname, lastname,
-					email, phonenumber, password, currentDate(), birthdate);
+			this.user = userFacade.createAdministrator(firstname, lastname, email, phonenumber, password, currentDate(), birthdate);
 			userprivilege = user.getClass().getName();
 			logMessage = "Signup successful.";
 		} catch (NoSuchAlgorithmException e) {
-			logMessage = "Unable to sign up. Md5 conversion failed"
-					+ e.getMessage();
+			logMessage = "Unable to sign up. Md5 conversion failed" + e.getMessage();
 		}
 		return "index";
 	}
@@ -198,8 +202,7 @@ public class UserController {
 
 	public String createProduct() {
 		String result = productController.createProduct();
-		List<Provider> productProviders = providerController
-				.saveSelectedProductProviders(productController.getProduct());
+		List<Provider> productProviders = providerController.saveSelectedProductProviders(productController.getProduct());
 		productController.saveProductProviders(productProviders);
 		return result;
 	}
@@ -209,8 +212,7 @@ public class UserController {
 		if (((Customer) user).getAddress() != null) {
 			addressController.deleteCustomerAddress((Customer) user);
 		}
-		userFacade.setCustomerAddress((Customer) user,
-				addressController.getAddress());
+		userFacade.setCustomerAddress((Customer) user, addressController.getAddress());
 		return ret;
 	}
 

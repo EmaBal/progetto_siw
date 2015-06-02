@@ -7,12 +7,10 @@ import it.uniroma3.model.ProductFacade;
 import it.uniroma3.model.Provider;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -127,21 +125,27 @@ public class ProductController {
 
 	public void selectProducts(Order order) {
 		loadAllProducts();
-		if (order == null) {
+		if (order == null) {//new order
 			this.productsQuantity = new HashMap<Product, Integer>();
 			for (int i = 0; i < products.size(); i++) {
 				productsQuantity.put(products.get(i), 0);
 			}
-		}else{
+		}else{//old empty order
 			List<OrderLine> orderlines = order.getOrderLines();
 			if(orderlines == null || orderlines.equals(null) || orderlines.isEmpty()){
 				this.productsQuantity = new HashMap<Product, Integer>();
 				for (int i = 0; i < products.size(); i++) {
 					productsQuantity.put(products.get(i), 0);
 				}
-			}else{
+			}else{//old order
+				this.productsQuantity = new HashMap<Product, Integer>();
+				List<Product> notOrdered = new ArrayList<Product>(products);
 				for(int i = 0; i < orderlines.size() ; i++){
+					notOrdered.remove(orderlines.get(i).getProduct());
 					productsQuantity.put(orderlines.get(i).getProduct(),orderlines.get(i).getQuantity());
+				}
+				for(int i = 0; i<notOrdered.size() ; i++){
+					productsQuantity.put(notOrdered.get(i),0);
 				}
 			}
 		}

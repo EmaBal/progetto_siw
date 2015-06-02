@@ -180,6 +180,13 @@ function replaceEnter(e){
 																				action="#{userController.showProviders}" />
 																			<br>
 																			<br>
+																			<span class="glyphicon glyphicon-briefcase"
+																				style="margin: 5px; color: black;"></span>
+																			<h:commandLink value="Evade orders"
+																				styleClass="bluea"
+																				action="#{userController.showOrders}" />
+																			<br>
+																			<br>
 																		</c:when>
 																	</c:choose>
 																	<h:commandLink value="Log out"

@@ -310,7 +310,7 @@
 												class="panel-collapse collapse">
 												<div class="panel-body" style="color: black">
 													<div class="row">
-														<div class="col-sm-7"
+														<div class="col-sm-6"
 															style="background-color: transparent;">
 															<div align="left">
 																<b>Description:</b> ${currentProduct.description}
@@ -319,7 +319,7 @@
 																<b>Price:</b> &#8364; ${currentProduct.price}
 															</div>
 														</div>
-														<div class="col-sm-5"
+														<div class="col-sm-6"
 															style="background-color: transparent;" align="right">
 															<div class="btn-group-lg">
 																<h:commandLink
