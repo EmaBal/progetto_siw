@@ -1,7 +1,9 @@
 package it.uniroma3.controller;
 
+import it.uniroma3.model.Administrator;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.Order;
+import it.uniroma3.model.OrderLine;
 import it.uniroma3.model.Product;
 import it.uniroma3.model.Provider;
 import it.uniroma3.model.User;
@@ -29,7 +31,9 @@ public class UserController {
 	private User user;
 	private Date birthdate;
 	private String userprivilege;
-
+	private List<Customer> customers;
+	private Customer customer;
+	
 	@EJB(beanName = "uFacade")
 	private UserFacade userFacade;
 
@@ -37,6 +41,29 @@ public class UserController {
 	private AddressController addressController;
 	private ProductController productController;
 	private OrderController orderController;
+	
+	public List<Customer> findAllCustomers() {
+		customers = new ArrayList<Customer>();
+		List<User> users = userFacade.getUsers();
+		for (User user:users) {
+			if (user.getClass().getName().equals(Customer.class.getName())) {
+				customers.add((Customer) user);
+			}
+		}
+		return customers;
+	}
+	
+	public String getCustomerFromOrder(Order currentorder) {
+		customers = findAllCustomers();
+		for (int i=0;i<customers.size();i++) {
+			if (customers.get(i).getOrders().contains(currentorder)) {
+				this.customer = customers.get(i);
+			}
+		}
+		if (customer == null) 
+			return "index";
+		return "customerProfile";
+	}
 
 	public String createOrder() {
 		boolean isNewOrder = orderController.isNewOrder();
@@ -89,7 +116,36 @@ public class UserController {
 	}
 
 	public String showOrders() {
-		return orderController.listOrders(user);
+		orderController.clearOrders();
+		if(user.getClass().getName().equals(Customer.class.getName())){
+			List<Order> userOrders = ((Customer) user).getOrders();
+			for(int i=0;i<userOrders.size();i++) {
+				orderController.putOrder(userOrders.get(i), true);
+			}
+		}else if(user.getClass().getName().equals(Administrator.class.getName())){
+			List<Order> confirmedOrders = (orderController.getAllConfirmedOrders());
+			for(int i=0;i<confirmedOrders.size();i++) {
+				List<OrderLine> orderlines = confirmedOrders.get(i).getOrderLines();
+				for(int x=0;x<orderlines.size();x++) {
+					List<Provider> providers = providerController.getProductProviders(orderlines.get(x).getProduct());
+					int n = 0;
+					for (int a=0;a<providers.size();a++) {
+						Provider provider = providers.get(a);
+						for (int q = 0; q < provider.getProducts().size(); q++) {
+							if(provider.getProducts().get(q).equals(orderlines.get(x).getProduct())){
+								n++;
+							}
+						}
+					}
+					if (n>=orderlines.get(x).getQuantity()) {
+						orderController.putOrder(confirmedOrders.get(i), true);
+					} else {
+						orderController.putOrder(confirmedOrders.get(i), false);
+					}
+				}
+			}
+		}
+		return "orders";
 	}
 
 	public String showProviders() {
@@ -129,7 +185,7 @@ public class UserController {
 				addressController.getAddress();
 				logMessage = "Login successful : " + user.getClass().getName();
 				userprivilege = user.getClass().getName();
-				if (user.getClass().getName() == Customer.class.getName()) {
+				if (user.getClass().getName().equals(Customer.class.getName())) {
 					orderController.getUnconrfimedOrder((Customer) user);// get
 																			// last
 																			// session
@@ -326,5 +382,17 @@ public class UserController {
 
 	public void setOrderController(OrderController orderController) {
 		this.orderController = orderController;
+	}
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 }

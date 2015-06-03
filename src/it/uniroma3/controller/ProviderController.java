@@ -195,7 +195,8 @@ public class ProviderController {
 			providerFacade.updateProvider(provider);
 		}
 	}
-	public void selectProduct(Product product) {
+	
+	public List<Provider> getProductProviders(Product product) {
 		loadAllProviders();
 		List<Provider> productProviders = new ArrayList<Provider>();
 		for(int i = 0 ; i < providers.size() ; i++){
@@ -203,7 +204,11 @@ public class ProviderController {
 				productProviders.add(providers.get(i));
 			}
 		}
-		product.setProviders(productProviders);
+		return productProviders;
+	}
+	
+	public void selectProduct(Product product) {
+		product.setProviders(getProductProviders(product));
 		
 	}
 	public List<Product> getProducts() {

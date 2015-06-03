@@ -24,7 +24,7 @@ public class Customer extends User {
 		this.orders = orders;
 	}
 
-	@OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private Address address;
 	
 	@OneToMany (fetch=FetchType.EAGER, cascade={CascadeType.ALL})

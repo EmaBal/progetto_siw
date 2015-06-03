@@ -25,13 +25,7 @@ import javax.persistence.Id;
 @SessionScoped
 public class OrderController {
 
-	public List<Order> getOrders() {
-		return orders;
-	}
 
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,7 +35,7 @@ public class OrderController {
 	private Date evadingDate;
 	private Map<Product, OrderLine> orderlines = null;
 	private Order order = null;
-	private List<Order> orders;
+	private Map<Order, Boolean> orders;
 	private OrderLineController orderLineController;
 
 	@EJB(beanName = "oFacade")
@@ -77,16 +71,10 @@ public class OrderController {
 		orderlines = null;
 	}
 
-	public String listOrders(User user) {
-		if(user.getClass().getName().equals(Customer.class.getName())){
-			this.orders = ((Customer) user).getOrders();
-		}else if(user.getClass().getName().equals(Administrator.class.getName())){
-			this.orders = orderFacade.getAllConfirmedOrders();
-		}
-		
-		return "orders";
+	public void clearOrders() {
+		this.orders = null;
 	}
-
+	
 	public String getTotalPrice(Product product) {
 		float result = product.getPrice();
 		for (int i = 0; i < orderlines.size(); i++) {
@@ -195,4 +183,22 @@ public class OrderController {
 		this.orderlines = orderlines;
 	}
 
+	public Map<Order, Boolean> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Map<Order, Boolean> orders) {
+		this.orders = orders;
+	}
+
+	public void putOrder(Order order2, boolean b) {
+		if (orders == null) {
+			orders = new HashMap<Order, Boolean>();
+		}
+		orders.put(order2, b);
+	}
+
+	public List<Order> getAllConfirmedOrders () {
+		return orderFacade.getAllConfirmedOrders();
+	}
 }

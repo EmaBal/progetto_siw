@@ -72,9 +72,11 @@ public class ProductController {
 					}
 				}else{//the product is provided by this provider
 					int n = 0;//quantity distributed actually
-					for (int q = 0; q < provider.getProducts().size(); q++) {
-						if(provider.getProducts().get(q).equals(products.get(i))){
-							n++;
+					if (provider.getProducts()!=null && !provider.getProducts().equals(null) && !provider.getProducts().isEmpty()) {
+						for (int q = 0; q < provider.getProducts().size(); q++) {
+							if(provider.getProducts().get(q).equals(products.get(i))){
+								n++;
+							}
 						}
 					}
 					if(productsQuantity.get(products.get(i)).intValue()>n){//must add products to provider

@@ -2,7 +2,7 @@
 	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -220,7 +220,7 @@
 								<h3>Your orders :</h3>
 							</c:when>
 							<c:otherwise>
-								<h3>Confirmed orders :</h3>
+								<h3>Confirmed orders:</h3>
 							</c:otherwise>
 						</c:choose>
 
@@ -230,23 +230,19 @@
 									<c:choose>
 										<c:when
 											test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-											<th>id</th>
+											<th>Order Id</th>
 											<th>Creation date</th>
 											<th>Confirmation date</th>
 											<th>Evasion date</th>
+											<th>Info</th>
 										</c:when>
 										<c:otherwise>
-											<th>User</th>
+											<th>Order Id</th>
 											<th>Creation date</th>
 											<th>Confirmation date</th>
 											<th>Evasion</th>
 										</c:otherwise>
 									</c:choose>
-
-									<c:if
-										test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-										<th>info</th>
-									</c:if>
 								</tr>
 							</thead>
 							<tbody class="table-striped">
@@ -257,33 +253,47 @@
 											<c:choose>
 												<c:when
 													test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-													<td>${currentOrder.id}</td>
+													<td>${currentOrder.key.id}</td>
 												</c:when>
 												<c:otherwise>
-													<td>${currentOrder.id}</td>
+													<td><h:commandLink
+															action="#{userController.getCustomerFromOrder(currentOrder.key)}">
+															<span class="glyphicon glyphicon-user"></span>&nbsp;${currentOrder.key.id}</h:commandLink></td>
 												</c:otherwise>
 											</c:choose>
-											<td>${currentOrder.creationDate}</td>
-											<td>${currentOrder.confirmationDate}</td>
+											<td>${currentOrder.key.creationDate}</td>
+											<td>${currentOrder.key.confirmationDate}</td>
 											<c:choose>
 												<c:when
 													test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-													<td>${currentOrder.evadingDate}</td>
+													<td>${currentOrder.key.evadingDate}</td>
 												</c:when>
 												<c:otherwise>
-													<td><h:commandLink styleClass="btn btn-default"
-															action="#{userController.orderController.evadeOrder(currentOrder)}"
-															value="evade">
-															<span style="vertical-align: text-top; color: #1F71AD"
-																class="glyphicon glyphicon-briefcase"></span>
-														</h:commandLink></td>
+													<td><c:choose>
+															<c:when test="${currentOrder.value==true}">
+																<h:commandLink styleClass="btn btn-default"
+																	action="#{userController.orderController.evadeOrder(currentOrder.key)}"
+																	value="Evade"> &nbsp; 
+															<span style="vertical-align: text-top;"
+																		class="glyphicon glyphicon-briefcase"></span>
+																</h:commandLink>
+															</c:when>
+															<c:otherwise>
+																<h:commandLink styleClass="btn btn-default"
+																	action="#{userController.orderController.evadeOrder(currentOrder.key)}"
+																	value="Evade" disabled="true"> &nbsp; 
+															<span style="vertical-align: text-top;"
+																		class="glyphicon glyphicon-briefcase"></span>
+																</h:commandLink>
+															</c:otherwise>
+														</c:choose></td>
 												</c:otherwise>
 											</c:choose>
 
 											<c:if
 												test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
 												<td><h:commandLink styleClass="btn btn-default"
-														action="#{userController.openOrderDetails(currentOrder)}"
+														action="#{userController.openOrderDetails(currentOrder.key)}"
 														value="info">
 														<span style="vertical-align: text-top; color: #1F71AD"
 															class="glyphicon glyphicon-info-sign"></span>
