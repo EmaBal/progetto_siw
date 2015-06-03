@@ -47,7 +47,7 @@
 	});
 </script>
 
-<title>New Product</title>
+<title>Orders</title>
 </head>
 <body style="background-color: #1F71AD; color: white;">
 	<f:view>
@@ -296,7 +296,16 @@
 						</table>
 					</c:when>
 					<c:otherwise>
-						<br>You don't have any order yet! please use product button to navigate through <br>
+						<c:choose>
+							<c:when
+								test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+								<br>You don't have any order to evade. There are no new confirmed orders <br>
+							</c:when>
+							<c:otherwise>
+								<br>You don't have any order yet! please use product button to navigate through <br>
+							</c:otherwise>
+						</c:choose>
+
 					</c:otherwise>
 				</c:choose>
 			</div>
