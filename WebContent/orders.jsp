@@ -248,7 +248,7 @@
 							<tbody class="table-striped">
 								<h:form>
 									<c:forEach var="currentOrder"
-										items="#{userController.orderController.orders}">
+										items="${userController.orderController.orders}">
 										<tr>
 											<c:choose>
 												<c:when
@@ -279,7 +279,7 @@
 																</h:commandLink>
 															</c:when>
 															<c:otherwise>
-																<h:commandLink styleClass="btn btn-default"
+																<h:commandLink styleClass="btn btn-default disabled"
 																	action="#{userController.orderController.evadeOrder(currentOrder.key)}"
 																	value="Evade" disabled="true"> &nbsp; 
 															<span style="vertical-align: text-top;"
