@@ -257,7 +257,7 @@ function replaceEnter(e){
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
 							<div align="center" style="line-height: 200px">
-								<img src="ogc_logo.png" alt="ogc_logo"
+								<img src="pictures/ogc_logo.png" alt="ogc_logo"
 									style="width: 250px; height: 100px">
 							</div>
 						</div>
@@ -301,10 +301,37 @@ function replaceEnter(e){
 			</div>
 		</section>
 		<section class="section-form" id="section2">
-			<div class="second">Second section</div>
+			<div class="second"></div>
 		</section>
 		<section class="section-form" id="section3">
-			<div class="third">Third section</div>
+			<div class="third">
+				<h1 align="center">Technologies used for development</h1>
+				<div class="row">
+					<div align="center" class="col-sm-2" style="background-color: transparent;">
+						<img src="pictures/java_logo.png" alt="java_logo"
+							style="width: 250px; height: 100px">
+					</div>
+					<div align="center" class="col-sm-2" style="background-color: transparent;">
+						<img src="pictures/jsf_logo.png" alt="jsf_logo"
+							style="width: 250px; height: 100px">
+					</div>
+					<div align="center" class="col-sm-2" style="background-color: transparent;">
+						<img src="pictures/jsp_logo.png" alt="jsp_logo"
+							style="width: 250px; height: 100px">
+					</div>
+					<div align="center" class="col-sm-2" style="background-color: transparent;">
+						<img src="pictures/eclipse_logo.png" alt="eclipse_logo"
+							style="width: 250px; height: 100px">
+					</div>
+					<div align="center" class="col-sm-2" style="background-color: transparent;">
+						<img src="pictures/bootstrap_logo.png" alt="bootstrap_logo"
+							style="width: 250px; height: 100px">
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="section-form" id="section4">
+			<div class="forth"></div>
 		</section>
 	</f:view>
 </body>
