@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -43,25 +44,29 @@ public class UserController {
 	private OrderController orderController;
 	
 	public List<Customer> findAllCustomers() {
-		customers = new ArrayList<Customer>();
+		List<Customer> customerRes = new ArrayList<Customer>();
 		List<User> users = userFacade.getUsers();
 		for (User user:users) {
 			if (user.getClass().getName().equals(Customer.class.getName())) {
-				customers.add((Customer) user);
+				customerRes.add((Customer) user);
 			}
 		}
-		return customers;
+		return customerRes;
 	}
 	
 	public String getCustomerFromOrder(Order currentorder) {
 		customers = findAllCustomers();
+		System.out.println("clicked order: " + currentorder.getId());
 		for (int i=0;i<customers.size();i++) {
+			System.out.println("customer: " + customers.get(i).getFirstname() + " orders: " + customers.get(i).getOrders().size());
+			
 			if (customers.get(i).getOrders().contains(currentorder)) {
 				this.customer = customers.get(i);
 			}
 		}
-		if (customer == null) 
+		if (customer == null) {
 			return "index";
+		}
 		return "customerProfile";
 	}
 
@@ -142,6 +147,7 @@ public class UserController {
 					} else {
 						orderController.putOrder(confirmedOrders.get(i), false);
 					}
+					
 				}
 			}
 		}

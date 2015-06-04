@@ -1,12 +1,10 @@
 package it.uniroma3.controller;
 
-import it.uniroma3.model.Administrator;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.Order;
 import it.uniroma3.model.OrderFacade;
 import it.uniroma3.model.OrderLine;
 import it.uniroma3.model.Product;
-import it.uniroma3.model.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +25,8 @@ public class OrderController {
 
 
 
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -35,7 +35,8 @@ public class OrderController {
 	private Date evadingDate;
 	private Map<Product, OrderLine> orderlines = null;
 	private Order order = null;
-	private Map<Order, Boolean> orders;
+	private List<Order> orders;
+	private Map<Order, Boolean> orderEvasion;
 	private OrderLineController orderLineController;
 
 	@EJB(beanName = "oFacade")
@@ -73,6 +74,7 @@ public class OrderController {
 
 	public void clearOrders() {
 		this.orders = null;
+		this.orderEvasion = null;
 	}
 	
 	public String getTotalPrice(Product product) {
@@ -183,22 +185,37 @@ public class OrderController {
 		this.orderlines = orderlines;
 	}
 
-	public Map<Order, Boolean> getOrders() {
-		return orders;
-	}
 
-	public void setOrders(Map<Order, Boolean> orders) {
-		this.orders = orders;
-	}
-
-	public void putOrder(Order order2, boolean b) {
-		if (orders == null) {
-			orders = new HashMap<Order, Boolean>();
+	public void putOrder(Order order, boolean b) {
+		if (orderEvasion == null) {
+			orderEvasion = new HashMap<Order, Boolean>();
 		}
-		orders.put(order2, b);
+		orderEvasion.put(order, b);
 	}
 
 	public List<Order> getAllConfirmedOrders () {
-		return orderFacade.getAllConfirmedOrders();
+		this.orders = orderFacade.getAllConfirmedOrders();
+		return orders;
+	}
+
+	public Order getOrderFromId(Long id) {
+		
+		return orderFacade.getOrder(id);
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
+	public Map<Order, Boolean> getOrderEvasion() {
+		return orderEvasion;
+	}
+
+	public void setOrderEvasion(Map<Order, Boolean> orderEvasion) {
+		this.orderEvasion = orderEvasion;
 	}
 }

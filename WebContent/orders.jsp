@@ -248,31 +248,31 @@
 							<tbody class="table-striped">
 								<h:form>
 									<c:forEach var="currentOrder"
-										items="${userController.orderController.orders}">
+										items="#{userController.orderController.orders}">
 										<tr>
 											<c:choose>
 												<c:when
 													test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-													<td>${currentOrder.key.id}</td>
+													<td>${currentOrder.id}</td>
 												</c:when>
 												<c:otherwise>
 													<td><h:commandLink
-															action="#{userController.getCustomerFromOrder(currentOrder.key)}">
-															<span class="glyphicon glyphicon-user"></span>&nbsp;${currentOrder.key.id}</h:commandLink></td>
+															action="#{userController.getCustomerFromOrder(currentOrder)}">
+															<span class="glyphicon glyphicon-user"></span>&nbsp;${currentOrder.id}</h:commandLink></td>
 												</c:otherwise>
 											</c:choose>
-											<td>${currentOrder.key.creationDate}</td>
-											<td>${currentOrder.key.confirmationDate}</td>
+											<td>${currentOrder.creationDate}</td>
+											<td>${currentOrder.confirmationDate}</td>
 											<c:choose>
 												<c:when
 													test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-													<td>${currentOrder.key.evadingDate}</td>
+													<td>${currentOrder.evadingDate}</td>
 												</c:when>
 												<c:otherwise>
 													<td><c:choose>
-															<c:when test="${currentOrder.value==true}">
+															<c:when test="${userController.orderController.orderEvasion[currentOrder]==true}">
 																<h:commandLink styleClass="btn btn-default"
-																	action="#{userController.orderController.evadeOrder(currentOrder.key)}"
+																	action="#{userController.orderController.evadeOrder(currentOrder)}"
 																	value="Evade"> &nbsp; 
 															<span style="vertical-align: text-top;"
 																		class="glyphicon glyphicon-briefcase"></span>
@@ -280,7 +280,7 @@
 															</c:when>
 															<c:otherwise>
 																<h:commandLink styleClass="btn btn-default disabled"
-																	action="#{userController.orderController.evadeOrder(currentOrder.key)}"
+																	action="#{userController.orderController.evadeOrder(currentOrder)}"
 																	value="Evade" disabled="true"> &nbsp; 
 															<span style="vertical-align: text-top;"
 																		class="glyphicon glyphicon-briefcase"></span>
@@ -293,7 +293,7 @@
 											<c:if
 												test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
 												<td><h:commandLink styleClass="btn btn-default"
-														action="#{userController.openOrderDetails(currentOrder.key)}"
+														action="#{userController.openOrderDetails(currentOrder)}"
 														value="info">
 														<span style="vertical-align: text-top; color: #1F71AD"
 															class="glyphicon glyphicon-info-sign"></span>
