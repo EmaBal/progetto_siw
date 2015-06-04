@@ -125,6 +125,13 @@ function replaceEnter(e){
 																	<c:choose>
 																		<c:when
 																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+																			<span class="glyphicon glyphicon-home"
+																				style="margin: 5px; color: black;"></span>
+																			<h:commandLink value="Your profile"
+																				styleClass="bluea"
+																				action="#{userController.openCustomerProfilePage}" />
+																			<br>
+																			<br>
 																			<c:choose>
 																				<c:when test="${userController.user.address!=null}">
 																					<span class="glyphicon glyphicon-home"
@@ -277,8 +284,9 @@ function replaceEnter(e){
 										styleClass="form-control"
 										style="width: 80%; vertical-align: middle; display: inline-block;"
 										id="search" required="true" requiredMessage="">
-										<h:commandLink 
-											action="#{userController.getAllProductsFromSearch}" id="search_button">
+										<h:commandLink
+											action="#{userController.getAllProductsFromSearch}"
+											id="search_button">
 											<span class="glyphicon glyphicon-search"
 												style="left: 79%; color: #888"></span>
 										</h:commandLink>

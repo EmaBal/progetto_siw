@@ -226,7 +226,15 @@
 
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6" align="center">
-			<h1>Profile</h1>
+			<c:choose>
+				<c:when
+					test="${userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+					<h1>Customer's Profile</h1>
+				</c:when>
+				<c:otherwise>
+					<h1>Your profile</h1>
+				</c:otherwise>
+			</c:choose>
 			<br> <b>First name:</b> ${userController.customer.firstname} <br>
 			<br> <b>Last name:</b> ${userController.customer.lastname} <br>
 			<br> <b>Email:</b> ${userController.customer.email} <br> <br>
@@ -234,14 +242,44 @@
 			<br> <b>Birth date:</b> ${userController.customer.birthDate}<br>
 			<br> <b>Address:</b>
 			<c:choose>
-				<c:when test="${!userController.customer.address.equals(null) && userController.customer.address != null}">
+				<c:when
+					test="${!userController.customer.address.equals(null) && userController.customer.address != null}">
 					${userController.customer.address.street}, 
 					${userController.customer.address.city}, 
 					${userController.customer.address.state}, 
 					${userController.customer.address.zipcode}, 
 					${userController.customer.address.country}
 				</c:when>
-				<c:otherwise>There's no address for this customer</c:otherwise>
+				<c:otherwise>
+					<c:choose>
+						<c:when
+							test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+						You have no address set. Do it now!
+						<br>
+							<br>
+							<h:form>
+								<h:commandLink action="#{userController.openNewUserAddressPage}"
+									value="Set Address" styleClass="btn btn-default">
+									<span class="glyphicon glyphicon-home"
+										style="margin: 5px; color: black;"></span>
+								</h:commandLink>
+							</h:form>
+						</c:when>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
+			<c:choose>
+				<c:when
+					test="${userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+					<h2>Customer's Orders:</h2>
+					<h:form>
+						<c:forEach var="currentOrder"
+							items="#{userController.orderController.orders}">
+							<li><h:commandLink
+									action="#{userController.openOrderDetails(currentOrder)}">${currentOrder.id}</h:commandLink></li>
+						</c:forEach>
+					</h:form>
+				</c:when>
 			</c:choose>
 		</div>
 		<div class="col-sm-3"></div>
