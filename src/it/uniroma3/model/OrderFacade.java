@@ -36,13 +36,7 @@ public class OrderFacade {
 		return orders;
 	}
 	public List<Order> getAllConfirmedOrders() {
-//		CriteriaBuilder cb =  em.getCriteriaBuilder();
-//		CriteriaQuery<Order> cq = cb.createQuery(Order.class);
-//		Metamodel m = em.getMetamodel();
-//		//EntityType<Order> Order_ = m.entity(Order.class);
-//		Root<Order> order = cq.from(Order.class);
-//		cq.select(order).where(order.get("evadingDate").isNull()).where(order.get("confirmationDate").isNotNull());
-//		List<Order> orders = em.createQuery(cq).getResultList();
+
 		Query query = em.createQuery("SELECT o FROM Order o WHERE o.evadingDate IS NULL AND o.confirmationDate IS NOT NULL");
 		@SuppressWarnings("unchecked")
 		List<Order> orders = query.getResultList();
