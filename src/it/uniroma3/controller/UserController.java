@@ -43,6 +43,11 @@ public class UserController {
 	private ProductController productController;
 	private OrderController orderController;
 	
+	public String openCustomerProfilePage() {
+		this.customer = (Customer) user;
+		return "customerProfile";
+	}
+	
 	public List<Customer> findAllCustomers() {
 		List<Customer> customerRes = new ArrayList<Customer>();
 		List<User> users = userFacade.getUsers();
