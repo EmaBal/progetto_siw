@@ -217,6 +217,9 @@ public class ProviderController {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+	public void updateProvider(Provider provider) {
+		providerFacade.updateProvider(provider);	
+	}
 
 	
 

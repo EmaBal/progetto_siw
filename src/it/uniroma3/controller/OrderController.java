@@ -50,8 +50,9 @@ public class OrderController {
 	public void getUnconrfimedOrder(Customer user) {
 		this.order = orderFacade.getUnconrfimedOrder(user);
 	}
-	public String evadeOrder(Order order){
-		return "index";
+	public void evadeOrder(Order order, Date date){
+		order.setEvadingDate(date);
+		orderFacade.updateOrder(order);
 	}
 	public boolean isOrderLine(Product product) {
 		boolean result = false;

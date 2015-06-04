@@ -272,7 +272,7 @@
 													<td><c:choose>
 															<c:when test="${userController.orderController.orderEvasion[currentOrder]==true}">
 																<h:commandLink styleClass="btn btn-default"
-																	action="#{userController.orderController.evadeOrder(currentOrder)}"
+																	action="#{userController.evadeOrder(currentOrder)}"
 																	value="Evade"> &nbsp; 
 															<span style="vertical-align: text-top;"
 																		class="glyphicon glyphicon-briefcase"></span>
@@ -280,7 +280,6 @@
 															</c:when>
 															<c:otherwise>
 																<h:commandLink styleClass="btn btn-default disabled"
-																	action="#{userController.orderController.evadeOrder(currentOrder)}"
 																	value="Evade" disabled="true"> &nbsp; 
 															<span style="vertical-align: text-top;"
 																		class="glyphicon glyphicon-briefcase"></span>

@@ -53,7 +53,35 @@ public class UserController {
 		}
 		return customerRes;
 	}
-	
+	public String evadeOrder(Order order){
+		orderController.evadeOrder(order,currentDate());
+		List<OrderLine> orderlines = order.getOrderLines();
+		for(int x=0;x<orderlines.size();x++) {
+			List<Provider> providers = providerController.getProductProviders(orderlines.get(x).getProduct());
+			int n = orderlines.get(x).getQuantity();
+			for (int a=0;a<providers.size();a++) {
+				Provider provider = providers.get(a);
+				List<Product> providerProducts = provider.getProducts();
+				for(int i = 0;i<provider.getProducts().size();i++){
+					if(n == 0){
+						break;
+					}
+					if(provider.getProducts().get(i).equals(orderlines.get(x).getProduct())){
+						n--;
+						providerProducts.remove(orderlines.get(x).getProduct());
+					}
+					
+				}
+				provider.setProducts(providerProducts);
+				providerController.updateProvider(provider);
+				if(n == 0){
+					break;
+				}
+			}
+			
+		}
+		return showOrders();
+	}
 	public String getCustomerFromOrder(Order currentorder) {
 		customers = findAllCustomers();
 		System.out.println("clicked order: " + currentorder.getId());
@@ -297,7 +325,7 @@ public class UserController {
 	public String getPasswordErr() {
 		return logMessage;
 	}
-
+	
 	public void setPasswordErr(String passwordErr) {
 		this.logMessage = passwordErr;
 	}
