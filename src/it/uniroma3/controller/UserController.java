@@ -157,6 +157,7 @@ public class UserController {
 		orderController.clearOrders();
 		if(user.getClass().getName().equals(Customer.class.getName())){
 			List<Order> userOrders = ((Customer) user).getOrders();
+			orderController.setOrders(userOrders);
 			for(int i=0;i<userOrders.size();i++) {
 				orderController.putOrder(userOrders.get(i), true);
 			}
