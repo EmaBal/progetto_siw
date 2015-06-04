@@ -19,6 +19,8 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.hsqldb.server.OdbcUtil;
+
 @ManagedBean
 @SessionScoped
 public class UserController {
