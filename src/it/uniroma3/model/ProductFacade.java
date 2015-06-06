@@ -46,7 +46,7 @@ public class ProductFacade {
 	}
 	
 	public List<Product> getProductFromSearch(String name) {
-		Query query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :products").setParameter("products", name.toLowerCase());
+		Query query = em.createQuery("SELECT p FROM Product p WHERE p.name LIKE :products").setParameter("products", "%"+name.toLowerCase()+"%");
 		@SuppressWarnings("unchecked")
 		List<Product> products = query.getResultList();
 		return products;
