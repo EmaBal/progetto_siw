@@ -45,23 +45,6 @@
 	});
 </script>
 
-<!-- <script type="text/javascript">
-function replaceEnter(e){
-      if (e.keyCode == 13){
-        var allElements = document.getElementsByTagName('*');
-        for (var i = 0; i < allElements.length; i++){
-          if (allElements[i].id.indexOf("search_button") !=-1){
-            allElements[i].click();
-          }
-        }
-        return false;
-      }else{
-        return true;
-      }
-    }
-    window.onkeypress = replaceEnter;
-</script> -->
-
 <title>E-commerce</title>
 
 </head>
@@ -97,10 +80,18 @@ function replaceEnter(e){
 											</h:commandLink>
 										</h:form></li>
 
-									<li class="navbar-item-opaque"><a href="#"
-										class="navbar-item-link">Support</a></li>
-									<li class="navbar-item-opaque"><a href="#"
-										class="navbar-item-link">Contact</a></li>
+									<li class="navbar-item-opaque"><h:form>
+											<h:commandLink action="#{userController.showProducts}"
+												styleClass="navbar-item-link" value="Support"
+												style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
+											</h:commandLink>
+										</h:form></li>
+									<li class="navbar-item-opaque"><h:form>
+											<h:commandLink action="#{userController.showProducts}"
+												styleClass="navbar-item-link" value="Contact"
+												style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
+											</h:commandLink>
+										</h:form></li>
 									<li class="navbar-item-login" id="menuLogin">
 										<div class="dropdown keep-open">
 											<a class="navbar-button-login" href="#"
@@ -253,7 +244,7 @@ function replaceEnter(e){
 					</nav>
 					<!-- navbar end -->
 
-					<div class="row" style="height: 200px">
+					<div class="row">
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
 							<div align="center" style="line-height: 200px">
@@ -263,7 +254,7 @@ function replaceEnter(e){
 						</div>
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-					<div class="row" style="height: 60px">
+					<div class="row">
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
 							<div align="center">
@@ -274,7 +265,7 @@ function replaceEnter(e){
 						</div>
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 					</div>
-					<div class="row" style="height: 150px">
+					<div class="row">
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
 							<h:form styleClass="navbar-form">
@@ -305,33 +296,41 @@ function replaceEnter(e){
 		</section>
 		<section class="section-form" id="section3">
 			<div class="third">
-				<h1 align="center">Technologies used for development</h1>
-				<div class="row">
-					<div align="center" class="col-sm-2" style="background-color: transparent;">
-						<img src="pictures/java_logo.png" alt="java_logo"
-							style="width: 250px; height: 100px">
+				<div class="container">
+					<div class="col-sm-2" style="background-color: transparent;"></div>
+					<div class="col-sm-8" style="background-color: transparent;">
+						<h1 align="center">Technologies used for development</h1>
+						<div
+							style="position: relative; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 100%; max-width: 900px; margin-top: 50px; margin-right: auto; margin-left: auto; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between;">
+							<div align="center" style="background-color: transparent;">
+								<img src="pictures/java_logo.png" alt="java_logo"
+									style="width: 50%">
+							</div>
+							<div align="center" style="background-color: transparent;">
+								<img src="pictures/jsf_logo.png" alt="jsf_logo"
+									style="width: 50%">
+							</div>
+							<div align="center" style="background-color: transparent;">
+								<img src="pictures/jsp_logo.png" alt="jsp_logo"
+									style="width: 80%">
+							</div>
+							<div align="center" style="background-color: transparent;">
+								<img src="pictures/eclipse_logo.png" alt="eclipse_logo"
+									style="width: 60%">
+							</div>
+							<div align="center" style="background-color: transparent;">
+								<img src="pictures/bootstrap_logo.png" alt="bootstrap_logo"
+									style="width: 110%">
+							</div>
+						</div>
+						<br>
 					</div>
-					<div align="center" class="col-sm-2" style="background-color: transparent;">
-						<img src="pictures/jsf_logo.png" alt="jsf_logo"
-							style="width: 250px; height: 100px">
-					</div>
-					<div align="center" class="col-sm-2" style="background-color: transparent;">
-						<img src="pictures/jsp_logo.png" alt="jsp_logo"
-							style="width: 250px; height: 100px">
-					</div>
-					<div align="center" class="col-sm-2" style="background-color: transparent;">
-						<img src="pictures/eclipse_logo.png" alt="eclipse_logo"
-							style="width: 250px; height: 100px">
-					</div>
-					<div align="center" class="col-sm-2" style="background-color: transparent;">
-						<img src="pictures/bootstrap_logo.png" alt="bootstrap_logo"
-							style="width: 250px; height: 100px">
-					</div>
+					<div class="col-sm-2" style="background-color: transparent;"></div>
 				</div>
 			</div>
 		</section>
 		<section class="section-form" id="section4">
-			<div class="forth"></div>
+			<div class="second"></div>
 		</section>
 	</f:view>
 </body>
