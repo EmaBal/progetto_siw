@@ -3650,15 +3650,15 @@ textarea.form-group-lg .form-control,select[multiple].form-group-lg .form-contro
 
 .btn-primary {
 	color: #fff;
-	background-color: #4FA2FF;
-	border-color: #2e6da4;
+	background-color: rgb(54,75,113);
+	border-color: rgb(54,75,113);
 }
 
 .btn-primary:hover,.btn-primary:focus,.btn-primary.focus,.btn-primary:active,.btn-primary.active,.open>.dropdown-toggle.btn-primary
 	{
 	color: #fff;
-	background-color: #0D75EA;
-	border-color: #204d74;
+	background-color: rgb(78, 111, 169);
+	border-color: rgb(78, 111, 169);
 }
 
 .btn-primary:active,.btn-primary.active,.open>.dropdown-toggle.btn-primary
@@ -3669,7 +3669,7 @@ textarea.form-group-lg .form-control,select[multiple].form-group-lg .form-contro
 .btn-primary.disabled,.btn-primary[disabled],fieldset[disabled] .btn-primary,.btn-primary.disabled:hover,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary:hover,.btn-primary.disabled:focus,.btn-primary[disabled]:focus,fieldset[disabled] .btn-primary:focus,.btn-primary.disabled.focus,.btn-primary[disabled].focus,fieldset[disabled] .btn-primary.focus,.btn-primary.disabled:active,.btn-primary[disabled]:active,fieldset[disabled] .btn-primary:active,.btn-primary.disabled.active,.btn-primary[disabled].active,fieldset[disabled] .btn-primary.active
 	{
 	background-color: #337ab7;
-	border-color: #2e6da4;
+	border-color: rgb(54,75,113);
 }
 
 .btn-primary .badge {
@@ -9252,7 +9252,7 @@ button.close {
 
 
 .section-form .first {
-	background-image:url("https://lh6.googleusercontent.com/arUPT71Fi19pR8gER7a0Kg23YXXjcI3aSKuQOkQNAWo2Az-nFCh46ZC9tIgnB_Z65c7aS4XMQ0aUXqk=w1342-h479-rw");
+	background-image:url("http://i.imgur.com/TeIEtaF.jpg");
 	padding-bottom: 25px;
 }
 
