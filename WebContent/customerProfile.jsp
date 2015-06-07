@@ -45,10 +45,10 @@
 	});
 </script>
 
-<title>E-commerce</title>
+<title>Profile</title>
 
 </head>
-<body style="background-color: #1F71AD; color: white;">
+<body style="background-color: rgb(54, 75, 113); color: white;">
 	<f:view>
 		<div class="container">
 
@@ -78,10 +78,13 @@
 									</h:commandLink>
 								</h:form></li>
 
-							<li class="navbar-item-opaque"><a href="#"
-								class="navbar-item-link">Support</a></li>
-							<li class="navbar-item-opaque"><a href="#"
-								class="navbar-item-link">Contact</a></li>
+							<li class="navbar-item-opaque"><h:form>
+									<h:commandLink action="#{userController.showProducts}"
+										styleClass="navbar-item-link" value="Support"
+										style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
+									</h:commandLink>
+								</h:form></li>
+							<li><a href='<c:url value="/faces/contactPage.jsp" />'>Contact</a></li>
 							<li class="navbar-item-login" id="menuLogin">
 								<div class="dropdown keep-open">
 									<a class="navbar-button-login" href="#" data-toggle="dropdown"
@@ -106,6 +109,12 @@
 															<c:choose>
 																<c:when
 																	test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+																	<span class="glyphicon glyphicon-home"
+																		style="margin: 5px; color: black;"></span>
+																	<h:commandLink value="Your profile" styleClass="bluea"
+																		action="#{userController.openCustomerProfilePage}" />
+																	<br>
+																	<br>
 																	<c:choose>
 																		<c:when test="${userController.user.address!=null}">
 																			<span class="glyphicon glyphicon-home"
