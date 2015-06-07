@@ -45,7 +45,7 @@
 	});
 </script>
 
-<title>E-commerce</title>
+<title>OGCommerce</title>
 
 </head>
 <body>

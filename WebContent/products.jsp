@@ -57,7 +57,7 @@
 
 <title>Products</title>
 </head>
-<body style="background-color: rgb(54, 75, 113); color: white;">
+<body style="background-color: rgb(54, 75, 113)">
 
 	<f:view>
 		<div class="container">
@@ -258,7 +258,7 @@
 									<c:forEach var="currentProduct"
 										items="#{userController.productController.products}"
 										varStatus="loop">
-										<div class="panel panel-primary ">
+										<div class="panel panel-primary">
 											<div class="panel-heading">
 												<h4 class="panel-title">
 													<a data-toggle="collapse" data-parent="#accordion"
