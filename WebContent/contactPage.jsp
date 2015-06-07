@@ -231,9 +231,8 @@
 
 			<br> <b>First name:</b> Emanuele <br>
 			<br> <b>Last name:</b> Balloni <br>
-			<br> <b>Email:</b> ema.bal@hotmail.it <br> <br>
+			<br> <b>Email:</b> ema-bal93@hotmail.it <br> <br>
 			<b>Phone number:</b> 3899968469 <br>
-			<br> <b>Birth date:</b> 31/08/1993 <br>
 			<br> <b>Address:</b> <a href="https://github.com/EmaBal"> github.com/EmaBal</a>
 			
 		</div>
@@ -245,7 +244,6 @@
 			<br> <b>Last name:</b> Vaccaro <br>
 			<br> <b>Email:</b> lorenzo.vaccaro@hotmail.com <br> <br>
 			<b>Phone number:</b> 3421513320 <br>
-			<br> <b>Birth date:</b> 26/05/1994 <br>
 			<br> <b>Address:</b> <a href="https://github.com/lorenzoviva"> github.com/lorenzoviva</a>
 			
 		</div>
