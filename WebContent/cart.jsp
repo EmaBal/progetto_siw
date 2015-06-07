@@ -79,13 +79,12 @@
 											</h:commandLink>
 										</h:form></li>
 
-									<li class="navbar-item-opaque"><h:form>
-											<h:commandLink action="#{userController.showProducts}"
-												styleClass="navbar-item-link" value="Support"
-												style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
-											</h:commandLink>
-										</h:form></li>
-									<li><a href='<c:url value="/faces/contactPage.jsp" />'>Contact</a></li>
+									<li class="navbar-item-opaque">
+											<a class="navbar-item-link" style="text-decoration: none" href='<c:url value="/faces/support.jsp" />'>Support</a>
+										</li>
+								<li class="navbar-item-opaque">
+											<a class="navbar-item-link" style="text-decoration: none" href='<c:url value="/faces/contactPage.jsp" />'>Contact</a>
+										</li>
 									<li class="navbar-item-login" id="menuLogin">
 										<div class="dropdown keep-open">
 											<a class="navbar-button-login" href="#"
