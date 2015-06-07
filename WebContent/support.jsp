@@ -241,17 +241,17 @@
 
 					<h1>Support material</h1>
 					<br>
-					<a href='pictures/controllerTree.png'>Download controller diagram</a>
+					<a href='pictures/controllerTree.png'>Controller diagram</a>
 					<br> <br>
-					<a href='pictures/dcd.png'>Download class diagram</a>
+					<a href='pictures/dcd.png'>Class diagram</a>
 					<br> <br>
-					<a href='pictures/modeldiagram.png'>Download model diagram</a>
+					<a href='pictures/modeldiagram.png'>Model diagram</a>
 					<br> <br>
-					<a href='https://drive.google.com/open?id=1OiQBx6SRCnBwQPkcZD3sVg5MJmMZ5H5hhTVTghYSNuU&authuser=0'>Use cases : Google doc</a>
+					<a href='https://drive.google.com/open?id=1OiQBx6SRCnBwQPkcZD3sVg5MJmMZ5H5hhTVTghYSNuU&authuser=0'>Use cases (Google Doc)</a>
 					<br> <br>
-					<a href='https://drive.google.com/open?id=1Qq43hAqxONDNWU0akvfMOHKZcJcTTPck4pe8oFlt0dk&authuser=0'>Graphical sketch : Google doc</a>
+					<a href='https://drive.google.com/open?id=1Qq43hAqxONDNWU0akvfMOHKZcJcTTPck4pe8oFlt0dk&authuser=0'>Graphical sketches [OLD] (Google Doc)</a>
 					<br> <br>
-					<a href='https://drive.google.com/open?id=0B3wnJfyYNksWfno3WFVaT2xMcVQtTEJCdTNMM3g1MFNSZVBaSzd5NXY0eHJQY3l4emNDb2s&authuser=0'>Other graphicals templates : Google drive folder</a>
+					<a href='https://drive.google.com/open?id=0B3wnJfyYNksWfno3WFVaT2xMcVQtTEJCdTNMM3g1MFNSZVBaSzd5NXY0eHJQY3l4emNDb2s&authuser=0'>Other graphicals templates (Google Drive folder)</a>
 					<br> <br>
 				</div>
 			</div>
