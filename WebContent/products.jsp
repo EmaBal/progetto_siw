@@ -62,188 +62,180 @@
 	<f:view>
 		<div class="container">
 			<!-- navbar start -->
-					<nav class="navbar navbar-default">
-						<div class="container-fluid">
-							<!-- Brand and toggle get grouped for better mobile display -->
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed"
-									data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-									<span class="sr-only">Toggle navigation</span> <span
-										class="icon-bar"></span> <span class="icon-bar"></span> <span
-										class="icon-bar"></span>
-								</button>
-								<a class="navbar-brand" href="index.jsp">OGC</a>
-							</div>
+			<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.jsp">OGC</a>
+				</div>
 
-							<!-- Collect the nav links, forms, and other content for toggling -->
-							<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-								<ul class="nav navbar-nav navbar-right">
-									<!-- <li class="navbar-item-opaque"><a href="products.jsp"
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <li class="navbar-item-opaque"><a href="products.jsp"
 										class="navbar-item-link">Products</a></li> -->
-									<li class="navbar-item-opaque"><h:form>
-											<h:commandLink action="#{userController.showProducts}"
-												styleClass="navbar-item-link" value="Products"
-												style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
-											</h:commandLink>
-										</h:form></li>
+						<li class="navbar-item-opaque"><h:form>
+								<h:commandLink action="#{userController.showProducts}"
+									styleClass="navbar-item-link" value="Products"
+									style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
+								</h:commandLink>
+							</h:form></li>
 
-									<li class="navbar-item-opaque">
-											<a class="navbar-item-link" style="text-decoration: none" href='<c:url value="/faces/support.jsp" />'>Support</a>
-										</li>
-								<li class="navbar-item-opaque">
-											<a class="navbar-item-link" style="text-decoration: none" href='<c:url value="/faces/contactPage.jsp" />'>Contact</a>
-										</li>
-									<li class="navbar-item-login" id="menuLogin">
-										<div class="dropdown keep-open">
-											<a class="navbar-button-login" href="#"
-												data-toggle="dropdown" id="navLogin"> <c:choose>
-													<c:when test="${userController.user!=null}">
-														<span class="glyphicon glyphicon-user"></span>&nbsp;
+						<li class="navbar-item-opaque"><a class="navbar-item-link"
+							style="text-decoration: none"
+							href='<c:url value="/faces/support.jsp" />'>Support</a></li>
+						<li class="navbar-item-opaque"><a class="navbar-item-link"
+							style="text-decoration: none"
+							href='<c:url value="/faces/contactPage.jsp" />'>Contact</a></li>
+						<li class="navbar-item-login" id="menuLogin">
+							<div class="dropdown keep-open">
+								<a class="navbar-button-login" href="#" data-toggle="dropdown"
+									id="navLogin"> <c:choose>
+										<c:when test="${userController.user!=null}">
+											<span class="glyphicon glyphicon-user"></span>&nbsp;
 													${userController.user.firstname} &nbsp;
 													${userController.user.lastname} 
 												</c:when>
-													<c:otherwise>
+										<c:otherwise>
 													Login
 												</c:otherwise>
-												</c:choose>
-											</a>
-											<div class="dropdown-menu">
-												<div class="container"
-													style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; width: auto;">
-													<h:form>
-														<div align="center">
-															<c:choose>
-																<c:when test="${userController.user!=null}">
-																	<c:choose>
-																		<c:when
-																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-																			<span class="glyphicon glyphicon-home"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="Your profile"
-																				styleClass="bluea"
-																				action="#{userController.openCustomerProfilePage}" />
-																			<br>
-																			<br>
-																			<c:choose>
-																				<c:when test="${userController.user.address!=null}">
-																					<span class="glyphicon glyphicon-home"
-																						style="margin: 5px; color: black;"></span>
-																					<h:commandLink value="Change address"
-																						styleClass="bluea"
-																						action="#{userController.openNewUserAddressPage}" />
-																					<br>
-																					<br>
-																				</c:when>
-																				<c:otherwise>
-																					<span class="glyphicon glyphicon-home"
-																						style="margin: 5px; color: black;"></span>
-																					<h:commandLink value="Set address"
-																						styleClass="bluea"
-																						action="#{userController.openNewUserAddressPage}" />
-																					<br>
-																					<br>
-																				</c:otherwise>
-																			</c:choose>
-																			<span class="glyphicon glyphicon-shopping-cart"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="My cart" styleClass="bluea"
-																				action="#{userController.openCartPage}" />
-																			<br>
-																			<br>
-																			<span class="glyphicon glyphicon-list"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="My Orders" styleClass="bluea"
-																				action="#{userController.showOrders}" />
-																			<br>
-																			<br>
-																		</c:when>
-																		<c:when
-																			test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-																			<span class="glyphicon glyphicon-plus"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="Add product" styleClass="bluea"
-																				action="#{userController.openNewProductPage}" />
-																			<br>
-																			<br>
-																			<span class="glyphicon glyphicon-plus"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="Add provider"
-																				styleClass="bluea"
-																				action="#{userController.openNewProviderPage}" />
-																			<br>
-																			<br>
-																			<span class="glyphicon glyphicon-list"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="List providers"
-																				styleClass="bluea"
-																				action="#{userController.showProviders}" />
-																			<br>
-																			<br>
-																			<span class="glyphicon glyphicon-briefcase"
-																				style="margin: 5px; color: black;"></span>
-																			<h:commandLink value="Evade orders"
-																				styleClass="bluea"
-																				action="#{userController.showOrders}" />
-																			<br>
-																			<br>
-																		</c:when>
-																	</c:choose>
-																	<h:commandLink value="Log out"
-																		styleClass="btn btn-danger"
-																		action="#{userController.logOut}">
-																		<span class="glyphicon glyphicon-log-out"
-																			style="margin: 5px; color: white;"></span>
-																	</h:commandLink>
-																</c:when>
-																<c:otherwise>
-																	<div>
-																		Email:
-																		<h:inputText value="#{userController.email}"
-																			required="true" requiredMessage="Email is mandatory"
-																			styleClass="login-control" id="email" />
-																		<div style="text-align: right; color: red;">
-																			<h:message for="email" />
-																		</div>
-																	</div>
-																	<br>
-																	<div>
-																		Password:
-																		<h:inputSecret value="#{userController.password}"
-																			required="true"
-																			requiredMessage="Password is mandatory"
-																			styleClass="login-control" id="password" />
-																		<div style="text-align: right; color: red;">
-																			<h:message for="password" />
-																		</div>
-																	</div>
-																	<br>
-																	<h:commandLink value="Login"
-																		action="#{userController.logIn}"
-																		styleClass="btn btn-primary" type="submit">
-																		<span class="glyphicon glyphicon-log-in"
-																			style="margin: 5px; color: white;"></span>
-																	</h:commandLink>
-																	<div style="color: red;">${userController.logMessage}</div>
-																</c:otherwise>
-															</c:choose>
+									</c:choose>
+								</a>
+								<div class="dropdown-menu">
+									<div class="container"
+										style="padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; width: auto;">
+										<h:form>
+											<div align="center">
+												<c:choose>
+													<c:when test="${userController.user!=null}">
+														<c:choose>
+															<c:when
+																test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+																<span class="glyphicon glyphicon-home"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="Your profile" styleClass="bluea"
+																	action="#{userController.openCustomerProfilePage}" />
+																<br>
+																<br>
+																<c:choose>
+																	<c:when test="${userController.user.address!=null}">
+																		<span class="glyphicon glyphicon-home"
+																			style="margin: 5px; color: black;"></span>
+																		<h:commandLink value="Change address"
+																			styleClass="bluea"
+																			action="#{userController.openNewUserAddressPage}" />
+																		<br>
+																		<br>
+																	</c:when>
+																	<c:otherwise>
+																		<span class="glyphicon glyphicon-home"
+																			style="margin: 5px; color: black;"></span>
+																		<h:commandLink value="Set address" styleClass="bluea"
+																			action="#{userController.openNewUserAddressPage}" />
+																		<br>
+																		<br>
+																	</c:otherwise>
+																</c:choose>
+																<span class="glyphicon glyphicon-shopping-cart"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="My cart" styleClass="bluea"
+																	action="#{userController.openCartPage}" />
+																<br>
+																<br>
+																<span class="glyphicon glyphicon-list"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="My Orders" styleClass="bluea"
+																	action="#{userController.showOrders}" />
+																<br>
+																<br>
+															</c:when>
+															<c:when
+																test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+																<span class="glyphicon glyphicon-plus"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="Add product" styleClass="bluea"
+																	action="#{userController.openNewProductPage}" />
+																<br>
+																<br>
+																<span class="glyphicon glyphicon-plus"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="Add provider" styleClass="bluea"
+																	action="#{userController.openNewProviderPage}" />
+																<br>
+																<br>
+																<span class="glyphicon glyphicon-list"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="List providers" styleClass="bluea"
+																	action="#{userController.showProviders}" />
+																<br>
+																<br>
+																<span class="glyphicon glyphicon-briefcase"
+																	style="margin: 5px; color: black;"></span>
+																<h:commandLink value="Evade orders" styleClass="bluea"
+																	action="#{userController.showOrders}" />
+																<br>
+																<br>
+															</c:when>
+														</c:choose>
+														<h:commandLink value="Log out" styleClass="btn btn-danger"
+															action="#{userController.logOut}">
+															<span class="glyphicon glyphicon-log-out"
+																style="margin: 5px; color: white;"></span>
+														</h:commandLink>
+													</c:when>
+													<c:otherwise>
+														<div>
+															Email:
+															<h:inputText value="#{userController.email}"
+																required="true" requiredMessage="Email is mandatory"
+																styleClass="login-control" id="email" />
+															<div style="text-align: right; color: red;">
+																<h:message for="email" />
+															</div>
 														</div>
-													</h:form>
-												</div>
+														<br>
+														<div>
+															Password:
+															<h:inputSecret value="#{userController.password}"
+																required="true" requiredMessage="Password is mandatory"
+																styleClass="login-control" id="password" />
+															<div style="text-align: right; color: red;">
+																<h:message for="password" />
+															</div>
+														</div>
+														<br>
+														<h:commandLink value="Login"
+															action="#{userController.logIn}"
+															styleClass="btn btn-primary" type="submit">
+															<span class="glyphicon glyphicon-log-in"
+																style="margin: 5px; color: white;"></span>
+														</h:commandLink>
+														<div style="color: red;">${userController.logMessage}</div>
+													</c:otherwise>
+												</c:choose>
 											</div>
-										</div>
-									</li>
-									<c:if test="${userController.user==null}">
-										<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
-												up</a></li>
-									</c:if>
-
-								</ul>
+										</h:form>
+									</div>
+								</div>
 							</div>
-							<!-- /.navbar-collapse -->
-						</div>
-						<!-- /.container-fluid -->
-					</nav>
-					<!-- navbar end -->
+						</li>
+						<c:if test="${userController.user==null}">
+							<li><a href='<c:url value="/faces/signUp.jsp" />'>Sign
+									up</a></li>
+						</c:if>
+
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid --> </nav>
+			<!-- navbar end -->
 
 
 			<h:form>
@@ -327,10 +319,18 @@
 										</div>
 									</c:forEach>
 								</div>
-								<h:commandButton action="#{userController.createOrder}"
-									styleClass="btn btn-default" value="Create order"
-									style="width:60%"></h:commandButton>
+								<c:choose>
+									<c:when test="${userController.orderController.order==null}"></c:when>
+									<h:commandButton action="#{userController.createOrder}"
+										styleClass="btn btn-default" value="Create order"
+										style="width:60%"></h:commandButton>
+								</c:choose>
 							</c:when>
+							<c:otherwise>
+								<h:commandButton action="#{userController.createOrder}"
+									styleClass="btn btn-default" value="Update order"
+									style="width:60%"></h:commandButton>
+							</c:otherwise>
 
 							<c:when
 								test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
@@ -378,76 +378,6 @@
 								</div>
 							</c:when>
 						</c:choose>
-						<%-- <c:choose>
-						<c:when
-							test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-							<h:form>
-								<h1>Products:</h1>
-								<table class="table" align="center">
-									<tr>
-										<th>Name</th>
-										<th>Price</th>
-										<th>Quantity</th>
-										<th>Add to cart</th>
-									</tr>
-									<c:forEach var="currentProduct"
-										items="#{userController.productController.products}">
-										<tr>
-											<td><h:commandLink
-													action="#{userController.openProductDetails(currentProduct)}"
-													value="#{currentProduct.name}">
-												</h:commandLink></td>
-											<td><c:choose>
-													<c:when
-														test="${userController.orderController.orderlines[currentProduct] != null}">
-														<c:out
-															value="${(userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price}"></c:out>
-													</c:when>
-													<c:otherwise>${currentProduct.price}</c:otherwise>
-												</c:choose></td>
-
-											<td><h:inputText
-													value="#{userController.productController.productsQuantity[currentProduct]}"
-													converterMessage="Quantity must be a number" id="quantity"
-													styleClass="form-control" converter="javax.faces.Integer"></h:inputText>
-												<div class="warningform">
-													<h:message for="quantity" />
-												</div></td>
-											<td><h:commandButton
-													action="#{userController.addProductToCart(currentProduct)}"
-													styleClass="btn btn-default" value="Add to cart"></h:commandButton>
-											</td>
-										</tr>
-									</c:forEach>
-
-								</table>
-								<h:commandButton action="#{userController.createOrder}"
-									styleClass="btn btn-default" value="Create order"></h:commandButton>
-							</h:form>
-						</c:when>
-						<c:when
-							test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-							<h:form>
-								<h1>Products :</h1>
-								<table>
-									<tr>
-										<th>Name</th>
-										<th>Price</th>
-									</tr>
-									<c:forEach var="currentProduct"
-										items="#{userController.productController.products}">
-										<tr>
-											<td><h:commandLink
-													action="#{userController.openProductDetails(currentProduct)}"
-													value="#{currentProduct.name}">
-												</h:commandLink></td>
-											<td>${currentProduct.price}</td>
-										</tr>
-									</c:forEach>
-								</table>
-							</h:form>
-						</c:when>
-					</c:choose> --%>
 					</div>
 					<div class="col-sm-2" style="background-color: transparent;"></div>
 				</div>
