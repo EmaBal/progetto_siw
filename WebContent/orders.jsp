@@ -49,13 +49,13 @@
 
 <title>Orders</title>
 </head>
-<body style="background-color: rgb(54,75,113); color: white;">
+<body style="background-color: rgb(54, 75, 113); color: white;">
 	<f:view>
 
 		<div class="first">
 			<div class="container">
 
-			<!-- navbar start -->
+				<!-- navbar start -->
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
 						<!-- Brand and toggle get grouped for better mobile display -->
@@ -76,22 +76,26 @@
 										class="navbar-item-link">Products</a></li> -->
 								<li class="navbar-item-opaque"><h:form>
 										<h:commandLink action="#{userController.showProducts}"
-											styleClass="navbar-item-link">
+											styleClass="navbar-item-link" value="Products"
+											style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
 										</h:commandLink>
 									</h:form></li>
-								<li class="navbar-item-opaque"><a href="products.jsp"
-									class="navbar-item-link">Products</a></li>
-								<li class="navbar-item-opaque"><a href="#"
-									class="navbar-item-link">Support</a></li>
-								<li class="navbar-item-opaque"><a href="#"
-									class="navbar-button-link">Contact</a></li>
+
+								<li class="navbar-item-opaque"><h:form>
+										<h:commandLink action="#{userController.showProducts}"
+											styleClass="navbar-item-link" value="Support"
+											style="text-decoration:none; line-height:25px; padding-top:0px; padding-bottom:0px; position:relative; display:block; padding:1px 15px; margin:10px;">
+										</h:commandLink>
+									</h:form></li>
+								<li><a href='<c:url value="/faces/contactPage.jsp" />'>Contact</a></li>
 								<li class="navbar-item-login" id="menuLogin">
 									<div class="dropdown keep-open">
 										<a class="navbar-button-login" href="#" data-toggle="dropdown"
 											id="navLogin"> <c:choose>
 												<c:when test="${userController.user!=null}">
+													<span class="glyphicon glyphicon-user"></span>&nbsp;
 													${userController.user.firstname} &nbsp;
-													${userController.user.lastname}
+													${userController.user.lastname} 
 												</c:when>
 												<c:otherwise>
 													Login
@@ -108,6 +112,12 @@
 																<c:choose>
 																	<c:when
 																		test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+																		<span class="glyphicon glyphicon-home"
+																			style="margin: 5px; color: black;"></span>
+																		<h:commandLink value="Your profile" styleClass="bluea"
+																			action="#{userController.openCustomerProfilePage}" />
+																		<br>
+																		<br>
 																		<c:choose>
 																			<c:when test="${userController.user.address!=null}">
 																				<span class="glyphicon glyphicon-home"
@@ -128,6 +138,18 @@
 																				<br>
 																			</c:otherwise>
 																		</c:choose>
+																		<span class="glyphicon glyphicon-shopping-cart"
+																			style="margin: 5px; color: black;"></span>
+																		<h:commandLink value="My cart" styleClass="bluea"
+																			action="#{userController.openCartPage}" />
+																		<br>
+																		<br>
+																		<span class="glyphicon glyphicon-list"
+																			style="margin: 5px; color: black;"></span>
+																		<h:commandLink value="My Orders" styleClass="bluea"
+																			action="#{userController.showOrders}" />
+																		<br>
+																		<br>
 																	</c:when>
 																	<c:when
 																		test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
@@ -148,6 +170,12 @@
 																		<h:commandLink value="List providers"
 																			styleClass="bluea"
 																			action="#{userController.showProviders}" />
+																		<br>
+																		<br>
+																		<span class="glyphicon glyphicon-briefcase"
+																			style="margin: 5px; color: black;"></span>
+																		<h:commandLink value="Evade orders" styleClass="bluea"
+																			action="#{userController.showOrders}" />
 																		<br>
 																		<br>
 																	</c:when>
@@ -183,7 +211,7 @@
 																<br>
 																<h:commandLink value="Login"
 																	action="#{userController.logIn}"
-																	styleClass="btn btn-primary">
+																	styleClass="btn btn-primary" type="submit">
 																	<span class="glyphicon glyphicon-log-in"
 																		style="margin: 5px; color: white;"></span>
 																</h:commandLink>
@@ -207,6 +235,7 @@
 					</div>
 					<!-- /.container-fluid -->
 				</nav>
+				<!-- navbar end -->
 
 			</div>
 			<div class="col-sm-3"></div>
@@ -270,7 +299,8 @@
 												</c:when>
 												<c:otherwise>
 													<td><c:choose>
-															<c:when test="${userController.orderController.orderEvasion[currentOrder]==true}">
+															<c:when
+																test="${userController.orderController.orderEvasion[currentOrder]==true}">
 																<h:commandLink styleClass="btn btn-default"
 																	action="#{userController.evadeOrder(currentOrder)}"
 																	value="Evade"> &nbsp; 
