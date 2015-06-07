@@ -3,52 +3,52 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="it.uniroma3.controller.UserController" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/controller/UserController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1054" y="1087"/>    
+    <position height="-1" width="-1" x="822" y="395"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="it.uniroma3.controller.AddressController" project="progetto_siw" 
-    file="/progetto_siw/src/it/uniroma3/controller/AddressController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-114" y="2108"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="it.uniroma3.controller.OrderLineController" project="progetto_siw" 
-    file="/progetto_siw/src/it/uniroma3/controller/OrderLineController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1750" y="75"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="it.uniroma3.controller.ProductController" project="progetto_siw" 
-    file="/progetto_siw/src/it/uniroma3/controller/ProductController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="-98" y="-39"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="it.uniroma3.controller.ProviderController" project="progetto_siw" 
-    file="/progetto_siw/src/it/uniroma3/controller/ProviderController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="619" width="255" x="-15" y="780"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="it.uniroma3.controller.OrderController" project="progetto_siw" 
+  <class id="2" language="java" name="it.uniroma3.controller.OrderController" project="progetto_siw" 
     file="/progetto_siw/src/it/uniroma3/controller/OrderController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1044" y="-31"/>    
+    <position height="-1" width="-1" x="233" y="1826"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="it.uniroma3.controller.ProviderController" project="progetto_siw" 
+    file="/progetto_siw/src/it/uniroma3/controller/ProviderController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="844" y="1844"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="it.uniroma3.controller.AddressController" project="progetto_siw" 
+    file="/progetto_siw/src/it/uniroma3/controller/AddressController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1280" y="2395"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="it.uniroma3.controller.OrderLineController" project="progetto_siw" 
+    file="/progetto_siw/src/it/uniroma3/controller/OrderLineController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="221" y="2485"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="it.uniroma3.controller.ProductController" project="progetto_siw" 
+    file="/progetto_siw/src/it/uniroma3/controller/ProductController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="532" y="1817"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -56,75 +56,52 @@
     </display>  
   </class>  
   <association id="7">    
+    <bendpoint x="1017" y="1114"/>    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="8" name="providerController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="9" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+      <attribute id="8" name="addressController"/>      
+      <multiplicity id="9" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="10">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="11" name="productController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="12" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="11" name="addressController"/>      
+      <multiplicity id="12" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="13">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="14" name="orderController"/>      
+      <attribute id="14" name="productController"/>      
       <multiplicity id="15" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="16">    
-    <end type="SOURCE" refId="6" navigable="false">      
+    <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="17" name="orderLineController"/>      
       <multiplicity id="18" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="19">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="20" name="addressController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="21" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+      <attribute id="20" name="providerController"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="22">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="23" name="addressController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="23" name="orderController"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="26" name="productController"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
