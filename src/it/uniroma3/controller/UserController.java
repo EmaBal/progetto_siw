@@ -145,6 +145,7 @@ public class UserController {
 	}
 
 	public String showProducts() {
+		orderController.showProducts();
 		return productController.listProducts(orderController.getOrder());
 	}
 

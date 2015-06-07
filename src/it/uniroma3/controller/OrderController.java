@@ -23,10 +23,6 @@ import javax.persistence.Id;
 @SessionScoped
 public class OrderController {
 
-
-
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -50,10 +46,12 @@ public class OrderController {
 	public void getUnconrfimedOrder(Customer user) {
 		this.order = orderFacade.getUnconrfimedOrder(user);
 	}
-	public void evadeOrder(Order order, Date date){
+
+	public void evadeOrder(Order order, Date date) {
 		order.setEvadingDate(date);
 		orderFacade.updateOrder(order);
 	}
+
 	public boolean isOrderLine(Product product) {
 		boolean result = false;
 		for (int i = 0; i < orderlines.size(); i++) {
@@ -69,15 +67,17 @@ public class OrderController {
 			order.setConfirmationDate(date);
 			orderFacade.updateOrder(order);
 		}
-		order = null;
-		orderlines = null;
+		clearOrder();
 	}
-
+	public void clearOrder(){
+		this.order = null;
+		this.orderlines=null;
+	}
 	public void clearOrders() {
 		this.orders = null;
 		this.orderEvasion = null;
 	}
-	
+
 	public String getTotalPrice(Product product) {
 		float result = product.getPrice();
 		for (int i = 0; i < orderlines.size(); i++) {
@@ -109,9 +109,10 @@ public class OrderController {
 	public boolean isNewOrder() {
 		return order == null || order.equals(null);
 	}
-	public void selectOrder(Order order){
+
+	public void selectOrder(Order order) {
 		this.order = order;
-		
+
 	}
 
 	public Order createOrder(Date creationDate) {
@@ -123,7 +124,7 @@ public class OrderController {
 			order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
 			orderFacade.updateOrder(order);
 			return order;
-		} else {//in case user attempt to create an empty order
+		} else {// in case user attempt to create an empty order
 			return null;
 		}
 	}
@@ -186,7 +187,6 @@ public class OrderController {
 		this.orderlines = orderlines;
 	}
 
-
 	public void putOrder(Order order, boolean b) {
 		if (orderEvasion == null) {
 			orderEvasion = new HashMap<Order, Boolean>();
@@ -194,13 +194,13 @@ public class OrderController {
 		orderEvasion.put(order, b);
 	}
 
-	public List<Order> getAllConfirmedOrders () {
+	public List<Order> getAllConfirmedOrders() {
 		this.orders = orderFacade.getAllConfirmedOrders();
 		return orders;
 	}
 
 	public Order getOrderFromId(Long id) {
-		
+
 		return orderFacade.getOrder(id);
 	}
 
@@ -218,5 +218,22 @@ public class OrderController {
 
 	public void setOrderEvasion(Map<Order, Boolean> orderEvasion) {
 		this.orderEvasion = orderEvasion;
+	}
+
+	public void showProducts() {
+		if (isNewOrder()) {
+			clearOrder();
+		} else {
+			if (orderlines != null && !orderlines.isEmpty() && order.getOrderLines() != null && !order.getOrderLines().equals(null) && !order.getOrderLines().isEmpty()) {
+				List<OrderLine> realorderlines = order.getOrderLines();
+				orderlines = new HashMap<Product, OrderLine>();
+				for (int i = 0; i < realorderlines.size(); i++) {
+					orderlines.put(realorderlines.get(i).getProduct(), realorderlines.get(i));
+				}
+			} else {
+				clearOrder();
+			}
+		}
+
 	}
 }
