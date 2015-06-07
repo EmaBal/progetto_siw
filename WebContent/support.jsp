@@ -241,9 +241,18 @@
 
 					<h1>Support material</h1>
 					<br>
-					<h:commandLink value="Download controller diagram" action="pictures/controllerTree.png"></h:commandLink>
-					<h:commandLink value="Download controller diagram" action="pictures/controllerTree.png"></h:commandLink>
-					<h:commandLink value="Download controller diagram" action="pictures/controllerTree.png"></h:commandLink>
+					<a href='pictures/controllerTree.png'>Download controller diagram</a>
+					<br> <br>
+					<a href='pictures/dcd.png'>Download class diagram</a>
+					<br> <br>
+					<a href='pictures/modeldiagram.png'>Download model diagram</a>
+					<br> <br>
+					<a href='https://drive.google.com/open?id=1OiQBx6SRCnBwQPkcZD3sVg5MJmMZ5H5hhTVTghYSNuU&authuser=0'>Use cases : Google doc</a>
+					<br> <br>
+					<a href='https://drive.google.com/open?id=1Qq43hAqxONDNWU0akvfMOHKZcJcTTPck4pe8oFlt0dk&authuser=0'>Graphical sketch : Google doc</a>
+					<br> <br>
+					<a href='https://drive.google.com/open?id=0B3wnJfyYNksWfno3WFVaT2xMcVQtTEJCdTNMM3g1MFNSZVBaSzd5NXY0eHJQY3l4emNDb2s&authuser=0'>Other graphicals templates : Google drive folder</a>
+					<br> <br>
 				</div>
 			</div>
 		</section>
