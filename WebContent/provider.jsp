@@ -51,13 +51,13 @@
 </script>
 <title>Insert title here</title>
 </head>
-<body style="background-color: #1F71AD; color: white;">
+<body style="background-color: rgb(54,75,113);  color: white;">
 	<f:view>
 
 		<div class="first">
 			<div class="container">
 
-				<!-- navbar start -->
+					<!-- navbar start -->
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
 						<!-- Brand and toggle get grouped for better mobile display -->
