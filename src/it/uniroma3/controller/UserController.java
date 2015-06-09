@@ -88,9 +88,7 @@ public class UserController {
 	}
 	public String getCustomerFromOrder(Order currentorder) {
 		customers = findAllCustomers();
-		System.out.println("clicked order: " + currentorder.getId());
 		for (int i=0;i<customers.size();i++) {
-			System.out.println("customer: " + customers.get(i).getFirstname() + " orders: " + customers.get(i).getOrders().size());
 			
 			if (customers.get(i).getOrders().contains(currentorder)) {
 				this.customer = customers.get(i);
@@ -112,9 +110,9 @@ public class UserController {
 
 	public String addProductToCart(Product product) {
 		//return true if a new order has been created
+//		orderController.showProducts((Customer) user);
 		orderController.addProductToCart(product, productController.getProductsQuantity().get(product),currentDate());
 		addOrderToUser(orderController.getOrder());
-		
 		return "products";
 	}
 	public void addOrderToUser(Order order){
@@ -123,13 +121,13 @@ public class UserController {
 			if(userOrders == null || userOrders.isEmpty()) {
 				userOrders = new ArrayList<Order>();
 			}
-			if(userOrders.contains(orderController.getOrder())){//update order
-				orderController.updateOrder();
-				System.out.println("updated order" + currentDate().toString());
+			if(userOrders.contains(order)){//update order
+				userOrders.remove(userOrders.indexOf(order));
+				userOrders.add(order);
+				orderController.deleteOrder();		
 			}else{//create order
-				userOrders.add(orderController.getOrder());
-				System.out.println("created order" + currentDate().toString());
-			}
+				userOrders.add(order);
+				}
 			
 			((Customer) user).setOrders(userOrders);
 			userFacade.updateCustomer(((Customer) user));

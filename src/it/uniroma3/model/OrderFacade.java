@@ -17,9 +17,14 @@ public class OrderFacade {
 	public Order createOrder() {
 		Order order = new Order();
 		em.persist(order);
+		em.flush();
 		return order;
 	}
-
+	public Order createOrder(Order order) {
+		em.persist(order);
+		em.flush();
+		return order;
+	}
 	public Order getOrder(Long id) {
 		Order order = em.find(Order.class, id);
 		return order;
@@ -41,6 +46,7 @@ public class OrderFacade {
 
 	public void updateOrder(Order order) {
 		em.merge(order);
+		em.flush();
 	}
 
 	private void deleteOrder(Order order) {

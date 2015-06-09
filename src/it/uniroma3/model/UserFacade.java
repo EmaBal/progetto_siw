@@ -100,6 +100,7 @@ public class UserFacade {
 
 	public void updateCustomer(Customer customer) {
 		em.merge(customer);
+		em.flush();
 	}
 
 	private void deleteAdministrator(Customer customer) {
