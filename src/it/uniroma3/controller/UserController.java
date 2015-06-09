@@ -102,32 +102,6 @@ public class UserController {
 		return "customerProfile";
 	}
 
-	public String createOrder() {
-		boolean isNewOrder = orderController.isNewOrder();
-		Order order = orderController.createOrder(currentDate());
-		if (order != null) {
-			List<Order> orders = ((Customer) user).getOrders();
-			if (orders == null || orders.equals(null) || orders.isEmpty()) {
-				orders = new ArrayList<Order>();
-			}
-			if (!isNewOrder) {
-				for (int i = 0; i < orders.size(); i++) {
-					if (orders.get(i).getId().equals(order.getId())) {
-						orders.set(i, order);
-					}
-				}
-			} else {
-				orders.add(order);
-			}
-
-			((Customer) user).setOrders(orders);
-			userFacade.updateUser(user);
-			return openCartPage();
-		}else{
-			return "index";//in case user attempt to create an empty order
-		}
-		
-	}
 
 	public String confirmOrder() {
 		orderController.confirmOrder(currentDate());
@@ -137,15 +111,40 @@ public class UserController {
 	}
 
 	public String addProductToCart(Product product) {
-		return orderController.addProductToCart(product, productController.getProductsQuantity().get(product));
+		//return true if a new order has been created
+		orderController.addProductToCart(product, productController.getProductsQuantity().get(product),currentDate());
+		addOrderToUser(orderController.getOrder());
+		
+		return "products";
 	}
-
+	public void addOrderToUser(Order order){
+		if(user != null && user.getClass().getName().equals(Customer.class.getName())){
+			List<Order> userOrders = ((Customer) user).getOrders();
+			if(userOrders == null || userOrders.isEmpty()) {
+				userOrders = new ArrayList<Order>();
+			}
+			if(userOrders.contains(orderController.getOrder())){//update order
+				orderController.updateOrder();
+				System.out.println("updated order" + currentDate().toString());
+			}else{//create order
+				userOrders.add(orderController.getOrder());
+				System.out.println("created order" + currentDate().toString());
+			}
+			
+			((Customer) user).setOrders(userOrders);
+			userFacade.updateCustomer(((Customer) user));
+		}
+	}
 	public String getAllProductsFromSearch() {
 		return productController.getProductsFromSearch();
 	}
 
 	public String showProducts() {
-		orderController.showProducts();
+		if(user != null && user.getClass().getName().equals(Customer.class.getName())){
+			orderController.showProducts((Customer)user);
+		}else{
+			orderController.setOrder(null);
+		}
 		return productController.listProducts(orderController.getOrder());
 	}
 
@@ -196,7 +195,7 @@ public class UserController {
 		return productController.selectProducts(providerController.getProvider());
 	}
 	public String openOrderDetails(Order order){
-		orderController.selectOrder(order);
+		orderController.setOrder(order);
 		return "order";
 	}
 	public String discardSelectedProviderProducts() {

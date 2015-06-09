@@ -127,14 +127,14 @@ public class ProductController {
 
 	public void selectProducts(Order order) {
 		loadAllProducts();
-		if (order == null) {//new order
+		if (order == null) {//new order or Admin/unregistered user
 			this.productsQuantity = new HashMap<Product, Integer>();
 			for (int i = 0; i < products.size(); i++) {
 				productsQuantity.put(products.get(i), 0);
 			}
-		}else{//old empty order
+		}else{
 			List<OrderLine> orderlines = order.getOrderLines();
-			if(orderlines == null || orderlines.equals(null) || orderlines.isEmpty()){
+			if(orderlines == null || orderlines.equals(null) || orderlines.isEmpty()){//old empty order
 				this.productsQuantity = new HashMap<Product, Integer>();
 				for (int i = 0; i < products.size(); i++) {
 					productsQuantity.put(products.get(i), 0);

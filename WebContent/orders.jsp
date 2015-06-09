@@ -191,7 +191,7 @@
 																</c:when>
 																<c:otherwise>
 																	<div>
-																		Email:
+																		<div style="color: black;">Email:</div>
 																		<h:inputText value="#{userController.email}"
 																			required="true" requiredMessage="Email is mandatory"
 																			styleClass="login-control" id="email" />
@@ -201,7 +201,7 @@
 																	</div>
 																	<br>
 																	<div>
-																		Password:
+																		<div style="color: black;">Password:</div>
 																		<h:inputSecret value="#{userController.password}"
 																			required="true"
 																			requiredMessage="Password is mandatory"

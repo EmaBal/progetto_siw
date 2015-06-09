@@ -319,19 +319,12 @@
 										</div>
 									</c:forEach>
 								</div>
-								<c:choose>
-									<c:when test="${userController.orderController.order==null}"></c:when>
-									<h:commandButton action="#{userController.createOrder}"
-										styleClass="btn btn-default" value="Create order"
-										style="width:60%"></h:commandButton>
-								</c:choose>
+								
+								<h:commandLink value="My cart" styleClass="btn btn-default"
+									action="#{userController.openCartPage}" ><span class="glyphicon glyphicon-shopping-cart"
+									style="margin: 5px; color: black;"></span></h:commandLink>
+								<br>
 							</c:when>
-							<c:otherwise>
-								<h:commandButton action="#{userController.createOrder}"
-									styleClass="btn btn-default" value="Update order"
-									style="width:60%"></h:commandButton>
-							</c:otherwise>
-
 							<c:when
 								test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
 								<div class="panel-group" id="accordion">

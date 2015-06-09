@@ -69,10 +69,16 @@ public class OrderController {
 		}
 		clearOrder();
 	}
-	public void clearOrder(){
-		this.order = null;
-		this.orderlines=null;
+
+	public void updateOrder() {
+		orderFacade.updateOrder(order);
 	}
+
+	public void clearOrder() {
+		this.order = null;
+		this.orderlines = null;
+	}
+
 	public void clearOrders() {
 		this.orders = null;
 		this.orderEvasion = null;
@@ -88,45 +94,53 @@ public class OrderController {
 		return String.valueOf(result);
 	}
 
-	public String addProductToCart(Product product, Integer quantity) {
-
+	public void addProductToCart(Product product, Integer quantity, Date now) {
+		boolean createNewOrder = order == null;
 		if (orderlines == null || orderlines.equals(null) || orderlines.isEmpty()) {
 			orderlines = new HashMap<Product, OrderLine>();
 		}
-		if (order != null) {
+		if (!createNewOrder) {
 			List<OrderLine> orderlinelist = order.getOrderLines();
+			orderlines = new HashMap<Product, OrderLine>();
 			for (int i = 0; i < orderlinelist.size(); i++) {
 				orderlines.put(orderlinelist.get(i).getProduct(), orderlinelist.get(i));
 			}
 		}
 		if (quantity != 0 && !quantity.equals(0)) {
-			OrderLine orderline = orderLineController.createOrderLine(quantity, product);
-			orderlines.put(product, orderline);
+			// OrderLine orderline =
+			// orderLineController.createOrderLine(quantity, product);
+			OrderLine orderline;
+			if (orderlines.containsKey(product) && orderlines.get(product).getQuantity().compareTo(quantity) != 0) {// changing
+																													// quantity
+																													// for
+																													// an
+																													// orderline
+				orderLineController.deleteOrderLine(orderlines.get(product));
+				orderline = orderLineController.createOrderLine(quantity, product);
+				orderlines.put(product, orderline);
+			} else if (orderlines.containsKey(product)) {// same quantity for an
+															// orderline
+				orderline = orderlines.get(product);
+			} else {// new product in the order (new orderline)
+				orderline = orderLineController.createOrderLine(quantity, product);
+				orderlines.put(product, orderline);
+			}
+		} else {
+			if (orderlines.containsKey(product)) {
+				orderlines.remove(product);
+			}
 		}
-		return "products";
+
+		if (createNewOrder) {
+			order = new Order();
+			order.setCreationDate(now);
+		}
+		order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
+
 	}
 
 	public boolean isNewOrder() {
 		return order == null || order.equals(null);
-	}
-
-	public void selectOrder(Order order) {
-		this.order = order;
-
-	}
-
-	public Order createOrder(Date creationDate) {
-		if (!orderlines.isEmpty()) {
-			if (order == null || order.equals(null)) {
-				order = orderFacade.createOrder();
-				order.setCreationDate(creationDate);
-			}
-			order.setOrderLines(new ArrayList<OrderLine>(orderlines.values()));
-			orderFacade.updateOrder(order);
-			return order;
-		} else {// in case user attempt to create an empty order
-			return null;
-		}
 	}
 
 	// getters & setters
@@ -220,20 +234,20 @@ public class OrderController {
 		this.orderEvasion = orderEvasion;
 	}
 
-	public void showProducts() {
+	public void showProducts(Customer user) {
+		getUnconrfimedOrder(user);
 		if (isNewOrder()) {
 			clearOrder();
 		} else {
-			if (orderlines != null && !orderlines.isEmpty() && order.getOrderLines() != null && !order.getOrderLines().equals(null) && !order.getOrderLines().isEmpty()) {
+			if (order.getOrderLines() != null && !order.getOrderLines().equals(null) && !order.getOrderLines().isEmpty()) {
 				List<OrderLine> realorderlines = order.getOrderLines();
 				orderlines = new HashMap<Product, OrderLine>();
 				for (int i = 0; i < realorderlines.size(); i++) {
 					orderlines.put(realorderlines.get(i).getProduct(), realorderlines.get(i));
 				}
-			} else {
-				clearOrder();
 			}
 		}
 
 	}
+
 }
