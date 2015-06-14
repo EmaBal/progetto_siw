@@ -80,12 +80,12 @@
 											</h:commandLink>
 										</h:form></li>
 
-									<li class="navbar-item-opaque">
-											<a class="navbar-item-link" style="text-decoration: none" href='<c:url value="/faces/support.jsp" />'>Support</a>
-										</li>
-								<li class="navbar-item-opaque">
-											<a class="navbar-item-link" style="text-decoration: none" href='<c:url value="/faces/contactPage.jsp" />'>Contact</a>
-										</li>
+									<li class="navbar-item-opaque"><a class="navbar-item-link"
+										style="text-decoration: none"
+										href='<c:url value="/faces/support.jsp" />'>Support</a></li>
+									<li class="navbar-item-opaque"><a class="navbar-item-link"
+										style="text-decoration: none"
+										href='<c:url value="/faces/contactPage.jsp" />'>Contact</a></li>
 									<li class="navbar-item-login" id="menuLogin">
 										<div class="dropdown keep-open">
 											<a class="navbar-button-login" href="#"
@@ -243,7 +243,7 @@
 						<div class="col-sm-6" style="background-color: transparent;">
 							<div align="center" style="line-height: 200px">
 								<img src="pictures/ogc_logo.png" alt="ogc_logo"
-									style="width: 250px; height: 100px">
+									style="width: 70%; height: 70%">
 							</div>
 						</div>
 						<div class="col-sm-3" style="background-color: transparent;"></div>
@@ -286,8 +286,10 @@
 			</div>
 		</section>
 		<section class="section-form" id="section2">
-			<div class="second" style="height:500px; color:black; padding-top: 80px;" align="center">
-				Questo sito internet e' stato concepito a scopo puramente dimostrativo.<br>
+			<div class="second"
+				style="color: black; padding-top: 25px; padding-bottom: 45px"
+				align="center">
+				<!-- Questo sito internet e' stato concepito a scopo puramente dimostrativo.<br>
 				I prodotti in catalogo, le descrizioni dei prodotti, i nomi e, piu' in generale,<br>
 				tutte le scritte del sito sono presenti unicamente per fornire un esempio.<br>
 				Ogni riferimento a fatti, cose, persone o corsi universitari (vedi intestazione)<br>
@@ -299,15 +301,73 @@
 				consentire la registrazione come amministratore a qualunque visitatore)<br>
 				per accedere come cliente<br>
 				e' necessaria la registrazione (raggiungibile premendo il pulsate sign up dalla <br>
-				barra di navigazione superiore).<br>
+				barra di navigazione superiore).<br> -->
+
+				<h1>Wherever you are, we're there with you</h1>
+				<br>
+				<br>
+				<div class="row" align="left" style="padding-left: 120px">
+					<div class="col-sm-4" style="background-color: transparent;">
+						<div class="row">
+							<div class="col-xs-2"
+								style="background-color: transparent; padding-right: 0px;"
+								align="right">
+								<span class="glyphicon glyphicon-plane"
+									style="font-size: 30px; color: rgb(58, 109, 158);"></span>
+							</div>
+							<div class="col-xs-10" style="background-color: transparent">
+								<div style="font-size: 20px">
+									<b>Fast evade</b>
+								</div>
+								We evade orders as soon as they<br> reach our servers,
+								giving you the best<br> e-commerce experience possible.
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4" style="background-color: transparent;">
+						<div class="row">
+							<div class="col-xs-2"
+								style="background-color: transparent; padding-right: 0px;"
+								align="right">
+								<span class="glyphicon glyphicon-shopping-cart"
+									style="font-size: 30px; color: rgb(58, 109, 158);"></span>
+							</div>
+							<div class="col-xs-10" style="background-color: transparent">
+								<div style="font-size: 20px">
+									<b>Large products availability</b>
+								</div>
+								Our providers are some of the best<br> on the market, as
+								they guarantee<br> products availability almost every day.
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4" style="background-color: transparent;">
+						<div class="row">
+							<div class="col-xs-2"
+								style="background-color: transparent; padding-right: 0px;"
+								align="right">
+								<span class="glyphicon glyphicon-earphone"
+									style="font-size: 30px; color: rgb(58, 109, 158);"></span>
+							</div>
+							<div class="col-xs-10" style="background-color: transparent">
+								<div style="font-size: 20px">
+									<b>Always reachable</b>
+								</div>
+								You can contact us 24/7,<br> as we're always online<br>
+								for our customers' needs.
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		<section class="section-form" id="section3">
-			<div class="third">
+			<div class="third" style="padding-top: 25px; padding-bottom: 20px">
 				<div class="container">
 					<div class="col-sm-2" style="background-color: transparent;"></div>
 					<div class="col-sm-8" style="background-color: transparent;">
-						<h1 align="center">Technologies used for development</h1>
+						<h1 align="center" style="color: white">Technologies used for
+							development</h1>
 						<div
 							style="position: relative; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 100%; max-width: 900px; margin-top: 50px; margin-right: auto; margin-left: auto; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between;">
 							<div align="center" style="background-color: transparent;">

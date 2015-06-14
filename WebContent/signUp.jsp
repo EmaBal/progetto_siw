@@ -331,7 +331,7 @@
 							<h:commandButton value="Sign Up"
 								action="#{userController.createCustomer}"
 								style="color:black; margin: 15px;" styleClass="btn btn-default" />
-							<%-- 							<h:commandButton value="Sign Up as administrator"
+							<%-- <h:commandButton value="Sign Up as administrator"
 								action="#{userController.createAdministrator}"
 								styleClass="btn btn-default" /> --%>
 						</div>
