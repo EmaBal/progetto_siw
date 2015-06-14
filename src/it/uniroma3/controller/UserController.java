@@ -109,7 +109,6 @@ public class UserController {
 	}
 
 	public String addProductToCart(Product product) {
-		//return true if a new order has been created
 //		orderController.showProducts((Customer) user);
 		orderController.addProductToCart(product, productController.getProductsQuantity().get(product),currentDate());
 		addOrderToUser(orderController.getOrder());

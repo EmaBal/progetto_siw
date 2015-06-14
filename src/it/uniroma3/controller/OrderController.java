@@ -110,7 +110,7 @@ public class OrderController {
 				orderLineController.deleteOrderLine(orderlines.get(product));
 				orderline = orderLineController.createOrderLine(quantity, product);
 				orderlines.put(product, orderline);
-			} else if (orderlines.containsKey(product)) {// same quantity for an
+			} else  {// same quantity for an    
 															// orderline
 				orderline = orderlines.get(product);
 				orderline = orderLineController.createOrderLine(quantity, product);
