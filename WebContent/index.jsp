@@ -51,7 +51,7 @@
 <body>
 	<f:view>
 		<section class="section-form" id="section1">
-			<div class="first">
+			<div class="first" style="background-color: rgb(54, 75, 113); background-repeat: no-repeat;">
 				<div class="container">
 
 					<!-- navbar start -->
