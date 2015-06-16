@@ -239,141 +239,151 @@
 
 
 			<h:form>
-				<div class="row">
-					<div class="col-sm-2" style="background-color: transparent;"></div>
-					<div class="col-sm-8" style="background-color: transparent;"
-						align="center">
-						<c:choose>
-							<c:when
-								test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
-								<div class="panel-group" id="accordion">
-									<c:forEach var="currentProduct"
-										items="#{userController.productController.products}"
-										varStatus="loop">
-										<div class="panel panel-primary">
-											<div class="panel-heading">
-												<h4 class="panel-title">
-													<a data-toggle="collapse" data-parent="#accordion"
-														href="#accordion${currentProduct.id}">${currentProduct.name}</a>
-												</h4>
-											</div>
-											<div id="accordion${currentProduct.id}"
-												class="panel-collapse collapse">
-												<div class="panel-body" style="color: black">
-													<div class="row">
-														<div class="col-sm-6"
-															style="background-color: transparent;">
-															<div align="left">
-																<b>Description:</b> ${currentProduct.description}
-															</div>
-															<div align="left">
-																<b>Price:</b>
-																<c:choose>
-																	<c:when
-																		test="${userController.orderController.orderlines[currentProduct] != null}">
-																		<c:out
-																			value="${userController.orderController.orderlines[currentProduct].quantity}" /> x &#8364;
+				<c:choose>
+					<c:when test="${userController.productController.products==null || userController.productController.products.isEmpty() || userController.productController.products.equals(null)}">
+						<br>
+						<h1 align="center" style="color:white">No products match your search!</h1>
+					</c:when>
+					<c:otherwise>
+						<div class="row">
+							<div class="col-sm-2" style="background-color: transparent;"></div>
+							<div class="col-sm-8" style="background-color: transparent;"
+								align="center">
+								<c:choose>
+									<c:when
+										test="${userController.user!=null && userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+										<div class="panel-group" id="accordion">
+											<c:forEach var="currentProduct"
+												items="#{userController.productController.products}"
+												varStatus="loop">
+												<div class="panel panel-primary">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#accordion"
+																href="#accordion${currentProduct.id}">${currentProduct.name}</a>
+														</h4>
+													</div>
+													<div id="accordion${currentProduct.id}"
+														class="panel-collapse collapse">
+														<div class="panel-body" style="color: black">
+															<div class="row">
+																<div class="col-sm-6"
+																	style="background-color: transparent;">
+																	<div align="left">
+																		<b>Description:</b> ${currentProduct.description}
+																	</div>
+																	<div align="left">
+																		<b>Price:</b>
+																		<c:choose>
+																			<c:when
+																				test="${userController.orderController.orderlines[currentProduct] != null}">
+																				<c:out
+																					value="${userController.orderController.orderlines[currentProduct].quantity}" /> x &#8364;
 																			<c:out value="${currentProduct.price}" /> = &#8364;
 																			<c:out
-																			value="${((userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price)}" />
-																	</c:when>
-																	<c:otherwise>&#8364; ${currentProduct.price}</c:otherwise>
-																</c:choose>
-															</div>
-															<div align="left">
-																<b>Quantity:</b>
-																<h:inputText
-																	value="#{userController.productController.productsQuantity[currentProduct]}"
-																	converterMessage="Quantity must be a number"
-																	styleClass="form-control"
-																	style="width: 30%; display: inline-block" id="quantity"
-																	converter="javax.faces.Integer"></h:inputText>
-																<div class="warningform">
-																	<h:message for="quantity" />
+																					value="${((userController.orderController.orderlines[currentProduct].quantity) * currentProduct.price)}" />
+																			</c:when>
+																			<c:otherwise>&#8364; ${currentProduct.price}</c:otherwise>
+																		</c:choose>
+																	</div>
+																	<div align="left">
+																		<b>Quantity:</b>
+																		<h:inputText
+																			value="#{userController.productController.productsQuantity[currentProduct]}"
+																			converterMessage="Quantity must be a number"
+																			styleClass="form-control"
+																			style="width: 30%; display: inline-block"
+																			id="quantity" converter="javax.faces.Integer"></h:inputText>
+																		<div class="warningform">
+																			<h:message for="quantity" />
+																		</div>
+																	</div>
+																</div>
+																<div class="col-sm-6"
+																	style="background-color: transparent;" align="right">
+																	<div class="btn-group-lg">
+																		<h:commandLink
+																			action="#{userController.openProductDetails(currentProduct)}"
+																			styleClass="btn btn-default" value="Info"
+																			style="color: #1F71AD; font-weight: bold;">&nbsp;
+																	<span style="vertical-align: text-top; color: #1F71AD"
+																				class="glyphicon glyphicon-info-sign"></span>
+																		</h:commandLink>
+																		&nbsp;
+																		<h:commandLink
+																			action="#{userController.addProductToCart(currentProduct)}"
+																			styleClass="btn btn-default" value="Add to cart"
+																			style="color: #1F71AD; font-weight: bold;"> &nbsp; <span
+																				class="glyphicon glyphicon-shopping-cart"
+																				style="color: rgb(31, 113, 173)"></span>
+																		</h:commandLink>
+																	</div>
 																</div>
 															</div>
 														</div>
-														<div class="col-sm-6"
-															style="background-color: transparent;" align="right">
-															<div class="btn-group-lg">
-																<h:commandLink
-																	action="#{userController.openProductDetails(currentProduct)}"
-																	styleClass="btn btn-default" value="Info"
-																	style="color: #1F71AD; font-weight: bold;">&nbsp;
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+
+										<h:commandLink value="My cart" styleClass="btn btn-default"
+											action="#{userController.openCartPage}">
+											<span class="glyphicon glyphicon-shopping-cart"
+												style="margin: 5px; color: black;"></span>
+										</h:commandLink>
+										<br>
+									</c:when>
+									<c:when
+										test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
+										<div class="panel-group" id="accordion">
+											<c:forEach var="currentProduct"
+												items="#{userController.productController.products}"
+												varStatus="loop">
+												<div class="panel panel-primary ">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#accordion"
+																href="#accordion${currentProduct.id}">${currentProduct.name}</a>
+														</h4>
+													</div>
+													<div id="accordion${currentProduct.id}"
+														class="panel-collapse collapse">
+														<div class="panel-body" style="color: black">
+															<div class="row">
+																<div class="col-sm-6"
+																	style="background-color: transparent;">
+																	<div align="left">
+																		<b>Description:</b> ${currentProduct.description}
+																	</div>
+																	<div align="left">
+																		<b>Price:</b> &#8364; ${currentProduct.price}
+																	</div>
+																</div>
+																<div class="col-sm-6"
+																	style="background-color: transparent;" align="right">
+																	<div class="btn-group-lg">
+																		<h:commandLink
+																			action="#{userController.openProductDetails(currentProduct)}"
+																			styleClass="btn btn-default" value="Info"
+																			style="color: #1F71AD; font-weight: bold;">&nbsp;
 																	<span style="vertical-align: text-top; color: #1F71AD"
-																		class="glyphicon glyphicon-info-sign"></span>
-																</h:commandLink>
-																&nbsp;
-																<h:commandLink
-																	action="#{userController.addProductToCart(currentProduct)}"
-																	styleClass="btn btn-default" value="Add to cart"
-																	style="color: #1F71AD; font-weight: bold;"> &nbsp; <span
-																		class="glyphicon glyphicon-shopping-cart"
-																		style="color: rgb(31, 113, 173)"></span>
-																</h:commandLink>
+																				class="glyphicon glyphicon-info-sign"></span>
+																		</h:commandLink>
+																	</div>
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-											</div>
+											</c:forEach>
 										</div>
-									</c:forEach>
-								</div>
-								
-								<h:commandLink value="My cart" styleClass="btn btn-default"
-									action="#{userController.openCartPage}" ><span class="glyphicon glyphicon-shopping-cart"
-									style="margin: 5px; color: black;"></span></h:commandLink>
-								<br>
-							</c:when>
-							<c:when
-								test="${userController.user==null || userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
-								<div class="panel-group" id="accordion">
-									<c:forEach var="currentProduct"
-										items="#{userController.productController.products}"
-										varStatus="loop">
-										<div class="panel panel-primary ">
-											<div class="panel-heading">
-												<h4 class="panel-title">
-													<a data-toggle="collapse" data-parent="#accordion"
-														href="#accordion${currentProduct.id}">${currentProduct.name}</a>
-												</h4>
-											</div>
-											<div id="accordion${currentProduct.id}"
-												class="panel-collapse collapse">
-												<div class="panel-body" style="color: black">
-													<div class="row">
-														<div class="col-sm-6"
-															style="background-color: transparent;">
-															<div align="left">
-																<b>Description:</b> ${currentProduct.description}
-															</div>
-															<div align="left">
-																<b>Price:</b> &#8364; ${currentProduct.price}
-															</div>
-														</div>
-														<div class="col-sm-6"
-															style="background-color: transparent;" align="right">
-															<div class="btn-group-lg">
-																<h:commandLink
-																	action="#{userController.openProductDetails(currentProduct)}"
-																	styleClass="btn btn-default" value="Info"
-																	style="color: #1F71AD; font-weight: bold;">&nbsp;
-																	<span style="vertical-align: text-top; color: #1F71AD"
-																		class="glyphicon glyphicon-info-sign"></span>
-																</h:commandLink>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-								</div>
-							</c:when>
-						</c:choose>
-					</div>
-					<div class="col-sm-2" style="background-color: transparent;"></div>
-				</div>
+									</c:when>
+								</c:choose>
+							</div>
+							<div class="col-sm-2" style="background-color: transparent;"></div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</h:form>
 		</div>
 	</f:view>

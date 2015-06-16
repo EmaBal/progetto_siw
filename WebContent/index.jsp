@@ -51,7 +51,8 @@
 <body>
 	<f:view>
 		<section class="section-form" id="section1">
-			<div class="first" style="background-color: rgb(54, 75, 113); background-repeat: no-repeat;">
+			<div class="first"
+				style="background-color: rgb(54, 75, 113); background-repeat: no-repeat;">
 				<div class="container">
 
 					<!-- navbar start -->
@@ -252,7 +253,8 @@
 						<div class="col-sm-3" style="background-color: transparent;"></div>
 						<div class="col-sm-6" style="background-color: transparent;">
 							<div align="center">
-								<p style="color: white; font-size: medium;">
+								<p style="color: white; font-size: medium;"
+									title="Ironic phrase">
 									My code doesn't work, I have no idea why.<br>My code
 									works, I have no idea why.
 							</div>
@@ -304,9 +306,8 @@
 				barra di navigazione superiore).<br> -->
 
 				<h1>Wherever you are, we're there with you</h1>
-				<br>
-				<br>
-				<div class="row" align="left" style="padding-left: 120px">
+				<br> <br>
+				<div class="row" align="left" style="padding-left: 10%">
 					<div class="col-sm-4" style="background-color: transparent;">
 						<div class="row">
 							<div class="col-xs-2"
