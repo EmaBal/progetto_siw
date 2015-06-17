@@ -291,20 +291,6 @@
 			<div class="second"
 				style="color: black; padding-top: 25px; padding-bottom: 45px"
 				align="center">
-				<!-- Questo sito internet e' stato concepito a scopo puramente dimostrativo.<br>
-				I prodotti in catalogo, le descrizioni dei prodotti, i nomi e, piu' in generale,<br>
-				tutte le scritte del sito sono presenti unicamente per fornire un esempio.<br>
-				Ogni riferimento a fatti, cose, persone o corsi universitari (vedi intestazione)<br>
-				e' puramente casuale e non intende offendere o discriminare.<br><br>
-				Il sito e' accessibile solo in parte ai visitatori,<br>
-				per accedere come amministratore<br>
-				e' sufficente usare le creadenziali email:'admin@admin.com' password:'admin' <br>
-				(e' anche possibile scommentare le righe da 334 a 337 della pagina signUp.jsp per<br>
-				consentire la registrazione come amministratore a qualunque visitatore)<br>
-				per accedere come cliente<br>
-				e' necessaria la registrazione (raggiungibile premendo il pulsate sign up dalla <br>
-				barra di navigazione superiore).<br> -->
-
 				<h1>Wherever you are, we're there with you</h1>
 				<br> <br>
 				<div class="row" align="left" style="padding-left: 10%">
