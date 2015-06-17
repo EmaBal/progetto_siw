@@ -339,7 +339,7 @@
 					<c:otherwise>
 						<c:choose>
 							<c:when
-								test="${userController.userprivilege.equals('it.uniroma3.model.Customer')}">
+								test="${userController.userprivilege.equals('it.uniroma3.model.Administrator')}">
 								<br>You don't have any order to evade. There are no new confirmed orders <br>
 							</c:when>
 							<c:otherwise>
